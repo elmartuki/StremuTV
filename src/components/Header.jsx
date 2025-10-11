@@ -3,106 +3,95 @@ import "./header.css";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { obtenerDelSessionStorage } from "../utils/localStorage.js";
+import searchImg from "../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg";
+import menuImg from "../assets/menu.svg";
+import usserImg from "../assets/usser.svg";
 
 export default function Header() {
-  const [menu, setMenu] = useState(false);
-  const navegacion = useNavigate();
+  const [search, setSearch] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
 
-  const usuarioLogueado = obtenerDelSessionStorage("usuario");
+  const logueado = true;
 
-  function handleLogout() {
-    sessionStorage.removeItem("usuario");
-    Swal.fire({
-      title: "Bien hecho!",
-      text: `Sesion cerrada con exito`,
-      icon: "success",
-    });
-    navegacion("/");
-  }
-
-  const handleOpenMenu = () => {
-    setMenu(!menu);
+  const handleSearch = () => {
+    setSearch(!search);
   };
+
+  const handleOpenLogin = () => {
+    setOpenLogin(!openLogin);
+  };
+
   return (
-    <header className="d-flex m-auto position-sticky top-0">
-      <nav className="navbar d-flex">
-        <div className="navbar_logo">
-          <h1>Logo</h1>
-        </div>
-        <div className="navbar_menu d-flex">
-          <button className="navbar_menu-btn" onClick={handleOpenMenu}>
-            <img
-              src="https://stremu.netlify.app/icons/menu_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
-              alt="icono para abrir el menú"
-            />
-          </button>
-        </div>
-      </nav>
-      <nav className={menu ? "mostrar" : "ocultar"}>
-        <ul className="navbar_menu_links list-unstyled d-flex">
-          <li>
-            {" "}
-            <NavLink to="/">Inicio</NavLink>
-          </li>
-          <li>
-            {" "}
-            <NavLink to="/contador">Series</NavLink>
-          </li>
-          <li>
-            {" "}
-            <NavLink to="/esculturas">Peliculas</NavLink>
-          </li>
-          <li>
-            {" "}
-            <NavLink to="/tareas">Top</NavLink>
-          </li>
+    <header className="">
+      <nav className="navbar">
+        <div className="navbar_1">
+          <div className="navbar_1-logo">
+            <p>StremuTV</p>
+          </div>
 
-          {usuarioLogueado?.rol !== "admin" && usuarioLogueado ? (
-            <li>
-              {" "}
-              <NavLink to="/admin">Admin</NavLink>
-            </li>
-          ) : (
-            <></>
-          )}
+          <div className="navbar_link">
+            <a href="">Peliculas</a>
+            <a href="">Series</a>
+            <a href="">Tendencias</a>
+            <a href="">Categorias</a>
+          </div>
+        </div>
 
-          <ul className="navbar_menu_btn-container list-unstyled d-flex">
-            {usuarioLogueado ? (
-              <>
-                <li>
-                  <button
-                    className="navbar_menu_btn-logout"
-                    onClick={handleLogout}
-                  >
-                    Cerrar sesión
-                  </button>
-                </li>
-                <li>
-                  <button className="navbar_menu_btn-user d-flex justify-content-center align-items-center">
-                    <img
-                      src="https://randomuser.me/api/portraits/men/23.jpg"
-                      alt="imagen de perfil del usuario"
-                    />
-                    {""}
-                  </button>
-                </li>
-              </>
+        <div className="navbar_2">
+          <div className="navbar_2-search">
+            {search ? (
+              <div className="navbar_2-border">
+                <input type="text" placeholder="Buscar..." />
+                <button className="search-img" onClick={handleSearch}>
+                  <img src={searchImg} alt="Buscar" />
+                </button>
+              </div>
             ) : (
-              <>
-                <li>
-                  <NavLink className="navbar_menu_btn-login" to="/login">
-                    Login
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="navbar_menu_btn-register" to="/registro">
-                    Registro
-                  </NavLink>
-                </li>
-              </>
+              <button className="search-img" onClick={handleSearch}>
+                <img src={searchImg} alt="Buscar" />
+              </button>
             )}
-          </ul>
-        </ul>
+          </div>
+
+          <div className="navbar_2-login">
+            {logueado ? (
+              <div>
+                <button onClick={handleOpenLogin}>
+                  <img
+                    src="https://www.clarin.com/2024/07/04/uteodLeuh_2000x1500__1.jpg"
+                    alt="Perfil"
+                  />
+                </button>
+
+                {openLogin ? (
+                  <div className="drowLogin">
+                    <a href="">Cerrar Sesion</a>
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <div>
+                <button className="usser-not-log" onClick={handleOpenLogin}>
+                  <img src={usserImg} alt="" />
+                </button>
+
+                {openLogin ? (
+                  <div className="drowLogin">
+                    <a href="">Register</a>
+                    <a href="">Login</a>
+                  </div>
+                ) : null}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="navbar_links">
+          <a href="">Peliculas</a>
+          <a href="">Series</a>
+          <a href="">Tendencias</a>
+          <a href="">Categorias</a>
+        </div>
       </nav>
     </header>
   );
