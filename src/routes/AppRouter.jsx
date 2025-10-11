@@ -1,0 +1,27 @@
+import { Routes, Route } from "react-router-dom";
+import HomePage from "../pages/HomePage.jsx";
+import Error404Page from "../pages/Error404Page.jsx";
+import AdminPage from "../pages/AdminPage.jsx";
+import Footer from "../components/Footer.jsx";
+import AdminRoutes from "./AdminRoutes.jsx";
+import RegisterPage from "../pages/RegisterPage.jsx";
+import LoginPage from "../pages/LoginPage.jsx";
+import Header from "../components/Header.jsx";
+
+export default function AppRouter() {
+  return (
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/registro" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route element={<AdminRoutes />}>
+          <Route path="/admin" element={<AdminPage />}></Route>
+        </Route>
+        <Route path="*" element={<Error404Page />} />
+      </Routes>
+      <Footer />
+    </>
+  );
+}
