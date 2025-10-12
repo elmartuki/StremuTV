@@ -16,9 +16,8 @@ export default function AppRouter() {
         <Route path="/" element={<HomePage />} />
         <Route path="/registro" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route element={<AdminRoutes />}>
-          <Route path="/admin" element={<AdminPage />}></Route>
-        </Route>
+        <Route path="/admin" element={<AdminPage />}></Route>
+        <Route element={<AdminRoutes />}></Route>
         <Route path="*" element={<Error404Page />} />
       </Routes>
       <Footer />
