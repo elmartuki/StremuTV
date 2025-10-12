@@ -11,7 +11,7 @@ export default function Header() {
   const [search, setSearch] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
 
-  const logueado = true;
+  const logueado = false;
 
   const handleSearch = () => {
     setSearch(!search);
