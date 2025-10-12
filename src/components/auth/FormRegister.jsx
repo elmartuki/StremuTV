@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function FormRegister() {
   const [usuario, setUsuario] = useState("");
+  const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
@@ -12,7 +13,7 @@ export default function FormRegister() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const nuevoUsuario = { usuario, password, repeatPassword };
+    const nuevoUsuario = { usuario, correo, password, repeatPassword };
 
     if (password === repeatPassword) {
       guardarEnLocalStorage("usuarios", nuevoUsuario);
@@ -36,6 +37,13 @@ export default function FormRegister() {
         type="text"
         placeholder="Usuario"
         value={usuario}
+        required
+      />
+      <input
+        onChange={(event) => setCorreo(event.target.value)}
+        type="email"
+        placeholder="Correo"
+        value={correo}
         required
       />
       <input
