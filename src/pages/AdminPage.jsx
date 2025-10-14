@@ -1,5 +1,8 @@
-import React, { use, useState } from "react";
-import { guardarEnLocalStorage } from "../utils/localStorage";
+import React, { useEffect, useState } from "react";
+import {
+  guardarEnLocalStorage,
+  obtenerDelLocalStorage,
+} from "../utils/localStorage";
 
 export default function AdminPage() {
   const [nombre, setNombre] = useState("");
@@ -9,18 +12,69 @@ export default function AdminPage() {
   const [descripcion, setDescripcion] = useState("");
   const [url, setURL] = useState("");
 
-  const data = {
-    nombre: nombre,
-    fecha: fecha,
-    genero: genero,
-    tipo: tipo,
-    descripcion: descripcion,
-    url: url,
-  };
+  const [movieList, setMovieList] = useState([]);
+  const [editMovie, setEditMovie] = useState(null);
+
+  useEffect(() => {
+    const moviesList = obtenerDelLocalStorage("crudPeliculas", []);
+    setMovieList(moviesList);
+  }, []);
+
+  useEffect(() => {
+    guardarEnLocalStorage("crudPeliculas", movieList);
+  }, [movieList]);
+
   function obtenerDatos(e) {
     e.preventDefault();
+    const data = {
+      id: editMovie ? editMovie : Date.now(),
+      nombre,
+      fecha,
+      genero,
+      tipo,
+      descripcion,
+      url,
+    };
 
-    guardarEnLocalStorage("crudPeliculas",data)
+    if (editMovie) {
+      const updatedMovieList = movieList.map((movie) => {
+        return movie.id === editMovie ? data : movie;
+      });
+      setMovieList(updatedMovieList);
+      setEditMovie(null);
+    } else {
+      const nuevaLista = [...movieList, data];
+      setMovieList(nuevaLista);
+    }
+
+    setNombre("");
+    setFecha("");
+    setGenero("");
+    setTipo("");
+    setDescripcion("");
+    setURL("");
+  }
+
+  function movieToEdit(movie) {
+    setNombre(movie.nombre);
+    setFecha(movie.fecha);
+    setGenero(movie.genero);
+    setTipo(movie.tipo);
+    setDescripcion(movie.descripcion);
+    setURL(movie.url);
+    setEditMovie(movie.id);
+  }
+
+  function deleteElement(id) {
+    const confirmar = confirm(
+      "Estas seguro que quieres eliminar esta pelicula?"
+    );
+    if (confirmar) {
+      const listadoNuevo = movieList.filter((movie) => {
+        return movie.id !== id;
+      });
+      setMovieList(listadoNuevo);
+    }
   }
 
   return (
@@ -85,6 +139,37 @@ export default function AdminPage() {
         />
         <button>Enviar</button>
       </form>
+
+      <section className="crud-table">
+        {movieList.map((movie) => {
+          const { id, nombre, fecha, genero, tipo, descripcion } = movie;
+          return (
+            <article key={id} className="crud-table">
+              <div>
+                <p>{nombre}</p>
+              </div>
+
+              <div>
+                <p>{fecha}</p>
+              </div>
+              <div>
+                <p>{genero}</p>
+              </div>
+
+              <div>
+                <p>{tipo}</p>
+              </div>
+
+              <div>
+                <p>{descripcion}</p>
+              </div>
+
+              <button onClick={() => movieToEdit(movie)}>Editar</button>
+              <button onClick={() => deleteElement(movie.id)}>Eliminar</button>
+            </article>
+          );
+        })}
+      </section>
     </>
   );
 }

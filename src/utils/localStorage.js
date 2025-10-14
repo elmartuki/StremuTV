@@ -1,7 +1,5 @@
 export function guardarEnLocalStorage(key, datos) {
-  const datosSaved = obtenerDelLocalStorage(key);
-  const datosUpdated = [...datosSaved, datos];
-  const datosJSON = JSON.stringify(datosUpdated);
+  const datosJSON = JSON.stringify(datos);
   localStorage.setItem(key, datosJSON);
 }
 
