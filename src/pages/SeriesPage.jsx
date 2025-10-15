@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  obtenerDelLocalStorage,
-  obtenerDelSessionStorage,
-  obtenerPeliculasOSerieLS,
-} from "../utils/localStorage";
+import { obtenerPeliculasOSerieLS } from "../utils/localStorage";
 
-export default function MoviesPage() {
-  const filteredMovies = obtenerPeliculasOSerieLS("Pelicula");
+export default function SeriesPage() {
+  const filteredMovies = obtenerPeliculasOSerieLS("Serie");
 
   return (
     <>

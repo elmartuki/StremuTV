@@ -119,6 +119,7 @@ export default function AdminPage() {
           }}
           value={tipo}
         >
+          <option disabled>Seleccionar</option>
           <option value="Pelicula">Pelicula</option>
           <option value="Serie">Serie</option>
         </select>

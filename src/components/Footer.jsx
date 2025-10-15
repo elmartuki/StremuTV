@@ -22,12 +22,12 @@ export default function Footer() {
 
         <div>
           <img src={movies} alt="" />
-          <a href="">Series</a>
+          <NavLink to="/series">Series</NavLink>
         </div>
 
         <div>
           <img src={config} alt="" />
-          <a href="" >Ajustes</a>
+          <a href="">Ajustes</a>
         </div>
       </div>
     </footer>
