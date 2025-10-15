@@ -18,3 +18,14 @@ export function obtenerDelSessionStorage(key) {
   const datos = sessionStorage.getItem(key);
   return datos ? JSON.parse(datos) : null;
 }
+
+export function obtenerPeliculasOSerieLS(tipo) {
+  const peliculasLocalStorage = obtenerDelLocalStorage("crudPeliculas");
+
+  const filterMovies = peliculasLocalStorage.filter((movie) => {
+    return movie.tipo === tipo;
+  });
+  console.log(filterMovies);
+
+  return filterMovies;
+}

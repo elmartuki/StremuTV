@@ -7,6 +7,7 @@ import AdminRoutes from "./AdminRoutes.jsx";
 import RegisterPage from "../pages/RegisterPage.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
 import Header from "../components/Header.jsx";
+import MoviesPage from "../pages/MoviesPage.jsx";
 
 export default function AppRouter() {
   return (
@@ -19,6 +20,7 @@ export default function AppRouter() {
         <Route path="/admin" element={<AdminPage />}></Route>
         <Route element={<AdminRoutes />}></Route>
         <Route path="*" element={<Error404Page />} />
+        <Route path="/movies" element={<MoviesPage />} />
       </Routes>
       <Footer />
     </>
