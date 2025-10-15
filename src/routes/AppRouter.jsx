@@ -8,6 +8,7 @@ import RegisterPage from "../pages/RegisterPage.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
 import Header from "../components/Header.jsx";
 import MoviesPage from "../pages/MoviesPage.jsx";
+import SeriesPage from "../pages/SeriesPage.jsx";
 
 export default function AppRouter() {
   return (
@@ -19,8 +20,9 @@ export default function AppRouter() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminPage />}></Route>
         <Route element={<AdminRoutes />}></Route>
-        <Route path="*" element={<Error404Page />} />
         <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/series" element={<SeriesPage />} />
+        <Route path="*" element={<Error404Page />} />
       </Routes>
       <Footer />
     </>
