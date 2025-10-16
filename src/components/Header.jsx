@@ -39,18 +39,12 @@ export default function Header() {
 
         <div className="navbar_2">
           <div className="navbar_2-search">
-            {search ? (
-              <div className="navbar_2-border">
-                <input type="text" placeholder="Buscar..." />
-                <button className="search-img" onClick={handleSearch}>
-                  <img src={searchImg} alt="Buscar" />
-                </button>
-              </div>
-            ) : (
-              <button className="search-img" onClick={handleSearch}>
+            <div className="navbar_2-border">
+              <input type="text" placeholder="Buscar peliculas o series..." />
+              <button className="search-img">
                 <img src={searchImg} alt="Buscar" />
               </button>
-            )}
+            </div>
           </div>
 
           <div className="navbar_2-login">
