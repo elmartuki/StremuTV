@@ -1,3 +1,5 @@
+import { movieSerieList } from "../db/MovieSerie";
+
 export function guardarEnLocalStorage(key, datos) {
   const datosJSON = JSON.stringify(datos);
   localStorage.setItem(key, datosJSON);
@@ -20,10 +22,23 @@ export function obtenerDelSessionStorage(key) {
 }
 
 export function obtenerPeliculasOSerieLS(tipo) {
-  const peliculasLocalStorage = obtenerDelLocalStorage("crudPeliculas");
+  const peliculasLocalStorage = obtenerDelLocalStorage("crudPeliculas") || [];
+  const listadoFull = [...movieSerieList, ...peliculasLocalStorage];
 
-  const filterMovies = peliculasLocalStorage.filter((movie) => {
+  const filterMovies = listadoFull.filter((movie) => {
     return movie.tipo === tipo;
+  });
+  console.log(filterMovies);
+
+  return filterMovies;
+}
+
+export function filtrarYMostrar(genero) {
+  const peliculasLocalStorage = obtenerDelLocalStorage("crudPeliculas");
+  const listadoFull = [...movieSerieList, ...peliculasLocalStorage];
+
+  const filterMovies = listadoFull.filter((movie) => {
+    return movie.genero === genero;
   });
   console.log(filterMovies);
 
