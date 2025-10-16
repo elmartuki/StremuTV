@@ -4,6 +4,7 @@ import home from "../assets/home.svg";
 import movies from "../assets/movies.svg";
 import series from "../assets/series.svg";
 import config from "../assets/config.svg";
+import guardados from "../assets/guardados.svg";
 import { NavLink } from "react-router-dom";
 
 export default function Footer() {
@@ -11,23 +12,32 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer_links">
         <div>
-          <img src={home} alt="" />
-          <a href="">Inicio</a>
+          <NavLink to="/">
+            <img src={home} alt="" />
+            <a href="">Inicio</a>
+          </NavLink>
         </div>
 
         <div>
-          <img src={series} alt="" />
-          <NavLink to="/movies">Peliculas</NavLink>
+          <NavLink to="/movies">
+            <img src={series} alt="" />
+            Peliculas
+          </NavLink>
         </div>
 
         <div>
-          <img src={movies} alt="" />
-          <NavLink to="/series">Series</NavLink>
+          <NavLink to="/series">
+            <img src={movies} alt="" />
+            Series
+          </NavLink>
         </div>
 
         <div>
-          <img src={config} alt="" />
-          <a href="">Ajustes</a>
+          <NavLink to="/guardados">
+            {" "}
+            <img src={guardados} alt="" />
+            Favoritos
+          </NavLink>
         </div>
       </div>
     </footer>
