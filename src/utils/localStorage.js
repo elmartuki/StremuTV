@@ -44,3 +44,9 @@ export function filtrarYMostrar(genero) {
 
   return filterMovies;
 }
+
+export function obtenerCatalogoCompleto() {
+  const pelis = obtenerPeliculasOSerieLS("Pelicula");
+  const series = obtenerPeliculasOSerieLS("Serie");
+  return [...pelis, ...series];
+}
