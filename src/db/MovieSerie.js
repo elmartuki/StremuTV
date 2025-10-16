@@ -22,7 +22,7 @@ export const movieSerieList = [
   {
     id: 3,
     nombre: "Interstellar",
-    url: "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+    url: "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     fecha: "2014",
     genero: "CienciaFiccion",
     tipo: "Pelicula",

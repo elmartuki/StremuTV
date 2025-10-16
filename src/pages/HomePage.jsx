@@ -3,6 +3,7 @@ import CienciaFiccion from "../components/home/CienciaFiccion";
 import Comedia from "../components/home/Comedia";
 import Drama from "../components/home/Drama";
 import Fantasia from "../components/home/Fantasia";
+import Important from "../components/home/Important";
 import Movies from "../components/home/Movies";
 import "../components/home/movies.css";
 import Series from "../components/home/Series";
@@ -11,6 +12,10 @@ import Terror from "../components/home/Terror";
 export default function HomePage() {
   return (
     <>
+      <section className="section_important">
+        <Important />
+      </section>
+
       <p className="section_home-title">Peliculas Destacadas</p>
       <section className="section_home">
         <Movies />
