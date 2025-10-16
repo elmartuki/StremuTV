@@ -4,24 +4,18 @@ import {
   obtenerDelSessionStorage,
   obtenerPeliculasOSerieLS,
 } from "../utils/localStorage";
+import Movies from "../components/home/Movies";
+import MoviesSection from "../components/movies/MoviesSection";
+import "../components/movies/moviesSection.css";
 
 export default function MoviesPage() {
   const filteredMovies = obtenerPeliculasOSerieLS("Pelicula");
 
   return (
     <>
-      {filteredMovies.map((movie, index) => {
-        const { nombre, tipo, genero, descripcion, url } = movie;
-        return (
-          <article key={index}>
-            <p>{nombre}</p>
-            <p>{tipo}</p>
-            <p>{genero}</p>
-            <p>{descripcion}</p>
-            <p>{url}</p>
-          </article>
-        );
-      })}
+      <section className="section-movies">
+        <MoviesSection />
+      </section>
     </>
   );
 }

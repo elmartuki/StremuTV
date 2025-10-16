@@ -1,0 +1,36 @@
+.section-movies {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  margin: 7px 0px;
+  flex-wrap: wrap;
+}
+
+.movie-card {
+  width: 30%;
+  background-color: #202020;
+  border-radius: 8px;
+  .movie-card_img {
+    width: 100%;
+    height: 200px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+  }
+  p {
+    color: rgba(255, 255, 255, 0.74);
+    padding: 2px;
+    font-size: 14px;
+    display: -webkit-box;
+    width: 100%;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
