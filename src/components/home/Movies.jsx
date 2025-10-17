@@ -2,7 +2,7 @@ import { obtenerPeliculasOSerieLS } from "../../utils/localStorage";
 import { NavLink } from "react-router-dom";
 
 export default function Movies() {
-  const movieList = obtenerPeliculasOSerieLS("Pelicula") || [];
+  const movieList = obtenerPeliculasOSerieLS("pelicula") || [];
   const moviesRandom = movieList.sort(() => Math.random() - 0.5);
 
   return (
