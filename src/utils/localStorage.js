@@ -22,7 +22,11 @@ export function obtenerDelSessionStorage(key) {
 }
 
 export function obtenerPeliculasOSerieLS(tipo) {
+
   const peliculasLocalStorage = obtenerDelLocalStorage("SeriesMovies") || [];
+  
+  const peliculasLocalStorage = obtenerDelLocalStorage("MoviesSeries") || [];
+
   const listadoFull = [...movieSerieList, ...peliculasLocalStorage];
 
   const filterMovies = listadoFull.filter((movie) => {
@@ -33,7 +37,11 @@ export function obtenerPeliculasOSerieLS(tipo) {
 }
 
 export function filtrarYMostrar(genero) {
+
   const peliculasLocalStorage = obtenerDelLocalStorage("SeriesMovies");
+  
+  const peliculasLocalStorage = obtenerDelLocalStorage("MoviesSeries");
+
   const listadoFull = [...movieSerieList, ...peliculasLocalStorage];
 
   const filterMovies = listadoFull.filter((movie) => {
