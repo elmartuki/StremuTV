@@ -9,6 +9,7 @@ import Header from "../components/Header.jsx";
 import MoviesPage from "../pages/MoviesPage.jsx";
 import SeriesPage from "../pages/SeriesPage.jsx";
 import MoreDetails from "../components/home/moredetails/moreDetails.jsx";
+import FavoritosPage from "../pages/FavoritosPage.jsx";
 
 export default function AppRouter() {
   return (
@@ -70,6 +71,16 @@ export default function AppRouter() {
             <>
               <Header />
               <SeriesPage />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/favoritos"
+          element={
+            <>
+              <Header />
+              <FavoritosPage />
               <Footer />
             </>
           }

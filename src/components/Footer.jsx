@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <NavLink to="/guardados">
+          <NavLink to="/favoritos">
             {" "}
             <img src={guardados} alt="" />
             Favoritos
