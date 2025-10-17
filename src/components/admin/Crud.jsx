@@ -29,12 +29,12 @@ export default function FormCreateMovieSerie() {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   useEffect(() => {
-    const moviesList = obtenerDelLocalStorage("crudPeliculas", []);
+    const moviesList = obtenerDelLocalStorage("MoviesSeries", []);
     setMovieList(moviesList);
   }, []);
 
   useEffect(() => {
-    guardarEnLocalStorage("crudPeliculas", movieList);
+    guardarEnLocalStorage("MoviesSeries", movieList);
   }, [movieList]);
 
   function obtenerDatos(e) {

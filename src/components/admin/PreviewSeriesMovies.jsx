@@ -33,7 +33,6 @@ export default function ShowMoviesSeries({
                 <img src={editImg}></img>
               </button>
               <button onClick={() => onDeleteClick(movie)}>
-                {" "}
                 <img src={deleteImg}></img>
               </button>
             </div>
