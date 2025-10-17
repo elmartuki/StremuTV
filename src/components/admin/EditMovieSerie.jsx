@@ -59,7 +59,6 @@ export default function EditForm({
           <div
             className="modal-edit_inputs_buttons"
             role="radiogroup"
-            aria-label="Género"
           >
             <div>
               <input

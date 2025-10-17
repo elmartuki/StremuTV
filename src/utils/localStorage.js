@@ -22,31 +22,29 @@ export function obtenerDelSessionStorage(key) {
 }
 
 export function obtenerPeliculasOSerieLS(tipo) {
-  const peliculasLocalStorage = obtenerDelLocalStorage("crudPeliculas") || [];
+  const peliculasLocalStorage = obtenerDelLocalStorage("SeriesMovies") || [];
   const listadoFull = [...movieSerieList, ...peliculasLocalStorage];
 
   const filterMovies = listadoFull.filter((movie) => {
     return movie.tipo === tipo;
   });
-  console.log(filterMovies);
 
   return filterMovies;
 }
 
 export function filtrarYMostrar(genero) {
-  const peliculasLocalStorage = obtenerDelLocalStorage("crudPeliculas");
+  const peliculasLocalStorage = obtenerDelLocalStorage("SeriesMovies");
   const listadoFull = [...movieSerieList, ...peliculasLocalStorage];
 
   const filterMovies = listadoFull.filter((movie) => {
     return movie.genero === genero;
   });
-  console.log(filterMovies);
 
   return filterMovies;
 }
 
 export function obtenerCatalogoCompleto() {
-  const pelis = obtenerPeliculasOSerieLS("Pelicula");
-  const series = obtenerPeliculasOSerieLS("Serie");
+  const pelis = obtenerPeliculasOSerieLS("pelicula");
+  const series = obtenerPeliculasOSerieLS("serie");
   return [...pelis, ...series];
 }

@@ -20,14 +20,14 @@ export default function MoreDetails() {
 
   const navigate = useNavigate();
 
-  const pelis = obtenerPeliculasOSerieLS("Pelicula") || [];
-  const series = obtenerPeliculasOSerieLS("Serie") || [];
+  const pelis = obtenerPeliculasOSerieLS("pelicula") || [];
+  const series = obtenerPeliculasOSerieLS("serie") || [];
   const terror = filtrarYMostrar("Terror") || [];
   const accion = filtrarYMostrar("Accion") || [];
   const cienciaFiccion = filtrarYMostrar("Ciencia Ficcion") || [];
-  const comedia = filtrarYMostrar("Comedia");
-  const drama = filtrarYMostrar("Drama");
-  const fantasia = filtrarYMostrar("Fantasia");
+  const comedia = filtrarYMostrar("Comedia") || [];
+  const drama = filtrarYMostrar("Drama") || [];
+  const fantasia = filtrarYMostrar("Fantasia") || [];
 
   const catalogoCompleto = [
     ...pelis,
