@@ -17,7 +17,7 @@ import "./css/modalError.css";
 import "./css/cardCarroucel.css";
 import "./css/search.css";
 import "./css/index.css";
-
+import "./css/loginModal.css";
 
 export default function App() {
   return (
