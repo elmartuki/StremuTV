@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import close from "../../assets/close.svg";
 import ModalConfirm from "./modalConfirm";
 
-export default function Favoritos({ onUpdateList, favoritos }) {
+export default function Fav({ onUpdateList, favoritos }) {
   const [listFavoritos, setListFavoritos] = useState([]);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [idToDelete, setIdToDelete] = useState(null);
