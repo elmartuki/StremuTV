@@ -18,6 +18,7 @@ import "./css/cardCarroucel.css";
 import "./css/search.css";
 import "./css/index.css";
 
+
 export default function App() {
   return (
     <>
