@@ -9,7 +9,7 @@ p {
 header {
   position: sticky;
   top: 0px;
-  z-index: 100;
+  z-index: 103;
 }
 
 .navbar {
@@ -182,5 +182,62 @@ header {
     button {
       display: none;
     }
+  }
+}
+
+.search-result-section {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 102;
+  background-color: #181818;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  gap: 10px;
+  overflow-y: auto;
+  animation: showSearch 0.3s ease-out 1;
+
+  .search-result {
+    margin: 10px 0px;
+    width: 30vw;
+    color: rgba(255, 255, 255, 0.909);
+
+    .search-result_img {
+      width: 100%;
+      height: 200px;
+      img {
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        object-fit: cover;
+      }
+    }
+
+    .search-result_title {
+      p {
+        color: rgba(255, 255, 255, 0.879);
+        display: -webkit-box;
+        width: 100%;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+@keyframes showSearch {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
   }
 }
