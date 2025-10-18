@@ -1,4 +1,3 @@
-import "./header.css";
 import { useEffect, useState } from "react";
 import searchImg from "../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg";
 import usserImg from "../assets/usser.svg";
@@ -8,7 +7,7 @@ export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
   const [textoIngreado, setTextoIngreado] = useState("");
 
-  const [showSearch, setShowSearch] = useState(false);
+  const [openSearchModal, setOpenSearchModal] = useState(false);
 
   const logueado = false;
 
@@ -22,19 +21,19 @@ export default function Header() {
 
   function handleText(event) {
     setTextoIngreado(event.target.value);
-
-    const texto = event.target.value;
-
-    if (texto.trim().length > 0) {
-      setShowSearch(true);
-    } else {
-      setShowSearch(false);
-    }
   }
 
   useEffect(() => {
     setTextoIngreado(event.target.value);
   }, [textoIngreado]);
+
+  function handleOpenSearch() {
+    setOpenSearchModal(true);
+  }
+
+  function handleCloseSearch() {
+    setOpenSearchModal(false);
+  }
 
   return (
     <>
@@ -56,14 +55,7 @@ export default function Header() {
           <div className="navbar_2">
             <div className="navbar_2-search">
               <div className="navbar_2-border">
-                <input
-                  onChange={handleText}
-                  onClick={handleSearch}
-                  value={textoIngreado}
-                  type="text"
-                  placeholder="Buscar peliculas o series..."
-                />
-                <button className="search-img">
+                <button onClick={handleOpenSearch} className="search-img">
                   <img src={searchImg} alt="Buscar" />
                 </button>
               </div>
@@ -111,10 +103,11 @@ export default function Header() {
         </nav>
       </header>
 
-      {showSearch && (
+      {openSearchModal && (
         <FilterSearch
-          styles={{ display: showSearch ? "flex" : "none" }}
+          styles={{ display: openSearchModal ? "flex" : "none" }}
           searchInput={textoIngreado}
+          handleClose={handleCloseSearch}
         />
       )}
     </>

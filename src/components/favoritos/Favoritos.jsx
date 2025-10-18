@@ -3,7 +3,6 @@ import { obtenerDelLocalStorage } from "../../utils/localStorage";
 import { NavLink } from "react-router-dom";
 import close from "../../assets/close.svg";
 import ModalConfirm from "./modalConfirm";
-import "./modal.css";
 
 export default function Favoritos({ onUpdateList, favoritos }) {
   const [listFavoritos, setListFavoritos] = useState([]);

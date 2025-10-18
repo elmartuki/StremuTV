@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import {
-  filtrarYMostrar,
-  obtenerPeliculasOSerieLS,
-} from "../utils/localStorage";
+import { obtenerPeliculasOSerieLS } from "../utils/localStorage";
 import MoviesSection from "../components/movies/MoviesSection";
-import "../components/movies/moviesSection.css";
 import Filter from "./Filter";
-import "./filter.css";
 
 export default function MoviesPage() {
   const [openFilterModal, setOpenFilterModal] = useState(false);

@@ -6,42 +6,6 @@
   z-index: 101;
 }
 
-.errorModal-background {
-  position: fixed;
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  z-index: 10001;
-  justify-content: center;
-  align-items: center;
-  background-color: #0000004f;
-  animation: fadeIn 3s ease 1;
-
-  .errorModal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #202020;
-    color: rgba(255, 255, 255, 0.884);
-    padding: 10px 5px;
-    border-radius: 8px;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0%;
-  }
-
-  50% {
-    opacity: 100%;
-  }
-
-  100% {
-    opacity: 0%;
-  }
-}
-
 .preview {
   background: #000000;
 
@@ -56,7 +20,10 @@
     background-color: #0000009d;
 
     button {
+      display: flex;
+      color: rgba(255, 255, 255, 0.815);
       background-color: transparent;
+      font-weight: 600;
       border: none;
 
       img {

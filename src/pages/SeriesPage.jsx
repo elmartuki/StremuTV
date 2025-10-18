@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  filtrarYMostrar,
-  obtenerPeliculasOSerieLS,
-} from "../utils/localStorage";
-import "../components/movies/moviesSection.css";
+import { obtenerPeliculasOSerieLS } from "../utils/localStorage";
 import Series from "../components/series/Series";
 import Filter from "./Filter";
 
