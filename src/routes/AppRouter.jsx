@@ -9,7 +9,7 @@ import Header from "../components/Header.jsx";
 import MoviesPage from "../pages/MoviesPage.jsx";
 import SeriesPage from "../pages/SeriesPage.jsx";
 import FavoritosPage from "../pages/FavoritosPage.jsx";
-import MoreDetails from "../components/home/moreDetail/MoreDetails.jsx";
+import MoreDetails from "../components/home/moreInfo/MoreDetails.jsx";
 
 export default function AppRouter() {
   return (
