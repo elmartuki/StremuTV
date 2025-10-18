@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { obtenerDelLocalStorage } from "../../utils/localStorage";
 import { NavLink } from "react-router-dom";
 import close from "../../assets/close.svg";
-import ModalConfirm from "./modalConfirm";
+import ModalConfirmar from "./ModalConfirmar";
 
 export default function Favoritos({ onUpdateList, favoritos }) {
   const [listFavoritos, setListFavoritos] = useState([]);
@@ -35,7 +34,7 @@ export default function Favoritos({ onUpdateList, favoritos }) {
 
   return (
     <>
-      <ModalConfirm
+      <ModalConfirmar
         openModal={openDeleteModal}
         closeModal={cancelDelete}
         onConfirm={confirmDelete}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Favoritos from "../components/favoritos/Favoritos";
+import Favoritos from "../components/fav/Favoritos";
 import {
   guardarEnLocalStorage,
   obtenerDelLocalStorage,
