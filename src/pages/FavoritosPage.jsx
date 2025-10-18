@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Favoritos from "../components/favoritos/Favoritos";
-import "../components/movies/moviesSection.css";
 import {
   guardarEnLocalStorage,
-  obtenerCatalogoCompleto,
   obtenerDelLocalStorage,
 } from "../utils/localStorage";
 

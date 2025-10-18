@@ -8,7 +8,7 @@ import LoginPage from "../pages/LoginPage.jsx";
 import Header from "../components/Header.jsx";
 import MoviesPage from "../pages/MoviesPage.jsx";
 import SeriesPage from "../pages/SeriesPage.jsx";
-import MoreDetails from "../components/home/moredetails/moreDetails.jsx";
+import MoreDetails from "../components/home/moredetails/MoreDetails.jsx";
 import FavoritosPage from "../pages/FavoritosPage.jsx";
 
 export default function AppRouter() {

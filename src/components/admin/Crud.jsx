@@ -5,9 +5,6 @@ import {
 } from "../../utils/localStorage";
 import ShowMoviesSeries from "./PreviewSeriesMovies";
 import EditForm from "./EditMovieSerie";
-import "./crud.css";
-import "./preview.css";
-import "./modalDelete.css";
 import CreateForm from "./CreateMovieSeries";
 import add from "../../assets/add.svg";
 import ModalDelate from "./ModalDelate";

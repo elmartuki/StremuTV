@@ -1,4 +1,3 @@
-import "./moredetails.css";
 import volver from "../../../assets/volver.svg";
 import compartir from "../../../assets/compartir.svg";
 import add from "../../../assets/add.svg";
@@ -106,6 +105,7 @@ export default function MoreDetails() {
           <div className="preview_topbar">
             <button onClick={() => navigate(-1)}>
               <img src={volver} alt="" />
+              <p>Volver</p>
             </button>
 
             <button onClick={() => navigate(-1)}>

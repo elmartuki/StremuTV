@@ -46,21 +46,3 @@
   }
 }
 
-.btn-delete {
-  display: flex;
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  right: 5px;
-  top: 5px;
-  z-index: 1;
-
-  border-radius: 50px;
-  border: none;
-  background-color: rgba(0, 0, 0, 0.788);
-
-  img {
-    filter: invert(100%) sepia(100%) saturate(5000%) hue-rotate(-10deg)
-      brightness(100%);
-  }
-}

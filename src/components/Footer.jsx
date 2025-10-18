@@ -1,9 +1,6 @@
-import Swal from "sweetalert2";
-import "./footer.css";
 import home from "../assets/home.svg";
 import movies from "../assets/movies.svg";
 import series from "../assets/series.svg";
-import config from "../assets/config.svg";
 import guardados from "../assets/guardados.svg";
 import { NavLink } from "react-router-dom";
 
