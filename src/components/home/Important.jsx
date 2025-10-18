@@ -11,13 +11,13 @@ export default function Important() {
 
   const movieList = obtenerPeliculasOSerieLS("pelicula") || [];
 
-  const topTres = movieList.slice(0, 6);
+  const topTen = movieList.slice(0, 6);
 
-  const { nombre, url, descripcion, id } = topTres[indice];
-
-  if (topTres.length === 0) {
+  if (topTen.length === 0) {
     return <p>No hay películas destacadas.</p>;
   }
+
+  const { nombre, url, descripcion, id } = topTen[indice];
 
   function handleNext() {
     if (indice <= 4) {

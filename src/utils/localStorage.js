@@ -1,4 +1,4 @@
-import { movieSerieList } from "../db/MovieSerie";
+import { movieSerieFullList } from "../db/MovieSerie";
 
 export function guardarEnLocalStorage(key, datos) {
   const datosJSON = JSON.stringify(datos);
@@ -22,12 +22,9 @@ export function obtenerDelSessionStorage(key) {
 }
 
 export function obtenerPeliculasOSerieLS(tipo) {
-
   const peliculasLocalStorage = obtenerDelLocalStorage("SeriesMovies") || [];
-  
-  const peliculasLocalStorage = obtenerDelLocalStorage("MoviesSeries") || [];
 
-  const listadoFull = [...movieSerieList, ...peliculasLocalStorage];
+  const listadoFull = [...movieSerieFullList, ...peliculasLocalStorage];
 
   const filterMovies = listadoFull.filter((movie) => {
     return movie.tipo === tipo;
@@ -37,12 +34,9 @@ export function obtenerPeliculasOSerieLS(tipo) {
 }
 
 export function filtrarYMostrar(genero) {
-
   const peliculasLocalStorage = obtenerDelLocalStorage("SeriesMovies");
-  
-  const peliculasLocalStorage = obtenerDelLocalStorage("MoviesSeries");
 
-  const listadoFull = [...movieSerieList, ...peliculasLocalStorage];
+  const listadoFull = [...movieSerieFullList, ...peliculasLocalStorage];
 
   const filterMovies = listadoFull.filter((movie) => {
     return movie.genero === genero;

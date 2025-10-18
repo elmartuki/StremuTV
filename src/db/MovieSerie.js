@@ -1,4 +1,4 @@
-export const movieSerieList = [
+export const movieSerieFullList = [
   {
     id: 1,
     nombre: "Inception",
