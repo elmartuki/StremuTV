@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import searchImg from "../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg";
 import usserImg from "../assets/usser.svg";
 import FilterSearch from "./filters/FilterSearch.jsx";
+import LoginModal from "./login/LoginModal.jsx";
 
 export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
@@ -15,9 +16,13 @@ export default function Header() {
     setSearch(!search);
   };
 
-  const handleOpenLogin = () => {
-    setOpenLogin(!openLogin);
-  };
+  function handleOpenLogin() {
+    setOpenLogin(true);
+  }
+
+  function closeLogin() {
+    setOpenLogin(false);
+  }
 
   function handleText(event) {
     setTextoIngreado(event.target.value);
@@ -64,7 +69,7 @@ export default function Header() {
             <div className="navbar_2-login">
               {logueado ? (
                 <div>
-                  <button onClick={handleOpenLogin}>
+                  <button>
                     <img
                       src="https://www.clarin.com/2024/07/04/uteodLeuh_2000x1500__1.jpg"
                       alt="Perfil"
@@ -82,13 +87,6 @@ export default function Header() {
                   <button className="usser-not-log" onClick={handleOpenLogin}>
                     <img src={usserImg} alt="" />
                   </button>
-
-                  {openLogin ? (
-                    <div className="drowLogin">
-                      <a href="">Register</a>
-                      <a href="">Login</a>
-                    </div>
-                  ) : null}
                 </div>
               )}
             </div>
@@ -102,6 +100,12 @@ export default function Header() {
           </div>
         </nav>
       </header>
+
+      {openLogin && (
+        <>
+          <LoginModal closeLogin={closeLogin} />
+        </>
+      )}
 
       {openSearchModal && (
         <FilterSearch
