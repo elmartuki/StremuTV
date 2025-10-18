@@ -7,7 +7,6 @@ import { repartoCompleto } from "../../../db/Reparto";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   filtrarYMostrar,
-  obtenerDelLocalStorage,
   obtenerPeliculasOSerieLS,
 } from "../../../utils/localStorage";
 import { useEffect, useState } from "react";
