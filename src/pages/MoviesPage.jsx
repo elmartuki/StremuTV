@@ -35,14 +35,10 @@ export default function MoviesPage() {
 
   return (
     <>
-      <button className="btn-filter" onClick={openFilter}>
-        Filtrar
-      </button>
-      <Filter
-        generoObtenido={handleFilter}
-        openModal={openFilterModal}
-        closeModal={closeModal}
-      />
+      <section className="filter-selector">
+        <Filter generoObtenido={handleFilter} />
+      </section>
+
       <section className="section-movies">
         <MoviesSection seriesMovies={moviesFiltered} />
       </section>
