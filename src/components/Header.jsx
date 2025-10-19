@@ -3,18 +3,28 @@ import searchImg from "../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.s
 import usserImg from "../assets/usser.svg";
 import FilterSearch from "./filters/FilterSearch.jsx";
 import LoginModal from "./login/LoginModal.jsx";
+import { obtenerDelSessionStorage } from "../utils/localStorage.js";
 
 export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
   const [textoIngreado, setTextoIngreado] = useState("");
-
   const [openSearchModal, setOpenSearchModal] = useState(false);
+  const [usuarioLogueado, setUsuarioLogueado] = useState(null);
 
-  const logueado = false;
+  const usuario = obtenerDelSessionStorage("SavedUsser");
 
-  const handleSearch = () => {
-    setSearch(!search);
-  };
+  useEffect(() => {
+    const usuario = obtenerDelSessionStorage("SavedUsser");
+
+    if (usuario) {
+      setUsuarioLogueado(usuario);
+    }
+  }, []);
+
+  function cerrarSession() {
+    sessionStorage.removeItem("SavedUsser");
+    setUsuarioLogueado(null);
+  }
 
   function handleOpenLogin() {
     setOpenLogin(true);
@@ -44,10 +54,26 @@ export default function Header() {
     <>
       <header className="">
         <nav className="navbar">
-          <div className="navbar_1">
-            <div className="navbar_1-logo">
-              <p>StremuTV</p>
-            </div>
+          <div
+            className="navbar_1"
+            style={{ width: usuarioLogueado ? "45%" : "30%" }}
+          >
+            {usuarioLogueado ? (
+              <div className="navbar_1-logo">
+                <button onClick={handleOpenLogin}>
+                  <img src={usuario.perfil} alt="" />
+                </button>
+
+                <div>
+                  <p>Bienvenido de nuevo,</p>
+                  <p>{usuario.usuario}</p>
+                </div>
+              </div>
+            ) : (
+              <div className="navbar_1-logo">
+                <p>Stremu</p>
+              </div>
+            )}
 
             <div className="navbar_link">
               <a href="">Peliculas</a>
@@ -57,7 +83,10 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="navbar_2">
+          <div
+            style={{ width: usuarioLogueado ? "55%" : "70%" }}
+            className="navbar_2"
+          >
             <div className="navbar_2-search">
               <div className="navbar_2-border">
                 <button onClick={handleOpenSearch} className="search-img">
@@ -67,21 +96,8 @@ export default function Header() {
             </div>
 
             <div className="navbar_2-login">
-              {logueado ? (
-                <div>
-                  <button>
-                    <img
-                      src="https://www.clarin.com/2024/07/04/uteodLeuh_2000x1500__1.jpg"
-                      alt="Perfil"
-                    />
-                  </button>
-
-                  {openLogin ? (
-                    <div className="drowLogin">
-                      <a href="">Cerrar Sesion</a>
-                    </div>
-                  ) : null}
-                </div>
+              {usuarioLogueado ? (
+                <div></div>
               ) : (
                 <div>
                   <button className="usser-not-log" onClick={handleOpenLogin}>

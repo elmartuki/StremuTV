@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { guardarEnLocalStorage } from "../../utils/localStorage";
+import {
+  guardarEnLocalStorage,
+  guardarEnSessionStorage,
+} from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 
 export default function FormRegister() {
   const [usuario, setUsuario] = useState("");
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
+  const [perfil, setPerfil] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const navigate = useNavigate();
@@ -13,12 +17,14 @@ export default function FormRegister() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const nuevoUsuario = { usuario, correo, password, repeatPassword };
+    const nuevoUsuario = { usuario, perfil, correo, password, repeatPassword };
 
     if (password === repeatPassword) {
-      guardarEnLocalStorage("usuarios", nuevoUsuario);
+      guardarEnSessionStorage("usuarios", nuevoUsuario);
       alert("si se pudio crear la cuenta");
       setUsuario("");
+      setCorreo("");
+      setPerfil("");
       setPassword("");
       setRepeatPassword("");
 
@@ -37,6 +43,13 @@ export default function FormRegister() {
         type="text"
         placeholder="Usuario"
         value={usuario}
+        required
+      />
+      <input
+        onChange={(event) => setPerfil(event.target.value)}
+        type="text"
+        placeholder="Perfil"
+        value={perfil}
         required
       />
       <input

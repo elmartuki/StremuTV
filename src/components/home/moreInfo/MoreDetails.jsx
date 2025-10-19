@@ -24,8 +24,8 @@ export default function MoreDetails() {
 
   const navigate = useNavigate();
 
-  const pelis = obtenerPeliculasOSerieLS("pelicula") || [];
-  const series = obtenerPeliculasOSerieLS("serie") || [];
+  const pelis = obtenerPeliculasOSerieLS("Pelicula") || [];
+  const series = obtenerPeliculasOSerieLS("Serie") || [];
   const terror = filtrarYMostrar("Terror") || [];
   const accion = filtrarYMostrar("Accion") || [];
   const cienciaFiccion = filtrarYMostrar("Ciencia Ficcion") || [];

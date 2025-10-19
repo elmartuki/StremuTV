@@ -9,7 +9,7 @@ import info from "../../assets/info.svg";
 export default function Important() {
   const [indice, setIndice] = useState(0);
 
-  const movieList = obtenerPeliculasOSerieLS("pelicula") || [];
+  const movieList = obtenerPeliculasOSerieLS("Pelicula") || [];
 
   const topTen = movieList.slice(0, 6);
 

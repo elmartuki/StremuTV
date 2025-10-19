@@ -2,10 +2,9 @@ import { NavLink } from "react-router-dom";
 import { obtenerCatalogoCompleto } from "../../utils/localStorage";
 import { useState } from "react";
 import back from "../../assets/back.svg";
-
 import lupa from "../../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg";
 
-export default function FilterSearch({ searchInput, handleClose }) {
+export default function FilterSearch({ handleClose }) {
   const listMoviesSeries = obtenerCatalogoCompleto();
   const [texto, setTexto] = useState("");
 
