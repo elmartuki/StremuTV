@@ -21,7 +21,7 @@ export default function SeriesPage() {
     closeModal();
   }
 
-  const allSeries = obtenerPeliculasOSerieLS("serie") || [];
+  const allSeries = obtenerPeliculasOSerieLS("Serie") || [];
 
   let seriesFiltered;
 

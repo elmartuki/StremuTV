@@ -1,7 +1,8 @@
+import { NavLink } from "react-router-dom";
 import account from "../../assets/account.svg";
 import back from "../../assets/back.svg";
 
-export default function LoginModal({closeLogin}) {
+export default function LoginModal({ closeLogin }) {
   return (
     <section className="login-modal-section">
       <article className="login-modal">
@@ -22,8 +23,13 @@ export default function LoginModal({closeLogin}) {
           </p>
         </div>
         <div className="login-modal_buttons">
-          <button>Iniciar Sesión</button>
-          <button>Registrase</button>
+          <NavLink to="/login" onClick={closeLogin}>
+            <button>Iniciar Sesión</button>
+          </NavLink>
+
+          <NavLink to="/registro" onClick={closeLogin}>
+            <button>Registrase</button>
+          </NavLink>
         </div>
       </article>
     </section>

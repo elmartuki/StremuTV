@@ -43,14 +43,14 @@ export default function Favoritos({ onUpdateList, favoritos }) {
       {favoritos.map(({ nombre, id, url }) => {
         return (
           <>
-            <article className="movie-card">
+            <article className="movie-card" key={id}>
               <button
                 onClick={() => handleDeleteFav(id)}
                 className="btn-delete"
               >
                 <img src={close} alt="" />
               </button>
-              <NavLink to={`/favorito/${id}`} key={id}>
+              <NavLink to={`/favoritos/${id}`}>
                 <div className="movie-card_img">
                   <img src={url} />
                 </div>

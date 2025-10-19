@@ -2,7 +2,7 @@ import { filtrarYMostrar } from "../../utils/localStorage";
 import { NavLink } from "react-router-dom";
 
 export default function CienciaFiccion() {
-  const list = filtrarYMostrar("CienciaFiccion") || [];
+  const list = filtrarYMostrar("Ciencia Ficcion") || [];
   const moviesRandom = list.sort(() => Math.random() - 0.5);
   return (
     <>

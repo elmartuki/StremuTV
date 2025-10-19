@@ -21,7 +21,7 @@ export default function MoviesPage() {
     closeModal();
   }
 
-  const allMovies = obtenerPeliculasOSerieLS("pelicula") || [];
+  const allMovies = obtenerPeliculasOSerieLS("Pelicula") || [];
 
   let moviesFiltered;
 
