@@ -6,12 +6,30 @@ import addIcon from "../../assets/add.svg";
 import infoIcon from "../../assets/info.svg";
 import contacto from "../../assets/contact.svg";
 import sessionIcon from "../../assets/logout.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { obtenerDelLocalStorage } from "../../utils/localStorage";
+import {
+  obtenerDelLocalStorage,
+  obtenerDelSessionStorage,
+} from "../../utils/localStorage";
+import AccountPerfil from "./AccountPerfil";
 
 export default function AccountModal({ closeConfig }) {
-  const [FavCount, setFavCount] = useState(-1);
+  const [FavCount, setFavCount] = useState(0);
+  const [openPerfilEdit, setOpenPerfilEdit] = useState(false);
+
+  const usuario = obtenerDelSessionStorage("SavedUsser");
+
+  const navigate = useNavigate();
+
+  function handleOpenEdit() {
+    setOpenPerfilEdit(true);
+  }
+
+  function cerrarSession() {
+    sessionStorage.removeItem("SavedUsser");
+    navigate("/");
+  }
 
   useEffect(() => {
     const listaFavoritos = obtenerDelLocalStorage("favoritos");
@@ -24,7 +42,7 @@ export default function AccountModal({ closeConfig }) {
       <section className="account-config-section">
         <article className="account-config">
           <div className="account-config_topbar">
-            <button className="" onClick={closeConfig}>
+            <button className="" onClick={() => navigate(-1)}>
               <img src={back} alt="" />
               Volver
             </button>
@@ -39,16 +57,18 @@ export default function AccountModal({ closeConfig }) {
             </div>
 
             <div>
-              <p>Javier Milei</p>
-              <p>jmilei@gmail.com</p>
+              <p>{usuario.usuario}</p>
+              <p>{usuario.correo}</p>
             </div>
           </div>
 
           <div className="account-config_buttons">
-            <button>
-              <img src={edit} alt="" />
-              Editar perfil
-            </button>
+            <NavLink to="/perfil/edit-perfil">
+              <button>
+                <img src={edit} alt="" />
+                Editar perfil
+              </button>
+            </NavLink>
           </div>
 
           <div className="account-config_list">
@@ -103,7 +123,7 @@ export default function AccountModal({ closeConfig }) {
 
                 <img src={right} alt="" />
               </button>
-              <button>
+              <button onClick={cerrarSession}>
                 <div>
                   <img src={sessionIcon} alt="" />
                   Cerrar Sesión
