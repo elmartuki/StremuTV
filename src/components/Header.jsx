@@ -3,28 +3,17 @@ import searchImg from "../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.s
 import usserImg from "../assets/usser.svg";
 import FilterSearch from "./filters/FilterSearch.jsx";
 import LoginModal from "./login/LoginModal.jsx";
-import { obtenerDelSessionStorage } from "../utils/localStorage.js";
 
 export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
   const [textoIngreado, setTextoIngreado] = useState("");
+
+  const [openConfig, setOpenConfig] = useState(false);
+
   const [openSearchModal, setOpenSearchModal] = useState(false);
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
 
   const usuario = obtenerDelSessionStorage("SavedUsser");
-
-  useEffect(() => {
-    const usuario = obtenerDelSessionStorage("SavedUsser");
-
-    if (usuario) {
-      setUsuarioLogueado(usuario);
-    }
-  }, []);
-
-  function cerrarSession() {
-    sessionStorage.removeItem("SavedUsser");
-    setUsuarioLogueado(null);
-  }
 
   function handleOpenLogin() {
     setOpenLogin(true);
@@ -33,9 +22,12 @@ export default function Header() {
   function closeLogin() {
     setOpenLogin(false);
   }
+  function openConfigModal() {
+    setOpenConfig(true);
+  }
 
-  function handleText(event) {
-    setTextoIngreado(event.target.value);
+  function closeConfig() {
+    setOpenConfig(false);
   }
 
   useEffect(() => {
@@ -94,10 +86,6 @@ export default function Header() {
                 </button>
               </div>
             </div>
-
-            <div className="navbar_2-login">
-              {usuarioLogueado ? (
-                <div></div>
               ) : (
                 <div>
                   <button className="usser-not-log" onClick={handleOpenLogin}>
@@ -122,6 +110,8 @@ export default function Header() {
           <LoginModal closeLogin={closeLogin} />
         </>
       )}
+
+      {openConfig && <AccountModal closeConfig={closeConfig} />}
 
       {openSearchModal && (
         <FilterSearch
