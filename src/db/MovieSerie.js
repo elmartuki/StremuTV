@@ -1,6 +1,18 @@
 export const movieSerieFullList = [
   {
     id: 1,
+    nombre: "The Walking Dead",
+    url: "https://image.tmdb.org/t/p/w500/reKs8y4mPwPkZG99ZpbKRhBPKsX.jpg",
+    video:
+      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=twd_oal68f&profile=cld-default",
+    fecha: "2010",
+    genero: "Terror",
+    tipo: "Serie",
+    descripcion:
+      "Un grupo de sobrevivientes lucha por mantenerse con vida en un mundo devastado por un apocalipsis zombi.",
+  },
+  {
+    id: 154,
     nombre: "Inception",
     url: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
     fecha: "2010",
@@ -74,6 +86,8 @@ export const movieSerieFullList = [
     id: 105,
     nombre: "The Haunting of Hill House",
     url: "https://m.media-amazon.com/images/M/MV5BOThhN2M3ZjctMGRiNi00NDIwLWI5NjktMGRmZTMxMzc5MDE0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    video:
+      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=La_maldici%C3%B3n_de_Hill_House_Tr%C3%A1iler_oficial_Netflix_-_Netflix_Latinoam%C3%A9rica_1080p_h264_xhvykf&profile=cld-default",
     fecha: "2018",
     genero: "Terror",
     tipo: "Serie",
@@ -89,16 +103,6 @@ export const movieSerieFullList = [
     tipo: "Pelicula",
     descripcion:
       "Una monja y un sacerdote investigan la misteriosa muerte de una hermana en un convento rumano, donde un mal antiguo acecha.",
-  },
-  {
-    id: 107,
-    nombre: "The Walking Dead",
-    url: "https://image.tmdb.org/t/p/w500/reKs8y4mPwPkZG99ZpbKRhBPKsX.jpg",
-    fecha: "2010",
-    genero: "Terror",
-    tipo: "Serie",
-    descripcion:
-      "Un grupo de sobrevivientes lucha por mantenerse con vida en un mundo devastado por un apocalipsis zombi.",
   },
   {
     id: 108,
@@ -123,12 +127,14 @@ export const movieSerieFullList = [
   {
     id: 110,
     nombre: "American Horror Story",
-    url: "https://hips.hearstapps.com/hmg-prod/images/american-horror-story-1984-poster-1565675963.jpg",
+    url: "https://m.media-amazon.com/images/M/MV5BZTY4NTQ0ZDMtMGM4ZS00YmYwLWFkYmUtYWFlZmUwMTA5MWMyXkEyXkFqcGc@._V1_.jpg",
+    video:
+      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=American_Horror_Story_Cult_Season_7_Official_Trailer_HD_FX_-_FX_Networks_1080p_h264_rpyqqo&profile=cld-default",
     fecha: "2011",
     genero: "Terror",
     tipo: "Serie",
     descripcion:
-      "Cada temporada presenta una nueva historia de horror con asesinos, fantasmas y sucesos paranormales en distintas épocas.",
+      "Cada temporada presenta una historia independiente llena de horror psicológico, sobrenatural y humano.",
   },
 
   {
@@ -256,6 +262,8 @@ export const movieSerieFullList = [
     id: 16,
     nombre: "Breaking Bad",
     url: "https://m.media-amazon.com/images/M/MV5BMzU5ZGYzNmQtMTdhYy00OGRiLTg0NmQtYjVjNzliZTg1ZGE4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    video:
+      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=Breaking_Bad_-_Trailer_Estena_-_AMC_Latinoam%C3%A9rica_720p_h264_p0vv05&profile=cld-default",
     fecha: "2008",
     genero: "Crimen",
     tipo: "Serie",
@@ -266,11 +274,26 @@ export const movieSerieFullList = [
     id: 18,
     nombre: "Stranger Things",
     url: "https://image.tmdb.org/t/p/w500/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg",
+    video:
+      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=Stranger_Things_5_Avance_oficial_Netflix_-_Netflix_Latinoam%C3%A9rica_1080p_h264_fwerlu&profile=cld-default",
     fecha: "2016",
     genero: "Ciencia Ficcion",
     tipo: "Serie",
     descripcion:
       "Un grupo de niños enfrenta fuerzas sobrenaturales en un pequeño pueblo de los años 80.",
+  },
+
+  {
+    id: 26,
+    nombre: "The Last of Us",
+    url: "https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
+    video:
+      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=The_Last_of_Us_Trailer_Oficial_Doblaje_Latino_HBO_Max_-_CharLink_1080p_h264_zepeka&profile=cld-default",
+    fecha: "2023",
+    genero: "Drama",
+    tipo: "Serie",
+    descripcion:
+      "Un hombre y una joven cruzan un Estados Unidos postapocalíptico devastado por un hongo mutante.",
   },
 
   {
@@ -313,17 +336,6 @@ export const movieSerieFullList = [
     tipo: "Serie",
     descripcion:
       "Loki, el Dios del Engaño, manipula la línea temporal tras los eventos de Endgame.",
-  },
-
-  {
-    id: 26,
-    nombre: "The Last of Us",
-    url: "https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
-    fecha: "2023",
-    genero: "Drama",
-    tipo: "Serie",
-    descripcion:
-      "Un hombre y una joven cruzan un Estados Unidos postapocalíptico devastado por un hongo mutante.",
   },
   {
     id: 27,
@@ -770,36 +782,6 @@ export const movieSerieFullList = [
     tipo: "Serie",
     descripcion:
       "Una familia marcada por tragedias sobrenaturales enfrenta los fantasmas de su pasado en una mansión maldita.",
-  },
-  {
-    id: 312,
-    nombre: "The Haunting of Bly Manor",
-    url: "https://m.media-amazon.com/images/M/MV5BYTkwYzExODYtYmI2OS00MmM1LWI5M2MtNzYyOTIxMmI1NTc5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-    fecha: "2020",
-    genero: "Terror",
-    tipo: "Serie",
-    descripcion:
-      "Una institutriz descubre que la mansión donde trabaja oculta espíritus con historias trágicas.",
-  },
-  {
-    id: 313,
-    nombre: "The Walking Dead",
-    url: "https://image.tmdb.org/t/p/w500/reKs8y4mPwPkZG99ZpbKRhBPKsX.jpg",
-    fecha: "2010",
-    genero: "Terror",
-    tipo: "Serie",
-    descripcion:
-      "Un grupo de sobrevivientes lucha por mantenerse con vida en un mundo devastado por zombis.",
-  },
-  {
-    id: 314,
-    nombre: "American Horror Story",
-    url: "https://m.media-amazon.com/images/M/MV5BZTY4NTQ0ZDMtMGM4ZS00YmYwLWFkYmUtYWFlZmUwMTA5MWMyXkEyXkFqcGc@._V1_.jpg",
-    fecha: "2011",
-    genero: "Terror",
-    tipo: "Serie",
-    descripcion:
-      "Cada temporada presenta una historia independiente llena de horror psicológico, sobrenatural y humano.",
   },
   {
     id: 315,
