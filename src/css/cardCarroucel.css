@@ -34,6 +34,7 @@
 
 .section_important {
   width: 100%;
+  overflow-x: hidden;
 }
 
 .card-important-home {
@@ -41,6 +42,7 @@
   margin-top: 10px;
   width: 75%;
   color: white;
+  animation: fadeOut 10s ease 1;
 
   .card-important_img {
     position: relative;
@@ -50,6 +52,32 @@
       object-fit: cover;
       border-radius: 8px;
     }
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0%;
+    transform: translateX(150%);
+  }
+
+  25% {
+    transform: translateX(0px);
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 100%;
+  }
+
+  75% {
+    transform: translateX(0px);
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0%;
+    transform: translateX(-150%);
   }
 }
 
@@ -87,7 +115,7 @@
       border-radius: 8px;
       background-color: #32144d;
       color: white;
-      width: 50%;
+      width: 100%;
       gap: 5px;
 
       img {

@@ -1,8 +1,8 @@
 import volver from "../../../assets/volver.svg";
 import compartir from "../../../assets/compartir.svg";
-import add from "../../../assets/add.svg";
 import play from "../../../assets/play.svg";
 import star from "../../../assets/star.svg";
+import fav from "../../../assets/favorite.svg";
 import { repartoCompleto } from "../../../db/Reparto";
 import { useNavigate, useParams } from "react-router-dom";
 import {
@@ -19,6 +19,7 @@ export default function MoreDetails() {
 
   const [confirmModal, setConfirmModal] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   const { id } = useParams();
 
@@ -48,7 +49,7 @@ export default function MoreDetails() {
     return String(buscar.id) === String(id);
   });
 
-  const { url, nombre, genero, descripcion, fecha } = articulo;
+  const { url, video, nombre, genero, descripcion, fecha } = articulo;
 
   function handleFav() {
     setTimeout(() => {
@@ -83,6 +84,10 @@ export default function MoreDetails() {
     setConfirmModal(false);
   }
 
+  function handlePlay() {
+    setShowVideo(true);
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -100,50 +105,95 @@ export default function MoreDetails() {
         closeMessage={closeMessage}
       />
       <section className="preview_section">
-        <article className="preview">
+        <article
+          className="preview"
+          style={{ margin: showVideo ? "0px 0px 70px 0px" : "" }}
+        >
           <div className="preview_topbar">
             <button onClick={() => navigate(-1)}>
               <img src={volver} alt="" />
               <p>Volver</p>
             </button>
-
-            <button onClick={() => navigate(-1)}>
-              <img src={compartir} alt="" />
-            </button>
           </div>
 
-          <div className="preview_img">
-            <img src={url} alt={nombre} />
-          </div>
+          {showVideo ? (
+            <div
+              style={{ margin: showVideo ? "20px 0px 0px 0px" : "0px" }}
+              className="preview_img"
+            >
+              <iframe
+                src={video}
+                width="640"
+                height="360"
+                allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+                allowfullscreen
+                frameborder="0"
+              ></iframe>
+            </div>
+          ) : (
+            <div className="preview_img">
+              <img src={url} alt={nombre} />
+            </div>
+          )}
 
-          <div className="preview_details-section">
-            <div className="preview_details">
-              <div className="preview_details_title">
-                <p>{nombre}</p>
-              </div>
-
-              <div className="preview_details_more">
-                <div>{fecha}</div>
-                <span className="split"></span>
-                <div>{genero}</div>
-                <span className="split"></span>
-                <div>
-                  <img src={star} alt="" />
-                  {randomStars}/10
+          <div
+            className="preview_details-section"
+            style={{
+              top: showVideo ? "0px" : "-100px",
+              padding: showVideo ? "5px 20px" : "",
+            }}
+          >
+            {showVideo ? (
+              <>
+                <div className="preview_buttons">
+                  <div>
+                    <button onClick={handleFav}>
+                      <img src={fav} alt="" />
+                      Favoritos
+                    </button>
+                    <button>
+                      <img src={compartir} alt="" />
+                      Compartir
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </>
+            ) : (
+              <>
+                <div className="preview_details">
+                  <div className="preview_details_title">
+                    <p>{nombre}</p>
+                  </div>
 
-            <div className="preview_buttons">
-              <button onClick={handleFav}>
-                <img src={add} alt="" />
-                Añadir a favoritos
-              </button>
-              <button>
-                <img src={play} alt="" />
-                Ver trailer
-              </button>
-            </div>
+                  <div className="preview_details_more">
+                    <div>{fecha}</div>
+                    <span className="split"></span>
+                    <div>{genero}</div>
+                    <span className="split"></span>
+                    <div>
+                      <img src={star} alt="" />
+                      {randomStars}/10
+                    </div>
+                  </div>
+                </div>
+                <div className="preview_buttons">
+                  <button>
+                    <img onClick={handlePlay} src={play} alt="" />
+                    Ver trailer
+                  </button>
+                  <div>
+                    <button onClick={handleFav}>
+                      <img src={fav} alt="" />
+                      Favoritos
+                    </button>
+                    <button>
+                      <img src={compartir} alt="" />
+                      Compartir
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
 
             <div className="preview_description">
               <p>Sinapsis</p>
