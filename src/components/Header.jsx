@@ -3,18 +3,16 @@ import searchImg from "../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.s
 import usserImg from "../assets/usser.svg";
 import FilterSearch from "./filters/FilterSearch.jsx";
 import LoginModal from "./login/LoginModal.jsx";
+import AccountModal from "./account/accountModal.jsx";
 
 export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
   const [textoIngreado, setTextoIngreado] = useState("");
+  const [openConfig, setOpenConfig] = useState(false);
 
   const [openSearchModal, setOpenSearchModal] = useState(false);
 
-  const logueado = false;
-
-  const handleSearch = () => {
-    setSearch(!search);
-  };
+  const logueado = true;
 
   function handleOpenLogin() {
     setOpenLogin(true);
@@ -23,9 +21,12 @@ export default function Header() {
   function closeLogin() {
     setOpenLogin(false);
   }
+  function openConfigModal() {
+    setOpenConfig(true);
+  }
 
-  function handleText(event) {
-    setTextoIngreado(event.target.value);
+  function closeConfig() {
+    setOpenConfig(false);
   }
 
   useEffect(() => {
@@ -69,7 +70,7 @@ export default function Header() {
             <div className="navbar_2-login">
               {logueado ? (
                 <div>
-                  <button>
+                  <button onClick={openConfigModal}>
                     <img
                       src="https://www.clarin.com/2024/07/04/uteodLeuh_2000x1500__1.jpg"
                       alt="Perfil"
@@ -106,6 +107,8 @@ export default function Header() {
           <LoginModal closeLogin={closeLogin} />
         </>
       )}
+
+      {openConfig && <AccountModal closeConfig={closeConfig} />}
 
       {openSearchModal && (
         <FilterSearch
