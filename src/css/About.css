@@ -1,0 +1,268 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+body {
+  background-color: #0f0f0f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+
+.about-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0f0f0f; 
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.about-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.about-header h1 {
+  font-size: 2.6rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.about-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-logo .circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: #32144e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.about-logo h2 {
+  color: #32144e;
+  font-size: 1.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-logo p {
+  font-size: 1rem;
+  color: #ccc;
+  text-align: center;
+  max-width: 700px;
+}
+
+
+.about-section {
+  width: 100%;
+  background-color: #1b1b1b;
+  border-radius: 14px;
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.8rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-section:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 15px #32144e;
+}
+
+.about-section h3 {
+  color: #32144e;
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+}
+
+.about-section p,
+.about-section ul {
+  color: #ddd;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.about-section ul {
+  list-style: none;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.about-section li::before {
+  content: "•";
+  color: #32144e;
+  margin-right: 0.5rem;
+}
+
+
+.about-team {
+  width: 100%;
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.about-team h3 {
+  color: #32144e;
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.team-card {
+  background: #1b1b1b;
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 12px #32144e;
+}
+
+.team-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.team-card h4 {
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.team-card p {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+
+.about-footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+
+
+/* === Pantallas grandes (desktop) === */
+@media (min-width: 1024px) {
+  .about-container {
+    padding: 3rem 4rem;
+  }
+  .about-header h1 {
+    font-size: 3rem;
+  }
+}
+
+/* === Tablets === */
+@media (max-width: 1023px) and (min-width: 600px) {
+  body {
+    padding: 1.5rem;
+  }
+  .about-container {
+    padding: 2rem;
+  }
+  .about-header h1 {
+    font-size: 2.2rem;
+  }
+  .about-section {
+    padding: 1.5rem;
+  }
+  .team-card img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* === Celulares === */
+@media (max-width: 599px) {
+  body {
+    padding: 1rem;
+  }
+
+  .about-container {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .about-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .about-logo .circle {
+    width: 80px;
+    height: 80px;
+    font-size: 1.5rem;
+  }
+
+  .about-logo h2 {
+    font-size: 1.3rem;
+  }
+
+  .about-section {
+    padding: 1.2rem;
+  }
+
+  .about-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .team-card h4 {
+    font-size: 1rem;
+  }
+}
