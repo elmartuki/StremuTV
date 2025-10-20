@@ -3,17 +3,36 @@ import searchImg from "../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.s
 import usserImg from "../assets/usser.svg";
 import FilterSearch from "./filters/FilterSearch.jsx";
 import LoginModal from "./login/LoginModal.jsx";
+import { obtenerDelSessionStorage } from "../utils/localStorage.js";
+import AccountModal from "./account/accountModal.jsx";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
   const [textoIngreado, setTextoIngreado] = useState("");
-
-  const [openConfig, setOpenConfig] = useState(false);
-
   const [openSearchModal, setOpenSearchModal] = useState(false);
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
+  const [openConfig, setOpenConfig] = useState(false);
 
   const usuario = obtenerDelSessionStorage("SavedUsser");
+
+  const navigateTo = useNavigate();
+
+  useEffect(() => {
+    const usuario = obtenerDelSessionStorage("SavedUsser");
+
+    if (usuario) {
+      setUsuarioLogueado(usuario);
+    }
+  }, []);
+
+  function handleConfig() {
+    setOpenConfig(true);
+  }
+
+  function closeConfig() {
+    setOpenConfig(false);
+  }
 
   function handleOpenLogin() {
     setOpenLogin(true);
@@ -21,13 +40,6 @@ export default function Header() {
 
   function closeLogin() {
     setOpenLogin(false);
-  }
-  function openConfigModal() {
-    setOpenConfig(true);
-  }
-
-  function closeConfig() {
-    setOpenConfig(false);
   }
 
   useEffect(() => {
@@ -52,9 +64,11 @@ export default function Header() {
           >
             {usuarioLogueado ? (
               <div className="navbar_1-logo">
-                <button onClick={handleOpenLogin}>
-                  <img src={usuario.perfil} alt="" />
-                </button>
+                <NavLink to="/perfil/">
+                  <button>
+                    <img src={usuario.perfil} alt="" />
+                  </button>
+                </NavLink>
 
                 <div>
                   <p>Bienvenido de nuevo,</p>
@@ -86,6 +100,10 @@ export default function Header() {
                 </button>
               </div>
             </div>
+
+            <div className="navbar_2-login">
+              {usuarioLogueado ? (
+                <div></div>
               ) : (
                 <div>
                   <button className="usser-not-log" onClick={handleOpenLogin}>
@@ -105,13 +123,23 @@ export default function Header() {
         </nav>
       </header>
 
+      {openConfig ? (
+        <>
+          <AccountModal
+            usuario={usuario}
+            closeSession={cerrarSession}
+            closeConfig={closeConfig}
+          />
+        </>
+      ) : (
+        <></>
+      )}
+
       {openLogin && (
         <>
           <LoginModal closeLogin={closeLogin} />
         </>
       )}
-
-      {openConfig && <AccountModal closeConfig={closeConfig} />}
 
       {openSearchModal && (
         <FilterSearch

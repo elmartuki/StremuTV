@@ -17,7 +17,14 @@ export default function FormRegister() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const nuevoUsuario = { usuario, perfil, correo, password, repeatPassword };
+    const nuevoUsuario = {
+      id: Math.floor(Math.random() * 100000),
+      usuario,
+      perfil,
+      correo,
+      password,
+      repeatPassword,
+    };
 
     if (password === repeatPassword) {
       guardarEnSessionStorage("usuarios", nuevoUsuario);
