@@ -177,9 +177,12 @@ export default function AppRouter() {
             </>
           }
         />
+      
 
         <Route path="*" element={<Error404Page />} />
+
       </Routes>
+      
     </>
   );
 }
