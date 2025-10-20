@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { obtenerPeliculasOSerieLS } from "../../utils/localStorage";
 import { NavLink } from "react-router-dom";
 import back from "../../assets/back.svg";
@@ -9,38 +9,31 @@ import info from "../../assets/info.svg";
 export default function Important() {
   const [indice, setIndice] = useState(0);
 
-  const movieList = obtenerPeliculasOSerieLS("pelicula") || [];
+  const movieList = obtenerPeliculasOSerieLS("Serie") || [];
 
   const topTen = movieList.slice(0, 6);
 
-  if (topTen.length === 0) {
-    return <p>No hay películas destacadas.</p>;
-  }
-
   const { nombre, url, descripcion, id } = topTen[indice];
 
-  function handleNext() {
-    if (indice <= 4) {
-      setIndice(indice + 1);
-    } else {
-    }
-  }
+  useEffect(() => {
+    const reset = setTimeout(() => {
+      if (indice < 4) {
+        setIndice(indice + 1);
+      } else if (indice > 0) {
+        setIndice(0);
+        clearInterval();
+      }
+    }, 10000);
 
-  function handleBack() {
-    if (indice > 0) {
-      setIndice(indice - 1);
-    } else {
+    if (indice.lenght === 0) {
+      reset(reset);
     }
-  }
+  }, [indice]);
 
   return (
     <>
       <div className="content-important">
-        <div className="btn-prev">
-          <button onClick={handleNext}>
-            <img src={back} alt="" />
-          </button>
-        </div>
+        <div className="btn-prev"></div>
         <NavLink
           to={`/pelicula/${id}`}
           className="card-important-home"
@@ -58,10 +51,6 @@ export default function Important() {
 
               <div className="card-important_details-buttons">
                 <button>
-                  <img src={play} alt="" />
-                  Ver trailer
-                </button>
-                <button>
                   <img src={info} alt="" />
                   Mas info
                 </button>
@@ -70,11 +59,7 @@ export default function Important() {
           </div>
         </NavLink>
 
-        <div className="btn-next">
-          <button onClick={handleBack}>
-            <img src={next} alt="" />
-          </button>
-        </div>
+        <div className="btn-next"></div>
       </div>
     </>
   );

@@ -21,7 +21,7 @@ export default function SeriesPage() {
     closeModal();
   }
 
-  const allSeries = obtenerPeliculasOSerieLS("serie") || [];
+  const allSeries = obtenerPeliculasOSerieLS("Serie") || [];
 
   let seriesFiltered;
 
@@ -35,14 +35,10 @@ export default function SeriesPage() {
 
   return (
     <>
-      <button className="btn-filter" onClick={openFilter}>
-        Filtrar
-      </button>
-      <Filter
-        generoObtenido={handleFilter}
-        openModal={openFilterModal}
-        closeModal={closeModal}
-      />
+      <section className="filter-selector">
+        <Filter generoObtenido={handleFilter} />
+      </section>
+
       <section className="section-movies">
         <Series seriesMovies={seriesFiltered} />
       </section>

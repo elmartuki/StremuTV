@@ -29,9 +29,7 @@ export default function AppRouter() {
           path="/registro"
           element={
             <>
-              <Header />
               <RegisterPage />
-              <Footer />
             </>
           }
         />
@@ -39,9 +37,7 @@ export default function AppRouter() {
           path="/login"
           element={
             <>
-              <Header />
               <LoginPage />
-              <Footer />
             </>
           }
         />
@@ -76,11 +72,21 @@ export default function AppRouter() {
           }
         />
         <Route
-          path="/favoritos"
+          path="/favoritos/"
           element={
             <>
               <Header />
               <FavoritosPage />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
+          path="/favoritos/:id"
+          element={
+            <>
+              <MoreDetails />
               <Footer />
             </>
           }

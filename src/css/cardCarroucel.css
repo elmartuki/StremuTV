@@ -2,16 +2,16 @@
   display: flex;
   align-items: center;
   height: 450px;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 .btn-prev {
-  left: 5px;
+  left: 10px;
   z-index: 10;
 }
 
 .btn-next {
-  right: 5px;
+  right: 10px;
   z-index: 10;
 }
 
@@ -34,12 +34,15 @@
 
 .section_important {
   width: 100%;
+  overflow-x: hidden;
 }
 
 .card-important-home {
   margin: auto;
-  width: 100%;
+  margin-top: 10px;
+  width: 75%;
   color: white;
+  animation: fadeOut 10s ease 1;
 
   .card-important_img {
     position: relative;
@@ -52,23 +55,52 @@
   }
 }
 
+@keyframes fadeOut {
+  0% {
+    opacity: 0%;
+    transform: translateX(150%);
+  }
+
+  25% {
+    transform: translateX(0px);
+    opacity: 100%;
+  }
+
+  50% {
+    opacity: 100%;
+  }
+
+  75% {
+    transform: translateX(0px);
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0%;
+    transform: translateX(-150%);
+  }
+}
+
 .card-important_details {
   display: flex;
   width: 100%;
   margin: auto;
   flex-direction: column;
-  gap: 10px;
+  gap: 3px;
   bottom: 0px;
   padding: 0px 20px;
   position: absolute;
   background: linear-gradient(to top, #121212 0%, transparent 100%);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 15px 15px;
 
   .card-important_details-title {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   .card-important_details-desc {
-    font-size: 15px;
+    font-size: 13px;
   }
   .card-important_details-buttons {
     display: flex;
@@ -83,7 +115,7 @@
       border-radius: 8px;
       background-color: #32144d;
       color: white;
-      width: 50%;
+      width: 100%;
       gap: 5px;
 
       img {
