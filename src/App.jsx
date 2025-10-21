@@ -21,6 +21,7 @@ import "./css/loginModal.css";
 import "./css/accountModal.css";
 import "./css/editPerfil.css";
 import "./css/initPage.css";
+import "./css/login.css";
 import "./css/aboutPage.css";
 
 export default function App() {
