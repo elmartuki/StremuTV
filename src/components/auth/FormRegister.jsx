@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
-  guardarEnLocalStorage,
-  guardarEnSessionStorage,
+  agregarEnSessionStorage,
+  obtenerDelSessionStorage,
 } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 
@@ -18,17 +18,17 @@ export default function FormRegister() {
     event.preventDefault();
 
     const nuevoUsuario = {
-      id: Math.floor(Math.random() * 100000),
+      id: Date.now(),
       usuario,
       perfil,
       correo,
       password,
-      repeatPassword,
     };
 
     if (password === repeatPassword) {
-      guardarEnSessionStorage("usuarios", nuevoUsuario);
-      alert("si se pudio crear la cuenta");
+      agregarEnSessionStorage("usuarios", nuevoUsuario);
+      alert("Si se pudio crear la cuenta");
+
       setUsuario("");
       setCorreo("");
       setPerfil("");
@@ -37,44 +37,44 @@ export default function FormRegister() {
 
       setTimeout(() => {
         navigate("/login");
-      }, 5000);
+      }, 1000);
     } else {
-      alert("no se pudio crear la cuenta");
+      alert("No se pudio crear la cuenta");
     }
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <input
-        onChange={(event) => setUsuario(event.target.value)}
+        onChange={(e) => setUsuario(e.target.value)}
         type="text"
         placeholder="Usuario"
         value={usuario}
         required
       />
       <input
-        onChange={(event) => setPerfil(event.target.value)}
+        onChange={(e) => setPerfil(e.target.value)}
         type="text"
         placeholder="Perfil"
         value={perfil}
         required
       />
       <input
-        onChange={(event) => setCorreo(event.target.value)}
+        onChange={(e) => setCorreo(e.target.value)}
         type="email"
         placeholder="Correo"
         value={correo}
         required
       />
       <input
-        onChange={(event) => setPassword(event.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
         type="password"
         placeholder="Contraseña"
         value={password}
         required
       />
       <input
-        onChange={(event) => setRepeatPassword(event.target.value)}
+        onChange={(e) => setRepeatPassword(e.target.value)}
         type="password"
         placeholder="Repite la contraseña"
         value={repeatPassword}

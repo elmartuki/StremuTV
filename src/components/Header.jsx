@@ -14,15 +14,15 @@ export default function Header() {
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
   const [openConfig, setOpenConfig] = useState(false);
 
-  const usuario = obtenerDelSessionStorage("SavedUsser");
+  const usuarios = obtenerDelSessionStorage("SavedUsser");
 
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    const usuario = obtenerDelSessionStorage("SavedUsser");
+    const usuarios = obtenerDelSessionStorage("SavedUsser");
 
-    if (usuario) {
-      setUsuarioLogueado(usuario);
+    if (usuarios) {
+      setUsuarioLogueado(usuarios);
     }
   }, []);
 
@@ -66,13 +66,13 @@ export default function Header() {
               <div className="navbar_1-logo">
                 <NavLink to="/perfil/">
                   <button>
-                    <img src={usuario.perfil} alt="" />
+                    <img src={usuarios.perfil} alt="" />
                   </button>
                 </NavLink>
 
                 <div>
                   <p>Bienvenido de nuevo,</p>
-                  <p>{usuario.usuario}</p>
+                  <p>{usuarios.usuario}</p>
                 </div>
               </div>
             ) : (

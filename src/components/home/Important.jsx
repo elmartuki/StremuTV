@@ -23,7 +23,7 @@ export default function Important() {
         setIndice(0);
         clearInterval();
       }
-    }, 10000);
+    }, 8000);
 
     if (indice.lenght === 0) {
       reset(reset);

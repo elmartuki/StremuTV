@@ -16,6 +16,12 @@ export function guardarEnSessionStorage(key, datos) {
   sessionStorage.setItem(key, datosJSON);
 }
 
+export function agregarEnSessionStorage(key, nuevoDato) {
+  const datosPrevios = obtenerDelSessionStorage(key) || [];
+  const actualizados = [...datosPrevios, nuevoDato];
+  guardarEnSessionStorage(key, actualizados);
+}
+
 export function obtenerDelSessionStorage(key) {
   const datos = sessionStorage.getItem(key);
   return datos ? JSON.parse(datos) : null;

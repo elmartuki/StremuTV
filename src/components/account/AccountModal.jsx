@@ -12,19 +12,13 @@ import {
   obtenerDelLocalStorage,
   obtenerDelSessionStorage,
 } from "../../utils/localStorage";
-import AccountPerfil from "./AccountPerfil";
 
 export default function AccountModal({ closeConfig }) {
   const [FavCount, setFavCount] = useState(0);
-  const [openPerfilEdit, setOpenPerfilEdit] = useState(false);
 
   const usuario = obtenerDelSessionStorage("SavedUsser");
 
   const navigate = useNavigate();
-
-  function handleOpenEdit() {
-    setOpenPerfilEdit(true);
-  }
 
   function cerrarSession() {
     sessionStorage.removeItem("SavedUsser");
@@ -50,10 +44,7 @@ export default function AccountModal({ closeConfig }) {
 
           <div className="account-config_perfil">
             <div>
-              <img
-                src="https://chequeado.com/wp-content/uploads/2023/11/Javier-Milei-Perfil-TW.jpeg"
-                alt=""
-              />
+              <img src={usuario.perfil} alt="" />
             </div>
 
             <div>
@@ -91,8 +82,9 @@ export default function AccountModal({ closeConfig }) {
             </button>
           </div>
 
+          <p>Suscripcion</p>
+
           <div className="account-config_sub">
-            <p>Suscripcion</p>
             <article className="suscripcion">
               <div>
                 <p>Plan Premiun</p>

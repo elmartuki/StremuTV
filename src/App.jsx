@@ -18,7 +18,8 @@ import "./css/cardCarroucel.css";
 import "./css/search.css";
 import "./css/index.css";
 import "./css/loginModal.css";
-import "./css/accountModal.css"
+import "./css/accountModal.css";
+import "./css/editPerfil.css";
 
 export default function App() {
   return (
