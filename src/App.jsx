@@ -20,8 +20,8 @@ import "./css/index.css";
 import "./css/loginModal.css";
 import "./css/accountModal.css";
 import "./css/editPerfil.css";
-import "../css/init.css";
-import "../css/about.css";
+import "./css/initPage.css";
+import "./css/aboutPage.css";
 
 export default function App() {
   return (
