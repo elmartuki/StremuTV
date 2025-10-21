@@ -23,7 +23,6 @@ import "./css/editPerfil.css";
 import "../css/init.css";
 import "../css/about.css";
 
-
 export default function App() {
   return (
     <>
