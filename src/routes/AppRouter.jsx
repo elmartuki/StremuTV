@@ -184,7 +184,7 @@ export default function AppRouter() {
           path="/perfil/edit-perfil"
           element={
             <>
-              <AccountPerfil /> <Footer />
+              <AccountPerfil />
             </>
           }
         />
