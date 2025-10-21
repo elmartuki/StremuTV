@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   guardarEnSessionStorage,
-  obtenerDelLocalStorage,
   obtenerDelSessionStorage,
 } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
@@ -9,11 +8,7 @@ import { useNavigate } from "react-router-dom";
 export default function FormLogin() {
   const listadoUsuarios = obtenerDelSessionStorage("usuarios");
 
-  const listadoFull = [listadoUsuarios];
-
   const navigate = useNavigate();
-
-  console.log(listadoFull);
 
   const [usuario, setUsuario] = useState("");
   const [correo, setCorreo] = useState("");
@@ -27,21 +22,19 @@ export default function FormLogin() {
       correo: correo,
       password: password,
     };
-
-    const usuarioEncontrado = listadoFull.find((usser) => {
+    const usuarioEncontrado = listadoUsuarios.find((usser) => {
       return (
         usser.usuario === datosIngresados.usuario &&
         usser.correo === datosIngresados.correo &&
+        usser.password === datosIngresados.password &&
         usser.password === datosIngresados.password
       );
     });
 
     if (usuarioEncontrado) {
-      alert("Ingresaste correctamente");
       navigate("/");
       guardarEnSessionStorage("SavedUsser", usuarioEncontrado);
     } else {
-      alert("Ingresaste mal algun dato");
     }
   }
   return (

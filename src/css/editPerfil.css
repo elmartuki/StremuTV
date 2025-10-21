@@ -1,0 +1,83 @@
+.edit-perfil-section {
+  width: 90%;
+  margin: auto;
+  color: rgba(255, 255, 255, 0.863);
+
+  .edit-perfil {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .edit-perfil-topbar {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 15px 10px;
+
+      img {
+        transform: scale(1.2);
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border: none;
+        filter: invert();
+        transform: scale(1.1);
+        font-weight: 600;
+      }
+    }
+
+    .edit-perfil_img {
+      width: 50%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 15px;
+
+      p {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 100%;
+      }
+    }
+
+    .edit-perfil_inputs {
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        input {
+          width: 100%;
+          background-color: #202020;
+          border: none;
+          border-radius: 8px;
+          padding: 10px 10px;
+          color: rgba(255, 255, 255, 0.804);
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        button {
+          border: none;
+          padding: 10px 10px;
+          border-radius: 8px;
+          background-color: #32144d;
+          color: white;
+        }
+      }
+    }
+  }
+}

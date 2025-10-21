@@ -42,7 +42,7 @@
   margin-top: 10px;
   width: 75%;
   color: white;
-  animation: fadeOut 10s ease 1;
+  animation: fadeOut 8s ease 1;
 
   .card-important_img {
     position: relative;
@@ -61,7 +61,7 @@
     transform: translateX(150%);
   }
 
-  25% {
+  10% {
     transform: translateX(0px);
     opacity: 100%;
   }
@@ -70,7 +70,7 @@
     opacity: 100%;
   }
 
-  75% {
+  90% {
     transform: translateX(0px);
     opacity: 100%;
   }
