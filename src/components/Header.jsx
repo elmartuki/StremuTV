@@ -4,7 +4,7 @@ import usserImg from "../assets/usser.svg";
 import FilterSearch from "./filters/FilterSearch.jsx";
 import LoginModal from "./login/LoginModal.jsx";
 import { obtenerDelSessionStorage } from "../utils/localStorage.js";
-import AccountModal from "./account/accountModal.jsx";
+import AccountModal from "./account/AccountConfig.jsx";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Header() {
@@ -60,7 +60,7 @@ export default function Header() {
         <nav className="navbar">
           <div
             className="navbar_1"
-            style={{ width: usuarioLogueado ? "45%" : "30%" }}
+            style={{ width: usuarioLogueado ? "75%" : "30%" }}
           >
             {usuarioLogueado ? (
               <div className="navbar_1-logo">
@@ -90,7 +90,7 @@ export default function Header() {
           </div>
 
           <div
-            style={{ width: usuarioLogueado ? "55%" : "70%" }}
+            style={{ width: usuarioLogueado ? "25%" : "70%" }}
             className="navbar_2"
           >
             <div className="navbar_2-search">

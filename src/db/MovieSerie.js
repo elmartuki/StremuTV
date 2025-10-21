@@ -2023,7 +2023,7 @@ export const movieSerieFullList = [
   {
     id: 1009,
     nombre: "Maléfica",
-    url: "https://www.lavanguardia.com/Peliculas-Series/images/movie/poster/2014/5/w1280/i8qn2A0Qfjj45EXlZVt92WnX7iH.jpg",
+    url: "https://m.media-amazon.com/images/M/MV5BMjAwOTk2MGItZTlmYS00Yzk5LTgyNTYtMjkxY2FkZWI1NzcxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     fecha: "2014",
     genero: "Fantasia",
     tipo: "Pelicula",

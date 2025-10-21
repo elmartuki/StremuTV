@@ -1,11 +1,12 @@
 .account-config-section {
   width: 100%;
-  background-color: #181818;
-  position: fixed;
-  top: 0px;
-  height: 100vh;
-  z-index: 1004;
   animation: fadeIn 0.2s ease 1;
+  overflow-y: scroll;
+  z-index: 2020;
+  padding: 0px 0px 70px 0px;
+  position: absolute;
+  z-index: 200;
+  background-color: #141414;
 
   p {
     margin: 5px;
@@ -181,6 +182,12 @@
           gap: 10px;
         }
         gap: 10px;
+      }
+
+      button:nth-child(2) {
+        div {
+          color: white;
+        }
       }
 
       button:nth-child(3) {

@@ -13,7 +13,7 @@ import {
   obtenerDelSessionStorage,
 } from "../../utils/localStorage";
 
-export default function AccountModal({ closeConfig }) {
+export default function AccountConfig({ closeConfig }) {
   const [FavCount, setFavCount] = useState(0);
 
   const usuario = obtenerDelSessionStorage("SavedUsser");
@@ -108,10 +108,12 @@ export default function AccountModal({ closeConfig }) {
                 <img src={right} alt="" />
               </button>
               <button>
-                <div>
-                  <img src={contacto} alt="" />
-                  Sobre Nosotros
-                </div>
+                <NavLink to="/sobre-nosotros">
+                  <div>
+                    <img src={contacto} alt="" />
+                    Sobre Nosotros
+                  </div>
+                </NavLink>
 
                 <img src={right} alt="" />
               </button>
