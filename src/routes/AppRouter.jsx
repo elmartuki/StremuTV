@@ -11,7 +11,9 @@ import SeriesPage from "../pages/SeriesPage.jsx";
 import FavoritosPage from "../pages/FavoritosPage.jsx";
 import MoreDetails from "../components/home/moreInfo/MoreDetails.jsx";
 import AccountPerfil from "../components/account/AccountPerfil.jsx";
-import AccountModal from "../components/account/accountModal.jsx";
+import AccountModal from "../components/account/AccountConfig.jsx";
+import InitPage from "../pages/InitPage.jsx";
+import AboutPage from "../pages/AboutPage.jsx";
 
 export default function AppRouter() {
   return (
@@ -19,6 +21,15 @@ export default function AppRouter() {
       <Routes>
         <Route
           path="/"
+          element={
+            <>
+              <InitPage />
+            </>
+          }
+        />
+
+        <Route
+          path="/home"
           element={
             <>
               <Header />
@@ -173,16 +184,23 @@ export default function AppRouter() {
           path="/perfil/edit-perfil"
           element={
             <>
-              <AccountPerfil /> <Footer />
+              <AccountPerfil />
             </>
           }
         />
-      
+
+        <Route
+          path="/sobre-nosotros"
+          element={
+            <>
+              <AboutPage />
+              <Footer />
+            </>
+          }
+        />
 
         <Route path="*" element={<Error404Page />} />
-
       </Routes>
-      
     </>
   );
 }

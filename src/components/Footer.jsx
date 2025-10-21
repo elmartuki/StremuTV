@@ -11,8 +11,8 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer_links">
-        <div className={url === "/" ? "footer-activo" : ""}>
-          <NavLink to="/">
+        <div className={url === "/home" ? "footer-activo" : ""}>
+          <NavLink to="/home">
             <img src={home} alt="" />
             <a href="">Inicio</a>
           </NavLink>

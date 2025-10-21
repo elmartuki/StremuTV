@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-import { FaUser } from "react-icons/fa"; 
-import "./../css/Init.css";
+import { FaUser } from "react-icons/fa";
+import { obtenerCatalogoCompleto } from "../utils/localStorage";
+import { NavLink } from "react-router-dom";
 
-export default function Home() {
+export default function InitPage() {
   const [active, setActive] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -12,18 +13,29 @@ export default function Home() {
   };
 
   const faqs = [
-    ["¿Qué es StreamTV?", "StreamTV es una plataforma de streaming con miles de películas y series."],
-    ["¿Cuánto cuesta StreamTV?", "Depende del plan que elijas. Hay opciones para todos los presupuestos."],
-    ["¿Dónde puedo ver StreamTV?", "Puedes verlo en cualquier dispositivo con conexión a internet."],
+    [
+      "¿Qué es StreamTV?",
+      "StreamTV es una plataforma de streaming con miles de películas y series.",
+    ],
+    [
+      "¿Cuánto cuesta StreamTV?",
+      "Depende del plan que elijas. Hay opciones para todos los presupuestos.",
+    ],
+    [
+      "¿Dónde puedo ver StreamTV?",
+      "Puedes verlo en cualquier dispositivo con conexión a internet.",
+    ],
     ["¿Cómo cancelo?", "Puedes cancelar en cualquier momento desde tu cuenta."],
   ];
 
+  const tendenciasImg = obtenerCatalogoCompleto();
+
   const tendencias = [
-    { src: "/assets/naruto.jpg", alt: "Naruto" },
-    { src: "/assets/monstruo.jpg", alt: "Monstruo" },
-    { src: "/assets/noches.jpg", alt: "Noches" },
-    { src: "/assets/batalla.jpg", alt: "Batalla" },
-    { src: "/assets/reti.jpg", alt: "Reti" },
+    { src: tendenciasImg[0].url, alt: "Naruto" },
+    { src: tendenciasImg[1].url, alt: "Monstruo" },
+    { src: tendenciasImg[2].url, alt: "Noches" },
+    { src: tendenciasImg[3].url, alt: "Batalla" },
+    { src: tendenciasImg[4].url, alt: "Reti" },
   ];
 
   return (
@@ -61,13 +73,15 @@ export default function Home() {
         </div>
       </section>
 
-      
       <div className="auth-buttons">
-        <button className="btn">Iniciar Sesión</button>
-        <a href="#" className="link">Regístrate aquí</a>
+        <NavLink to="/login" className="btn">
+          Iniciar Sesión
+        </NavLink>
+        <NavLink to="/registro" className="link">
+          Regístrate aquí
+        </NavLink>
       </div>
 
-      
       <section className="trending">
         <h2>Tendencias</h2>
         <div className="trending-list">
@@ -80,7 +94,6 @@ export default function Home() {
         </div>
       </section>
 
-      
       <section className="faq">
         <h2>¿Por que contratar StreamTV?</h2>
         {faqs.map((faq, index) => (

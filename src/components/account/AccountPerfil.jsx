@@ -12,6 +12,14 @@ export default function AccountPerfil() {
   const [usuarioList, setUsuarioList] = useState([]);
   const [usuarioLogueado, setUsuarioLogueado] = useState({});
 
+  const navigate = useNavigate();
+
+  function handleBack() {
+    setTimeout(() => {
+      navigate(-1);
+    }, 1000);
+  }
+
   useEffect(() => {
     const usuarioList = obtenerDelSessionStorage("usuarios") || [];
     const usuarioLogueado = obtenerDelSessionStorage("SavedUsser") || {};
@@ -22,27 +30,64 @@ export default function AccountPerfil() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const updateUsser = {
-      ...usuarioLogueado,
-      perfil: editPhoto,
-      usuario: usserName,
-    };
+    if (editPhoto === "") {
+      const updateUsser = {
+        ...usuarioLogueado,
+        usuario: usserName,
+      };
 
-    const usserFinded = usuarioList.map((usuario) => {
-      if (usuario.id === usuarioLogueado.id) {
-        return updateUsser;
-      }
-      return usuario;
-    });
+      const usserFinded = usuarioList.map((usuario) => {
+        if (usuario.id === usuarioLogueado.id) {
+          return updateUsser;
+        }
+        return usuario;
+      });
 
-    guardarEnSessionStorage("usuarios", usserFinded);
-    guardarEnSessionStorage("SavedUsser", updateUsser);
+      guardarEnSessionStorage("usuarios", usserFinded);
+      guardarEnSessionStorage("SavedUsser", updateUsser);
 
-    setUsuarioList(usserFinded);
-    setUsuarioLogueado(updateUsser);
+      setUsuarioList(usserFinded);
+      setUsuarioLogueado(updateUsser);
+    } else if (usserName === "") {
+      const updateUsser = {
+        ...usuarioLogueado,
+        perfil: editPhoto,
+      };
+
+      const usserFinded = usuarioList.map((usuario) => {
+        if (usuario.id === usuarioLogueado.id) {
+          return updateUsser;
+        }
+        return usuario;
+      });
+
+      guardarEnSessionStorage("usuarios", usserFinded);
+      guardarEnSessionStorage("SavedUsser", updateUsser);
+
+      setUsuarioList(usserFinded);
+      setUsuarioLogueado(updateUsser);
+    } else {
+      const updateUsser = {
+        ...usuarioLogueado,
+        perfil: editPhoto,
+        usuario: usserName,
+      };
+
+      const usserFinded = usuarioList.map((usuario) => {
+        if (usuario.id === usuarioLogueado.id) {
+          return updateUsser;
+        }
+        return usuario;
+      });
+
+      guardarEnSessionStorage("usuarios", usserFinded);
+      guardarEnSessionStorage("SavedUsser", updateUsser);
+
+      setUsuarioList(usserFinded);
+      setUsuarioLogueado(updateUsser);
+    }
   }
 
-  const navigate = useNavigate();
   return (
     <section className="edit-perfil-section">
       <article className="edit-perfil">
@@ -74,6 +119,8 @@ export default function AccountPerfil() {
           <form onSubmit={handleSubmit}>
             <input
               onChange={(event) => setUssername(event.target.value)}
+              minLength="2"
+              maxLength="15"
               type="text"
               placeholder="Ingrese su nuevo usuario"
             />
@@ -82,7 +129,8 @@ export default function AccountPerfil() {
               type="text"
               placeholder="Ingrese su nueva foto de perfil (URL)"
             />
-            <button onClick={() => navigate(-1)}>Guardar</button>
+
+            <button onClick={handleBack}>Guardar</button>
           </form>
         </div>
       </article>
