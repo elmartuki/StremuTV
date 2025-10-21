@@ -39,13 +39,13 @@ export default function FormRegister() {
     );
 
     if (existeUsuario) {
-      alert("Ya existe un usuario registrado con ese correo.");
+      alert("Ya existe un usuario registrado con este correo.");
     } else if (password !== repeatPassword) {
       alert("Las contraseñas no coinciden.");
     } else {
       agregarEnSessionStorage("usuarios", nuevoUsuario);
 
-      alert("✅ Cuenta creada correctamente.");
+      alert("Si puedio crear la cuenta.");
 
       setUsuario("");
       setCorreo("");
