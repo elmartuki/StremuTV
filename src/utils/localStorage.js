@@ -1,28 +1,27 @@
 import { movieSerieFullList } from "../db/MovieSerie";
 
 export function guardarEnLocalStorage(key, datos) {
-  const datosJSON = JSON.stringify(datos);
-  localStorage.setItem(key, datosJSON);
+  localStorage.setItem(key, JSON.stringify(datos));
 }
 
 export function obtenerDelLocalStorage(key) {
-  const datos = localStorage.getItem(key);
-  return datos ? JSON.parse(datos) : [];
-  // return JSON.parse(datos) || []
+  const raw = localStorage.getItem(key);
+  try {
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
 }
 
 export function agregarListado(key) {
-  const checkear = obtenerDelLocalStorage(key);
-
-  if (checkear.length === 0) {
+  if (localStorage.getItem(key) === null) {
     guardarEnLocalStorage(key, movieSerieFullList);
   }
 }
 
 export function agregarAlLocalStorage(key, nuevoDato) {
-  const datosPrevios = obtenerDelLocalStorage(key) || [];
-  const actualizados = [...datosPrevios, nuevoDato];
-  guardarEnLocalStorage(key, actualizados);
+  const prev = obtenerDelLocalStorage(key) || [];
+  guardarEnLocalStorage(key, [...prev, nuevoDato]);
 }
 
 export function guardarEnSessionStorage(key, datos) {
