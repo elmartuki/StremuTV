@@ -13,7 +13,6 @@
 
 .modal-edit_inputs_buttons {
   display: flex;
-
   flex-wrap: nowrap;
 
   div {

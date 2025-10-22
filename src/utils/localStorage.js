@@ -14,7 +14,7 @@ export function obtenerDelLocalStorage(key) {
 export function agregarListado(key) {
   const checkear = obtenerDelLocalStorage(key);
 
-  if (checkear.length === 0) {
+  if (checkear?.length === 0) {
     guardarEnLocalStorage(key, movieSerieFullList);
   }
 }
