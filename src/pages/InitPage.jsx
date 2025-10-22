@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 
 export default function InitPage() {
   const [active, setActive] = useState(null);
-  const [moviesList, setMovieList] = useState();
+  const [moviesList, setMovieList] = useState([]);
   const [agregar, setAgregar] = useState();
 
   useEffect(() => {
