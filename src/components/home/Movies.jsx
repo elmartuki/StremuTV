@@ -10,19 +10,6 @@ export default function Movies() {
   const movieList = obtenerPeliculasOSerieLS("Pelicula") || [];
   const moviesRandom = movieList.sort(() => Math.random() - 0.5);
 
-  const [moviesList, setMovieList] = useState([]);
-  const [agregar, setAgregar] = useState();
-
-  useEffect(() => {
-    const agregar = agregarListado("MoviesSeries");
-    setAgregar(agregar);
-  }, []);
-
-  useEffect(() => {
-    const moviesList = obtenerDelLocalStorage("MoviesSeries");
-    setMovieList(moviesList);
-  }, []);
-
   return (
     <>
       {moviesRandom.map(({ id, nombre, url }) => (

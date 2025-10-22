@@ -24,8 +24,26 @@ import "./css/initPage.css";
 import "./css/login.css";
 import "./css/aboutPage.css";
 import "./css/crudFilter.css";
+import { useEffect, useState } from "react";
+import {
+  agregarListado,
+  obtenerDelLocalStorage,
+} from "./utils/localStorage.js";
 
 export default function App() {
+  const [moviesList, setMovieList] = useState([]);
+  const [agregar, setAgregar] = useState();
+
+  useEffect(() => {
+    const agregar = agregarListado("MoviesSeries");
+    setAgregar(agregar);
+  }, []);
+
+  useEffect(() => {
+    const moviesList = obtenerDelLocalStorage("MoviesSeries");
+    setMovieList(moviesList);
+  }, []);
+
   return (
     <>
       <div>
