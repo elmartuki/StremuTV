@@ -7,18 +7,6 @@ import { NavLink } from "react-router-dom";
 
 export default function InitPage() {
   const [active, setActive] = useState(null);
-  const [moviesList, setMovieList] = useState([]);
-  const [agregar, setAgregar] = useState();
-
-  useEffect(() => {
-    const agregar = agregarListado("MoviesSeries");
-    setAgregar(agregar);
-  }, []);
-
-  useEffect(() => {
-    const moviesList = obtenerDelLocalStorage("MoviesSeries");
-    setMovieList(moviesList);
-  }, []);
 
   const toggleFAQ = (index) => {
     setActive(active === index ? null : index);

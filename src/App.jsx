@@ -32,17 +32,17 @@ import {
 
 export default function App() {
   const [moviesList, setMovieList] = useState([]);
-  const [agregar, setAgregar] = useState();
+  const [agregar, setAgregar] = useState(false);
 
   useEffect(() => {
-    const agregar = agregarListado("MoviesSeries");
-    setAgregar(agregar);
+    agregarListado("MoviesSeries");
+    setAgregar(true);
   }, []);
 
   useEffect(() => {
-    const moviesList = obtenerDelLocalStorage("MoviesSeries");
-    setMovieList(moviesList);
-  }, []);
+    const lista = obtenerDelLocalStorage("MoviesSeries") || [];
+    setMovieList(lista);
+  }, [agregar]);
 
   return (
     <>
