@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
-import { agregarListado, obtenerDelLocalStorage } from "../utils/localStorage";
 import { NavLink } from "react-router-dom";
-
+import { obtenerDelLocalStorage } from "../utils/localStorage";
+import { useState } from "react";
 export default function InitPage() {
   const [active, setActive] = useState(null);
 
@@ -28,7 +27,9 @@ export default function InitPage() {
     ["¿Cómo cancelo?", "Puedes cancelar en cualquier momento desde tu cuenta."],
   ];
 
-  const tendencias = moviesList.slice(0, 5);
+  const movieList = obtenerDelLocalStorage("MoviesSeries");
+
+  const tendencias = movieList.slice(0, 5);
 
   return (
     <main className="container">
