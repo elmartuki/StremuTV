@@ -3,7 +3,7 @@ import searchImg from "../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.s
 import usserImg from "../assets/usser.svg";
 import FilterSearch from "./filters/FilterSearch.jsx";
 import LoginModal from "./login/LoginModal.jsx";
-import { obtenerDelSessionStorage } from "../utils/localStorage.js";
+import { obtenerDelLocalStorage } from "../utils/localStorage.js";
 import AccountModal from "./account/AccountConfig.jsx";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -14,12 +14,12 @@ export default function Header() {
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
   const [openConfig, setOpenConfig] = useState(false);
 
-  const usuarios = obtenerDelSessionStorage("SavedUsser");
+  const usuarios = obtenerDelLocalStorage("UsserKey");
 
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    const usuarios = obtenerDelSessionStorage("SavedUsser");
+    const usuarios = obtenerDelLocalStorage("UsserKey");
 
     if (usuarios) {
       setUsuarioLogueado(usuarios);

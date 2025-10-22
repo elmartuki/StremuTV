@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-  agregarEnSessionStorage,
-  obtenerDelSessionStorage,
-} from "../../utils/localStorage";
+import { agregarAlLocalStorage, obtenerDelLocalStorage } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 import personAdd from "../../assets/personAdd.svg";
 import back from "../../assets/back.svg";
@@ -23,7 +20,7 @@ export default function FormRegister() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const listadoUsuarios = obtenerDelSessionStorage("usuarios") || [];
+    const listadoUsuarios = obtenerDelLocalStorage("usuarios") || [];
 
     const nuevoUsuario = {
       id: Date.now(),
@@ -43,7 +40,7 @@ export default function FormRegister() {
     } else if (password !== repeatPassword) {
       alert("Las contraseñas no coinciden.");
     } else {
-      agregarEnSessionStorage("usuarios", nuevoUsuario);
+      agregarAlLocalStorage("usuarios", nuevoUsuario);
 
       alert("Si puedio crear la cuenta.");
 
@@ -60,7 +57,7 @@ export default function FormRegister() {
   return (
     <>
       <div className="form-login-back">
-        <button onClick={()=> navigate("/")}>
+        <button onClick={() => navigate("/")}>
           <img src={back} alt="" />
           <p>Volver</p>
         </button>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import {
+  guardarEnLocalStorage,
   guardarEnSessionStorage,
+  obtenerDelLocalStorage,
   obtenerDelSessionStorage,
 } from "../../utils/localStorage";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -11,7 +13,7 @@ import lock from "../../assets/lock.svg";
 import back from "../../assets/back.svg";
 
 export default function FormLogin() {
-  const listadoUsuarios = obtenerDelSessionStorage("usuarios");
+  const listadoUsuarios = obtenerDelLocalStorage("usuarios") || [];
 
   const navigate = useNavigate();
 
@@ -56,7 +58,7 @@ export default function FormLogin() {
       }, 5000);
     } else {
       navigate("/home");
-      guardarEnSessionStorage("SavedUsser", usuarioValid);
+      guardarEnLocalStorage("UsserKey", usuarioValid);
     }
   }
   return (

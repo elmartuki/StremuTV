@@ -1,4 +1,3 @@
-import React from "react";
 import warning from "../../../assets/warning.svg";
 
 export default function ErrorModal({ nombre }) {

@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useEffectEvent, useState } from "react";
 import {
+  agregarListado,
   guardarEnLocalStorage,
   obtenerDelLocalStorage,
 } from "../../utils/localStorage";
@@ -24,9 +25,15 @@ export default function FormCreateMovieSerie() {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [agregar, setAgregar] = useState([]);
 
   useEffect(() => {
-    const moviesList = obtenerDelLocalStorage("MoviesSeries", []);
+    const agregar = agregarListado("MoviesSeries");
+    setAgregar(agregar);
+  }, []); //
+
+  useEffect(() => {
+    const moviesList = obtenerDelLocalStorage("MoviesSeries");
     setMovieList(moviesList);
   }, []);
 

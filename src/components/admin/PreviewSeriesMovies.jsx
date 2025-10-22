@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import editImg from "../../assets/edit.svg";
 import deleteImg from "../../assets/delete.svg";
 
