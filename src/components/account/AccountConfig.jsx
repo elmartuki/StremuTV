@@ -10,18 +10,17 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   obtenerDelLocalStorage,
-  obtenerDelSessionStorage,
 } from "../../utils/localStorage";
 
 export default function AccountConfig({ closeConfig }) {
   const [FavCount, setFavCount] = useState(0);
 
-  const usuario = obtenerDelSessionStorage("SavedUsser");
+  const usuario = obtenerDelLocalStorage("UsserKey");
 
   const navigate = useNavigate();
 
   function cerrarSession() {
-    sessionStorage.removeItem("SavedUsser");
+    localStorage.removeItem("UsserKey");
     navigate("/");
   }
 

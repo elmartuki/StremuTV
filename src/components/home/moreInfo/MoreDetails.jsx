@@ -54,7 +54,7 @@ export default function MoreDetails() {
   function handleFav() {
     setTimeout(() => {
       setConfirmModal(false);
-    }, 3000);
+    }, 5000);
 
     const favoritos = JSON.parse(localStorage.getItem("favoritos") || "[]");
 
@@ -72,7 +72,7 @@ export default function MoreDetails() {
 
       setTimeout(() => {
         setShowError(false);
-      }, 3000);
+      }, 5000);
     } else {
       setConfirmModal(true);
       favoritos.push(articulo);

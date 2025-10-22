@@ -11,15 +11,23 @@ export function obtenerDelLocalStorage(key) {
   // return JSON.parse(datos) || []
 }
 
+export function agregarListado(key) {
+  const checkear = obtenerDelLocalStorage(key);
+
+  if (checkear.length === 0) {
+    guardarEnLocalStorage(key, movieSerieFullList);
+  }
+}
+
+export function agregarAlLocalStorage(key, nuevoDato) {
+  const datosPrevios = obtenerDelLocalStorage(key) || [];
+  const actualizados = [...datosPrevios, nuevoDato];
+  guardarEnLocalStorage(key, actualizados);
+}
+
 export function guardarEnSessionStorage(key, datos) {
   const datosJSON = JSON.stringify(datos);
   sessionStorage.setItem(key, datosJSON);
-}
-
-export function agregarEnSessionStorage(key, nuevoDato) {
-  const datosPrevios = obtenerDelSessionStorage(key) || [];
-  const actualizados = [...datosPrevios, nuevoDato];
-  guardarEnSessionStorage(key, actualizados);
 }
 
 export function obtenerDelSessionStorage(key) {
@@ -30,9 +38,7 @@ export function obtenerDelSessionStorage(key) {
 export function obtenerPeliculasOSerieLS(tipo) {
   const peliculasLocalStorage = obtenerDelLocalStorage("MoviesSeries") || [];
 
-  const listadoFull = [...movieSerieFullList, ...peliculasLocalStorage];
-
-  const filterMovies = listadoFull.filter((movie) => {
+  const filterMovies = peliculasLocalStorage.filter((movie) => {
     return movie.tipo === tipo;
   });
 
@@ -42,9 +48,7 @@ export function obtenerPeliculasOSerieLS(tipo) {
 export function filtrarYMostrar(genero) {
   const peliculasLocalStorage = obtenerDelLocalStorage("MoviesSeries");
 
-  const listadoFull = [...movieSerieFullList, ...peliculasLocalStorage];
-
-  const filterMovies = listadoFull.filter((movie) => {
+  const filterMovies = peliculasLocalStorage.filter((movie) => {
     return movie.genero === genero;
   });
 

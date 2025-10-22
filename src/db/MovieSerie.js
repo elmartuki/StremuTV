@@ -1813,7 +1813,7 @@ export const movieSerieFullList = [
   {
     id: 917,
     nombre: "The Crown",
-    url: "https://www.lavanguardia.com/Peliculas-Series/images/Serie/poster/2016/11/w1280/1ZMVKJoWK5KfxaQA8BwpfOEYKKy.jpg",
+    url: "https://m.media-amazon.com/images/M/MV5BMGU2MjdjODQtZDk5Ny00NzgwLWI2MTMtYzViNDU5MDNjMGU2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     fecha: "2016",
     genero: "Drama",
     tipo: "Serie",

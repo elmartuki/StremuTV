@@ -11,9 +11,9 @@ export default function Important() {
 
   const movieList = obtenerPeliculasOSerieLS("Serie") || [];
 
-  const topTen = movieList.slice(0, 6);
+  const topFive = movieList.slice(0, 6);
 
-  const { nombre, url, descripcion, id } = topTen[indice];
+  const { nombre, url, descripcion, id } = topFive[indice];
 
   useEffect(() => {
     const reset = setTimeout(() => {
@@ -29,7 +29,6 @@ export default function Important() {
       reset(reset);
     }
   }, [indice]);
-
   return (
     <>
       <div className="content-important">
@@ -60,7 +59,7 @@ export default function Important() {
         </NavLink>
 
         <div className="btn-next"></div>
-      </div>
+      </div>{" "}
     </>
   );
 }

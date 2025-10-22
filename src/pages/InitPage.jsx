@@ -28,15 +28,15 @@ export default function InitPage() {
     ["¿Cómo cancelo?", "Puedes cancelar en cualquier momento desde tu cuenta."],
   ];
 
-  const tendenciasImg = obtenerCatalogoCompleto();
+  // const tendenciasImg = obtenerCatalogoCompleto();
 
-  const tendencias = [
-    { src: tendenciasImg[0].url, alt: "Naruto" },
-    { src: tendenciasImg[1].url, alt: "Monstruo" },
-    { src: tendenciasImg[2].url, alt: "Noches" },
-    { src: tendenciasImg[3].url, alt: "Batalla" },
-    { src: tendenciasImg[4].url, alt: "Reti" },
-  ];
+  // const tendencias = [
+  //   { src: tendenciasImg[0].url, alt: "Naruto" },
+  //   { src: tendenciasImg[1].url, alt: "Monstruo" },
+  //   { src: tendenciasImg[2].url, alt: "Noches" },
+  //   { src: tendenciasImg[3].url, alt: "Batalla" },
+  //   { src: tendenciasImg[4].url, alt: "Reti" },
+  // ];
 
   return (
     <main className="container">
@@ -82,7 +82,7 @@ export default function InitPage() {
         </NavLink>
       </div>
 
-      <section className="trending">
+      {/* <section className="trending">
         <h2>Tendencias</h2>
         <div className="trending-list">
           {tendencias.map((item, index) => (
@@ -92,7 +92,7 @@ export default function InitPage() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <section className="faq">
         <h2>¿Por que contratar StreamTV?</h2>
