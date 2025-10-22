@@ -25,7 +25,13 @@ export default function FavoritosPage() {
   };
 
   if (updateFavoritos.length === 0) {
-    return <h2 className="section-title">No hay nada en tu lista</h2>;
+    return (
+      <article style={{ marginTop: "15px" }}>
+        <div className="not-found-message">
+          <p>No hay nada en tu lista. :c</p>
+        </div>
+      </article>
+    );
   } else {
     return (
       <>
