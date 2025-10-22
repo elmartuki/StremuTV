@@ -30,7 +30,7 @@ export default function FormCreateMovieSerie() {
   useEffect(() => {
     const agregar = agregarListado("MoviesSeries");
     setAgregar(agregar);
-  }, []); //
+  }, []);
 
   useEffect(() => {
     const moviesList = obtenerDelLocalStorage("MoviesSeries");
