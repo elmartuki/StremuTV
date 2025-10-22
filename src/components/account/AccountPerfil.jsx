@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  guardarEnSessionStorage,
-  obtenerDelSessionStorage,
+  guardarEnLocalStorage,
+  obtenerDelLocalStorage,
 } from "../../utils/localStorage";
 import back from "../../assets/back.svg";
 
@@ -21,8 +21,8 @@ export default function AccountPerfil() {
   }
 
   useEffect(() => {
-    const usuarioList = obtenerDelSessionStorage("usuarios") || [];
-    const usuarioLogueado = obtenerDelSessionStorage("UsserKey") || {};
+    const usuarioList = obtenerDelLocalStorage("usuarios") || [];
+    const usuarioLogueado = obtenerDelLocalStorage("UsserKey") || {};
     setUsuarioList(usuarioList);
     setUsuarioLogueado(usuarioLogueado);
   }, []);
@@ -30,61 +30,64 @@ export default function AccountPerfil() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (editPhoto === "") {
-      const updateUsser = {
-        ...usuarioLogueado,
-        usuario: usserName,
-      };
-
-      const usserFinded = usuarioList.map((usuario) => {
-        if (usuario.id === usuarioLogueado.id) {
-          return updateUsser;
-        }
-        return usuario;
-      });
-
-      guardarEnSessionStorage("usuarios", usserFinded);
-      guardarEnSessionStorage("UsserKey", updateUsser);
-
-      setUsuarioList(usserFinded);
-      setUsuarioLogueado(updateUsser);
-    } else if (usserName === "") {
-      const updateUsser = {
-        ...usuarioLogueado,
-        perfil: editPhoto,
-      };
-
-      const usserFinded = usuarioList.map((usuario) => {
-        if (usuario.id === usuarioLogueado.id) {
-          return updateUsser;
-        }
-        return usuario;
-      });
-
-      guardarEnSessionStorage("usuarios", usserFinded);
-      guardarEnSessionStorage("UsserKey", updateUsser);
-
-      setUsuarioList(usserFinded);
-      setUsuarioLogueado(updateUsser);
+    if (editPhoto === "" && usserName === "") {
     } else {
-      const updateUsser = {
-        ...usuarioLogueado,
-        perfil: editPhoto,
-        usuario: usserName,
-      };
+      if (editPhoto === "") {
+        const updateUsser = {
+          ...usuarioLogueado,
+          usuario: usserName,
+        };
 
-      const usserFinded = usuarioList.map((usuario) => {
-        if (usuario.id === usuarioLogueado.id) {
-          return updateUsser;
-        }
-        return usuario;
-      });
+        const usserFinded = usuarioList.map((usuario) => {
+          if (usuario.id === usuarioLogueado.id) {
+            return updateUsser;
+          }
+          return usuario;
+        });
 
-      guardarEnSessionStorage("usuarios", usserFinded);
-      guardarEnSessionStorage("UsserKey", updateUsser);
+        guardarEnLocalStorage("usuarios", usserFinded);
+        guardarEnLocalStorage("UsserKey", updateUsser);
 
-      setUsuarioList(usserFinded);
-      setUsuarioLogueado(updateUsser);
+        setUsuarioList(usserFinded);
+        setUsuarioLogueado(updateUsser);
+      } else if (usserName === "") {
+        const updateUsser = {
+          ...usuarioLogueado,
+          perfil: editPhoto,
+        };
+
+        const usserFinded = usuarioList.map((usuario) => {
+          if (usuario.id === usuarioLogueado.id) {
+            return updateUsser;
+          }
+          return usuario;
+        });
+
+        guardarEnLocalStorage("usuarios", usserFinded);
+        guardarEnLocalStorage("UsserKey", updateUsser);
+
+        setUsuarioList(usserFinded);
+        setUsuarioLogueado(updateUsser);
+      } else {
+        const updateUsser = {
+          ...usuarioLogueado,
+          perfil: editPhoto,
+          usuario: usserName,
+        };
+
+        const usserFinded = usuarioList.map((usuario) => {
+          if (usuario.id === usuarioLogueado.id) {
+            return updateUsser;
+          }
+          return usuario;
+        });
+
+        guardarEnLocalStorage("usuarios", usserFinded);
+        guardarEnLocalStorage("UsserKey", updateUsser);
+
+        setUsuarioList(usserFinded);
+        setUsuarioLogueado(updateUsser);
+      }
     }
   }
 

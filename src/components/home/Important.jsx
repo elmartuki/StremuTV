@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  agregarListado,
-  obtenerDelLocalStorage,
-  obtenerPeliculasOSerieLS,
-} from "../../utils/localStorage";
+import { obtenerPeliculasOSerieLS } from "../../utils/localStorage";
 import { NavLink } from "react-router-dom";
 import back from "../../assets/back.svg";
 import next from "../../assets/next.svg";

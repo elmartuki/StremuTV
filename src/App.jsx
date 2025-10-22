@@ -24,8 +24,28 @@ import "./css/initPage.css";
 import "./css/login.css";
 import "./css/aboutPage.css";
 import "./css/crudFilter.css";
+import { useEffect, useState } from "react";
+import { movieSerieFullList } from "./db/MovieSerie.js";
+import { guardarEnLocalStorage } from "./utils/localStorage.js";
 
 export default function App() {
+  const [moviesList, setMovieList] = useState([]);
+
+  useEffect(() => {
+    const raw = localStorage.getItem("MoviesSeries");
+    if (raw === null) {
+      setMovieList(movieSerieFullList);
+      guardarEnLocalStorage("MoviesSeries", movieSerieFullList);
+    } else {
+      try {
+        setMovieList(JSON.parse(raw) || []);
+      } catch {
+        setMovieList(movieSerieFullList);
+        guardarEnLocalStorage("MoviesSeries", movieSerieFullList);
+      }
+    }
+  }, []);
+
   return (
     <>
       <div>
