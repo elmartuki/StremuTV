@@ -1,8 +1,13 @@
-import React, { useState } from "react";
-import { agregarAlLocalStorage, obtenerDelLocalStorage } from "../../utils/localStorage";
+import React, { useEffect, useState } from "react";
+import {
+  agregarAlLocalStorage,
+  obtenerDelLocalStorage,
+} from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 import personAdd from "../../assets/personAdd.svg";
 import back from "../../assets/back.svg";
+import AlertModal from "../alerts/AlertModal";
+import AlertConfirm from "../alerts/AlertConfirm";
 
 export default function FormRegister() {
   const [usuario, setUsuario] = useState("");
@@ -10,6 +15,9 @@ export default function FormRegister() {
   const [password, setPassword] = useState("");
   const [perfil, setPerfil] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [alertText, setAlertText] = useState("");
 
   const navigate = useNavigate();
 
@@ -30,19 +38,32 @@ export default function FormRegister() {
       password,
     };
 
-    const existeUsuario = listadoUsuarios.find(
-      (u) =>
-        u.correo === nuevoUsuario.correo || u.usuario === nuevoUsuario.usuario
+    const existeCorreo = listadoUsuarios.find(
+      (u) => u.correo === nuevoUsuario.correo
     );
 
-    if (existeUsuario) {
-      alert("Ya existe un usuario registrado con este correo.");
+    const existeUsuario = listadoUsuarios.find(
+      (u) => u.usuario === nuevoUsuario.usuario
+    );
+
+    if (existeCorreo) {
+      setAlertText("El correo que ingresaste ya existe.");
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 5000);
+    } else if (existeUsuario) {
+      setAlertText("El usuario que ingresaste ya existe.");
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 5000);
     } else if (password !== repeatPassword) {
-      alert("Las contraseñas no coinciden.");
+      setAlertText("Las contraseñas no coinciden.");
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 5000);
     } else {
       agregarAlLocalStorage("usuarios", nuevoUsuario);
 
-      alert("Si puedio crear la cuenta.");
+      setAlertText("Se creó la cuenta exitosamente.");
+      setShowConfirm(true);
+      setTimeout(() => setShowConfirm(false), 5000);
 
       setUsuario("");
       setCorreo("");
@@ -50,12 +71,14 @@ export default function FormRegister() {
       setPassword("");
       setRepeatPassword("");
 
-      setTimeout(() => navigate("/login"), 1000);
+      setTimeout(() => navigate("/login"), 5000);
     }
   }
 
   return (
     <>
+      <AlertModal showAlert={showAlert} alertText={alertText} />
+      <AlertConfirm showConfirm={showConfirm} alertText={alertText} />
       <div className="form-login-back">
         <button onClick={() => navigate("/")}>
           <img src={back} alt="" />

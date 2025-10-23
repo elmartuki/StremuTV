@@ -36,7 +36,7 @@ export default function InitPage() {
       <h1 className="title">
         Descubre tu <br /> próxima película favorita
       </h1>
-
+ 
       <section className="features">
         <div className="card">
           <span className="icon">

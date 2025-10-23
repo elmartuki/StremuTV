@@ -18,7 +18,7 @@ export default function ShowMoviesSeries({
   const fullList = obtenerDelLocalStorage("MoviesSeries");
 
   const seriesMoviesFiltered = fullList.filter((item) =>
-    item.nombre.toLowerCase().includes(wordToSearch)
+    item.nombre.toLowerCase().includes(wordToSearch.toLowerCase())
   );
 
   if (seriesMoviesFiltered.lenght > 0) {

@@ -33,23 +33,24 @@
   gap: 2rem;
   width: 100%;
   max-width: 1200px;
-}
 
-.card {
-  background-color: #0d1224;
-  padding: 2rem;
-  border-radius: 16px;
-  border: 1px solid #32144e;
-  width: 100%;
-  max-width: 340px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 15px #32144e;
-}
+  .card {
+    background-color: #0d1224;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #32144e;
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 15px #32144e;
+    color: rgba(255, 255, 255, 0.906);
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px #32144e;
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px #32144e;
+    }
+  }
 }
 
 .icon {
@@ -79,22 +80,20 @@
   margin-top: 2rem;
 
   .btn {
-  background-color: #32144e;
-  border: none;
-  color: white ;
-  font-weight: 600;
-  padding: 1rem 2.5rem;
-  border-radius: 12px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: background 0.3s, transform 0.2s;
-  width: 100%;
-  max-width: 260px;
-  box-shadow: 0 0 12px rgba(126, 77, 242, 0.3);
+    background-color: #32144e;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.3s, transform 0.2s;
+    width: 100%;
+    max-width: 260px;
+    box-shadow: 0 0 12px rgba(126, 77, 242, 0.3);
+  }
 }
-}
-
-
 
 .btn:hover {
   background-color: #32144e;

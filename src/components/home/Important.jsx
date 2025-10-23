@@ -9,11 +9,9 @@ import info from "../../assets/info.svg";
 export default function Important() {
   const [indice, setIndice] = useState(0);
 
-  const movieList = obtenerPeliculasOSerieLS("Serie") || [];
+  const movieList = obtenerPeliculasOSerieLS("Serie");
 
   const topFive = movieList.slice(0, 6);
-
-  const { nombre, url, descripcion, id } = topFive[indice];
 
   useEffect(() => {
     const reset = setTimeout(() => {
@@ -29,37 +27,44 @@ export default function Important() {
       reset(reset);
     }
   }, [indice]);
-  return (
-    <>
-      <div className="content-important">
-        <div className="btn-prev"></div>
-        <NavLink
-          to={`/pelicula/${id}`}
-          className="card-important-home"
-          key={id}
-        >
-          <div className="card-important_img">
-            <img src={url} alt={nombre} />
-            <div className="card-important_details">
-              <div className="card-important_details-title">
-                <p>{nombre}</p>
-              </div>
-              <div className="card-important_details-desc">
-                <p>{descripcion}</p>
-              </div>
 
-              <div className="card-important_details-buttons">
-                <button>
-                  <img src={info} alt="" />
-                  Mas info
-                </button>
+  const { id, nombre, descripcion, url } = topFive[indice];
+
+  if (topFive === null) {
+    return <></>;
+  } else {
+    return (
+      <>
+        <div className="content-important">
+          <div className="btn-prev"></div>
+
+          <NavLink
+            to={`/pelicula/${id}`}
+            className="card-important-home"
+            key={id}
+          >
+            <div className="card-important_img">
+              <img src={url} alt={nombre} />
+              <div className="card-important_details">
+                <div className="card-important_details-title">
+                  <p>{nombre}</p>
+                </div>
+                <div className="card-important_details-desc">
+                  <p>{descripcion}</p>
+                </div>
+                <div className="card-important_details-buttons">
+                  <button type="button">
+                    <img src={info} alt="" />
+                    Mas info
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </NavLink>
+          </NavLink>
 
-        <div className="btn-next"></div>
-      </div>{" "}
-    </>
-  );
+          <div className="btn-next"></div>
+        </div>
+      </>
+    );
+  }
 }
