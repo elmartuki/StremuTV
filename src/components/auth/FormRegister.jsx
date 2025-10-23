@@ -71,7 +71,7 @@ export default function FormRegister() {
       setPassword("");
       setRepeatPassword("");
 
-      setTimeout(() => navigate("/login"), 5000);
+      setTimeout(() => navigate("/termsuse"), 3000);
     }
   }
 

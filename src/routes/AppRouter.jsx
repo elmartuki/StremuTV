@@ -14,6 +14,7 @@ import AccountPerfil from "../components/account/AccountPerfil.jsx";
 import AccountModal from "../components/account/AccountConfig.jsx";
 import InitPage from "../pages/InitPage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
+import TermUse from "../pages/TermUsePage.jsx";
 
 export default function AppRouter() {
   return (
@@ -51,6 +52,14 @@ export default function AppRouter() {
           element={
             <>
               <LoginPage />
+            </>
+          }
+        />
+        <Route
+          path="/termsuse"
+          element={
+            <>
+              <TermUse />
             </>
           }
         />
