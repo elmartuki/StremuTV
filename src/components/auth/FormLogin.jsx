@@ -47,6 +47,8 @@ export default function FormLogin() {
         u.correo === datosIngresados.usuarioCorreo
     );
 
+    console.log(notExits);
+
     if (notExits) {
     } else {
       setAlertText("La cuenta que ingresaste no existe.");

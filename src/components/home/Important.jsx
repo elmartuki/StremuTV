@@ -27,10 +27,15 @@ export default function Important() {
       reset(reset);
     }
   }, [indice]);
+  console.log("TopFive: ", topFive);
 
-  const { id, nombre, descripcion, url } = topFive[indice];
+  let id, nombre, descripcion, url;
 
-  if (topFive === null) {
+  if (topFive && topFive.length > 0 && topFive[indice]) {
+    ({ id, nombre, descripcion, url } = topFive[indice]);
+  }
+
+  if (!topFive || topFive.length === 0) {
     return <></>;
   } else {
     return (
@@ -38,11 +43,7 @@ export default function Important() {
         <div className="content-important">
           <div className="btn-prev"></div>
 
-          <NavLink
-            to={`/pelicula/${id}`}
-            className="card-important-home"
-            key={id}
-          >
+          <NavLink to={`/pelicula/${id}`} className="card-important-home">
             <div className="card-important_img">
               <img src={url} alt={nombre} />
               <div className="card-important_details">
