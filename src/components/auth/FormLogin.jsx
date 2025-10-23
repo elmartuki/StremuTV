@@ -41,6 +41,20 @@ export default function FormLogin() {
       password: password,
     };
 
+    const notExits = listadoUsuarios.some(
+      (u) =>
+        u.usuario === datosIngresados.usuarioCorreo ||
+        u.correo === datosIngresados.usuarioCorreo
+    );
+
+    if (notExits) {
+    } else {
+      setAlertText("La cuenta que ingresaste no existe.");
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 5000);
+      return;
+    }
+
     const usuarioValid = listadoUsuarios.find(
       (u) =>
         u.usuario === datosIngresados.usuarioCorreo ||
