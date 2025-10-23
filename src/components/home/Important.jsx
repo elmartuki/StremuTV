@@ -13,8 +13,6 @@ export default function Important() {
 
   const topFive = movieList.slice(0, 6);
 
-  const { nombre, url, descripcion, id } = topFive[indice];
-
   useEffect(() => {
     const reset = setTimeout(() => {
       if (indice < 4) {
@@ -29,37 +27,42 @@ export default function Important() {
       reset(reset);
     }
   }, [indice]);
-  return (
-    <>
-      <div className="content-important">
-        <div className="btn-prev"></div>
-        <NavLink
-          to={`/pelicula/${id}`}
-          className="card-important-home"
-          key={id}
-        >
-          <div className="card-important_img">
-            <img src={url} alt={nombre} />
-            <div className="card-important_details">
-              <div className="card-important_details-title">
-                <p>{nombre}</p>
-              </div>
-              <div className="card-important_details-desc">
-                <p>{descripcion}</p>
-              </div>
 
-              <div className="card-important_details-buttons">
-                <button>
-                  <img src={info} alt="" />
-                  Mas info
-                </button>
+  if (topFive === null) {
+    return (
+      <>
+        <div className="content-important">
+          <div className="btn-prev"></div>
+          <NavLink
+            to={`/pelicula/${id}`}
+            className="card-important-home"
+            key={id}
+          >
+            <div className="card-important_img">
+              <img src={url} alt={nombre} />
+              <div className="card-important_details">
+                <div className="card-important_details-title">
+                  <p>{nombre}</p>
+                </div>
+                <div className="card-important_details-desc">
+                  <p>{descripcion}</p>
+                </div>
+
+                <div className="card-important_details-buttons">
+                  <button>
+                    <img src={info} alt="" />
+                    Mas info
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </NavLink>
+          </NavLink>
 
-        <div className="btn-next"></div>
-      </div>{" "}
-    </>
-  );
+          <div className="btn-next"></div>
+        </div>{" "}
+      </>
+    );
+  } else {
+    return <></>;
+  }
 }

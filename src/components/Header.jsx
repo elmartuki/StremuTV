@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import searchImg from "../assets/search.svg";
 import usserImg from "../assets/usser.svg";
 import FilterSearch from "./filters/FilterSearch.jsx";
-import LoginModal from "./login/LoginModal.jsx";
 import { obtenerDelLocalStorage } from "../utils/localStorage.js";
 import AccountModal from "./account/AccountConfig.jsx";
 import { NavLink, useNavigate } from "react-router-dom";

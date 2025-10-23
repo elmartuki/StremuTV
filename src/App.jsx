@@ -24,6 +24,8 @@ import "./css/initPage.css";
 import "./css/login.css";
 import "./css/aboutPage.css";
 import "./css/crudFilter.css";
+import "./css/alertMessage.css";
+
 import { useEffect, useState } from "react";
 import { movieSerieFullList } from "./db/MovieSerie.js";
 import { guardarEnLocalStorage } from "./utils/localStorage.js";

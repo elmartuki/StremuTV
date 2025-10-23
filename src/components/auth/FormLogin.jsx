@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import {
   guardarEnLocalStorage,
-  guardarEnSessionStorage,
   obtenerDelLocalStorage,
-  obtenerDelSessionStorage,
 } from "../../utils/localStorage";
 import { NavLink, useNavigate } from "react-router-dom";
 import show from "../../assets/passwordOn.svg";
@@ -11,6 +9,8 @@ import hide from "../../assets/passwordOff.svg";
 import usser from "../../assets/usser-white.svg";
 import lock from "../../assets/lock.svg";
 import back from "../../assets/back.svg";
+import AlertConfirm from "../alerts/AlertConfirm";
+import AlertModal from "../alerts/AlertModal";
 
 export default function FormLogin() {
   const listadoUsuarios = obtenerDelLocalStorage("usuarios") || [];
@@ -21,6 +21,9 @@ export default function FormLogin() {
   const [password, setPassword] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [alertText, setAlertText] = useState("");
 
   function handleShow() {
     setShowPassword(true);
@@ -45,24 +48,36 @@ export default function FormLogin() {
     );
 
     if (!usuarioValid) {
-      setShowMessage(true);
-
-      setTimeout(() => {
-        setShowMessage(false);
-      }, 5000);
+      setAlertText(
+        "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
+      );
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 5000);
     } else if (usuarioValid.password !== datosIngresados.password) {
       setShowMessage(true);
+      setAlertText(
+        "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
+      );
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 5000);
 
       setTimeout(() => {
         setShowMessage(false);
       }, 5000);
     } else {
-      navigate("/home");
+      setAlertText("Ingresaste correctamente.");
+      setShowConfirm(true);
+      setTimeout(() => setShowConfirm(false), 5000);
+
+      setTimeout(() => navigate("/home"), 5000);
+
       guardarEnLocalStorage("UsserKey", usuarioValid);
     }
   }
   return (
     <>
+      <AlertModal alertText={alertText} showAlert={showAlert} />
+      <AlertConfirm alertText={alertText} showConfirm={showConfirm} />
       <div className="form-login-back">
         <button onClick={() => navigate(-1)}>
           <img src={back} alt="" />
@@ -87,14 +102,6 @@ export default function FormLogin() {
                 />
               </div>
             </div>
-
-            {showMessage ? (
-              <>
-                <p>Pusiste mal un dato</p>
-              </>
-            ) : (
-              <></>
-            )}
 
             <div>
               <p>Contraseña</p>

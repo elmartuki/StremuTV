@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import close from "../../assets/close.svg";
 import ModalConfirmar from "./ModalConfirmar";
+import { agregarAlLocalStorage, guardarEnLocalStorage } from "../../utils/localStorage";
 
 export default function Favoritos({ onUpdateList, favoritos }) {
   const [listFavoritos, setListFavoritos] = useState([]);
@@ -19,7 +20,7 @@ export default function Favoritos({ onUpdateList, favoritos }) {
     });
 
     setListFavoritos(filteredList);
-    localStorage.setItem("favoritos", JSON.stringify(filteredList));
+    guardarEnLocalStorage("favoritos", filteredList);
 
     if (onUpdateList) onUpdateList();
 
