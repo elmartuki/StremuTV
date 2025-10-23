@@ -7,7 +7,6 @@ export default function ErrorModal({ nombre }) {
         <img src={warning} alt="" />
         <p>{nombre} se eliminó de favoritos.</p>
       </div>
-      ;
     </section>
   );
 }

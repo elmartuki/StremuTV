@@ -108,7 +108,7 @@ export default function FormLogin() {
               <div className="inputs">
                 <img src={lock} alt="" />
                 <input
-                  type={showPassword ? "password" : "text"}
+                  type={showPassword ? "text" : "password"}
                   onChange={(event) => {
                     setPassword(event.target.value);
                   }}

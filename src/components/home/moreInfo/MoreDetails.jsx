@@ -154,9 +154,12 @@ export default function MoreDetails() {
             {showVideo ? (
               <>
                 <div className="preview_buttons">
-                  <div>
-                    <button onClick={handleFav}>
-                      <img src={fav} alt="" />
+                  <div className="fav-buttons">
+                    <button
+                      className={active ? "fav-active" : "fav-disabled"}
+                      onClick={handleFav}
+                    >
+                      <img className="fav" src={fav} alt="" />
                       Favoritos
                     </button>
 

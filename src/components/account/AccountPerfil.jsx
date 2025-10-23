@@ -40,7 +40,7 @@ export default function AccountPerfil() {
     } else {
       if (editPhoto === "" && usserName === "") {
         setShowModal(true);
-        setMessage("No se modifico nada");
+        setMessage("Guardado sin cambios.");
         setTimeout(() => setShowModal(false), 5000);
       } else {
         if (editPhoto === "") {
