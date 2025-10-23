@@ -6,7 +6,6 @@ import fav from "../../../assets/favorite.svg";
 import { repartoCompleto } from "../../../db/Reparto";
 import { useNavigate, useParams } from "react-router-dom";
 import {
-  agregarAlLocalStorage,
   filtrarYMostrar,
   guardarEnLocalStorage,
   obtenerDelLocalStorage,
@@ -54,7 +53,11 @@ export default function MoreDetails() {
     return Number(buscar.id) === Number(id);
   });
 
-  const { url, video, nombre, genero, descripcion, fecha } = articulo;
+  let url, video, nombre, genero, descripcion, fecha;
+
+  if (articulo) {
+    ({ url, video, nombre, genero, descripcion, fecha } = articulo);
+  }
 
   function handleFav() {
     let thisExist = false;
@@ -223,11 +226,11 @@ export default function MoreDetails() {
             <div className="preview_reparto">
               <p>Reparto Principal</p>
               <div>
-                {repatoFullRandom.map((reparto, key) => {
+                {repatoFullRandom.map((reparto) => {
                   const { nombre, url_img } = reparto;
                   return (
                     <>
-                      <div key={key} className="preview_reparto-card">
+                      <div className="preview_reparto-card">
                         <div className="preview_reparto-card_img">
                           <img src={url_img} alt="" />
                         </div>
