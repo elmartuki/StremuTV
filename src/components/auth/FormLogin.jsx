@@ -121,7 +121,7 @@ export default function FormLogin() {
             <button type="submit">Iniciar Sesion</button>
 
             <div className="help-login">
-              <NavLink to="/" className="password">
+              <NavLink to="/password/:id" className="password">
                 ¿Olvidaste tu contraseña?
               </NavLink>
               <p>

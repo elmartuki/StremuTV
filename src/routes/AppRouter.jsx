@@ -14,6 +14,8 @@ import AccountPerfil from "../components/account/AccountPerfil.jsx";
 import AccountModal from "../components/account/AccountConfig.jsx";
 import InitPage from "../pages/InitPage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
+import RecoverPasswordPage from "../pages/RecoverPasswordPage.jsx";
+import RecoverSection from "../components/password_recover/RecoverSection.jsx";
 
 export default function AppRouter() {
   return (
@@ -105,6 +107,12 @@ export default function AppRouter() {
           }
         />
 
+        <Route path="/password/:id" element={
+          <><RecoverPasswordPage /></>
+        }/>
+        <Route path="/recover-section/:id" element={
+          <><RecoverSection /></>
+        }/>
         <Route
           path="/series/:id"
           element={
