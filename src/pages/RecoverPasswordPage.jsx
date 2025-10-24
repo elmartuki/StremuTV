@@ -1,5 +1,5 @@
 import React from "react";
-import Password from "../components/password_recover/password";
+import Password from "../components/passwordrecover/password";
 
 export default function RecoverPasswordPage() {
   return (
