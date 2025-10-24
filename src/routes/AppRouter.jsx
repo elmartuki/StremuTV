@@ -14,6 +14,7 @@ import AccountPerfil from "../components/account/AccountPerfil.jsx";
 import AccountModal from "../components/account/AccountConfig.jsx";
 import InitPage from "../pages/InitPage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
+import PricingPlans from "../pages/PricingPlans.jsx";
 
 export default function AppRouter() {
   return (
@@ -198,7 +199,15 @@ export default function AppRouter() {
             </>
           }
         />
-
+        <Route
+          path="/subscripciones"
+          element={
+            <>
+              <PricingPlans />
+              <Footer />
+            </>
+          }
+        />
         <Route path="*" element={<Error404Page />} />
       </Routes>
     </>
