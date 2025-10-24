@@ -6,8 +6,9 @@
   height: 100vh;
   z-index: 103;
   position: fixed;
-  bottom: 55px;
-  right: 5px;
+  bottom: 60px;
+  right: 0;
+  pointer-events: none;
   animation: addFavMessage 5s ease-in-out 1;
 
   .message {
@@ -22,7 +23,6 @@
     margin-bottom: 8px;
     gap: 10px;
     color: rgba(255, 255, 255, 0.808);
-    
 
     .message_img {
       text-align: center;

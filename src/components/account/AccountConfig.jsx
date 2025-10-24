@@ -8,12 +8,13 @@ import contacto from "../../assets/contact.svg";
 import sessionIcon from "../../assets/logout.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {
-  obtenerDelLocalStorage,
-} from "../../utils/localStorage";
+import { obtenerDelLocalStorage } from "../../utils/localStorage";
+import AlertConfirm from "../alerts/AlertConfirm";
 
 export default function AccountConfig({ closeConfig }) {
   const [FavCount, setFavCount] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
+  const [message, showMessage] = useState("");
 
   const usuario = obtenerDelLocalStorage("UsserKey");
 

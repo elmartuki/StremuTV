@@ -7,6 +7,8 @@ import { repartoCompleto } from "../../../db/Reparto";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   filtrarYMostrar,
+  guardarEnLocalStorage,
+  obtenerDelLocalStorage,
   obtenerPeliculasOSerieLS,
 } from "../../../utils/localStorage";
 import { useEffect, useState } from "react";
@@ -20,6 +22,8 @@ export default function MoreDetails() {
   const [confirmModal, setConfirmModal] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+  const [active, setActive] = useState(false);
+  const [listFavoritos, setListFavoritos] = useState([]);
 
   const { id } = useParams();
 
@@ -46,38 +50,45 @@ export default function MoreDetails() {
   ];
 
   const articulo = catalogoCompleto.find((buscar) => {
-    return String(buscar.id) === String(id);
+    return Number(buscar.id) === Number(id);
   });
 
-  const { url, video, nombre, genero, descripcion, fecha } = articulo;
+  let url, video, nombre, genero, descripcion, fecha;
+
+  if (articulo) {
+    ({ url, video, nombre, genero, descripcion, fecha } = articulo);
+  }
 
   function handleFav() {
-    setTimeout(() => {
-      setConfirmModal(false);
-    }, 5000);
+    let thisExist = false;
 
-    const favoritos = JSON.parse(localStorage.getItem("favoritos") || "[]");
-
-    let existe = false;
-
-    favoritos.forEach((favorito) => {
-      if (favorito.id === articulo.id) {
-        existe = true;
+    const favoritos = obtenerDelLocalStorage("favoritos") || [];
+    favoritos.filter((item) => {
+      if (Number(item.id) === Number(articulo.id)) {
+        thisExist = true;
       }
     });
 
-    if (existe) {
-      setConfirmModal(false);
+    if (thisExist) {
+      const nuevos = favoritos.filter(
+        (item) => Number(item.id) !== Number(articulo.id)
+      );
+      guardarEnLocalStorage("favoritos", nuevos);
+      setActive(false);
       setShowError(true);
-
-      setTimeout(() => {
-        setShowError(false);
-      }, 5000);
+      setConfirmModal(false);
     } else {
+      const nuevos = [...favoritos, articulo];
+      guardarEnLocalStorage("favoritos", nuevos);
+      setActive(true);
+      setShowError(false);
       setConfirmModal(true);
-      favoritos.push(articulo);
-      localStorage.setItem("favoritos", JSON.stringify(favoritos));
     }
+
+    setTimeout(() => {
+      setConfirmModal(false);
+      setShowError(false);
+    }, 5000);
   }
 
   function closeMessage() {
@@ -146,13 +157,17 @@ export default function MoreDetails() {
             {showVideo ? (
               <>
                 <div className="preview_buttons">
-                  <div>
-                    <button onClick={handleFav}>
-                      <img src={fav} alt="" />
+                  <div className="fav-buttons">
+                    <button
+                      className={active ? "fav-active" : "fav-disabled"}
+                      onClick={handleFav}
+                    >
+                      <img className="fav" src={fav} alt="" />
                       Favoritos
                     </button>
+
                     <button>
-                      <img src={compartir} alt="" />
+                      <img className="filter-invert" src={compartir} alt="" />
                       Compartir
                     </button>
                   </div>
@@ -178,16 +193,24 @@ export default function MoreDetails() {
                 </div>
                 <div className="preview_buttons">
                   <button>
-                    <img onClick={handlePlay} src={play} alt="" />
+                    <img
+                      className="filter-invert"
+                      onClick={handlePlay}
+                      src={play}
+                      alt=""
+                    />
                     Ver trailer
                   </button>
-                  <div>
-                    <button onClick={handleFav}>
-                      <img src={fav} alt="" />
+                  <div className="fav-buttons">
+                    <button
+                      className={active ? "fav-active" : "fav-disabled"}
+                      onClick={handleFav}
+                    >
+                      <img className="fav" src={fav} alt="" />
                       Favoritos
                     </button>
                     <button>
-                      <img src={compartir} alt="" />
+                      <img className="filter-invert" src={compartir} alt="" />
                       Compartir
                     </button>
                   </div>
@@ -203,11 +226,11 @@ export default function MoreDetails() {
             <div className="preview_reparto">
               <p>Reparto Principal</p>
               <div>
-                {repatoFullRandom.map((reparto, key) => {
+                {repatoFullRandom.map((reparto) => {
                   const { nombre, url_img } = reparto;
                   return (
                     <>
-                      <div key={key} className="preview_reparto-card">
+                      <div className="preview_reparto-card">
                         <div className="preview_reparto-card_img">
                           <img src={url_img} alt="" />
                         </div>

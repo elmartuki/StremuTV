@@ -47,6 +47,8 @@
         padding: 18px;
         width: 70px;
         border-radius: 100px;
+        object-fit: cover;
+        height: 70px;
       }
     }
   }
