@@ -5,7 +5,7 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { obtenerDelLocalStorage } from "../../utils/localStorage";
 
-export default function Password() {
+export default function Passwords() {
   const [usuarioCorreo, setUsuarioCorreo] = useState("");
   const [messagePass, setMessagePass] = useState(null);
 

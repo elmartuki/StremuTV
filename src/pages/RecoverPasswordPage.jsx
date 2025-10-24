@@ -1,10 +1,10 @@
 import React from "react";
-import Password from "../components/passwordrecover/password";
+import Passwords from "../components/passwordrecover/Passwords";
 
 export default function RecoverPasswordPage() {
   return (
     <section className="section-password">
-      <Password />;
+      <Passwords />;
     </section>
   );
 }
