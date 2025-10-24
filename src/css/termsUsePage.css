@@ -1,0 +1,148 @@
+.termuse-container {
+    min-height: 100vh;
+    background-color: #141414;
+    color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    font-family: "Arial", sans-serif;
+    line-height: 1.8;
+}
+
+.termuse-card {
+    background-color: #1f1f1f;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 0 20px rgba(60, 24, 93, 0.3);
+}
+
+.termuse-title {
+    color: #3c185d;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.termuse-content {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.termuse-content h2 {
+    color: #3c185d;
+    margin-top: 25px;
+}
+
+.termuse-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.termuse-content::-webkit-scrollbar-thumb {
+    background-color: #3c185d;
+    border-radius: 10px;
+}
+
+.termuse-progress {
+    height: 8px;
+    background-color: #3c185d33;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.termuse-progress-bar {
+    height: 8px;
+    background-color: #3c185d;
+    transition: width 0.2s ease-in-out;
+}
+
+.termuse-accept {
+    margin-bottom: 20px;
+}
+
+.termuse-accept input {
+    margin-right: 8px;
+    accent-color: #3c185d;
+    cursor: pointer;
+}
+
+.termuse-button {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px 0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #3c185d66;
+    color: #fff;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+}
+
+.termuse-button.active {
+    background-color: #3c185d;
+    cursor: pointer;
+}
+
+.termuse-button.active:hover {
+    background-color: #53257a;
+    transform: scale(1.02);
+}
+
+.termuse-hint {
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.termuse-update {
+    color: #aaa;
+    font-style: italic;
+    margin-top: 30px;
+}
+
+.termuse-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    opacity: 0;
+    animation: fadeInOut 2.5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+    }
+
+    15% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -10px);
+    }
+}

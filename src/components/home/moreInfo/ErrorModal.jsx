@@ -5,9 +5,8 @@ export default function ErrorModal({ nombre }) {
     <section className="errorModal-background">
       <div className="errorModal">
         <img src={warning} alt="" />
-        <p>{nombre} ya esta agregado</p>
+        <p>{nombre} se eliminó de favoritos.</p>
       </div>
-      ;
     </section>
   );
 }

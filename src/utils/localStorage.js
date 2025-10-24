@@ -8,13 +8,12 @@ export function guardarEnLocalStorage(key, datos) {
 export function obtenerDelLocalStorage(key) {
   const datos = localStorage.getItem(key);
   return datos ? JSON.parse(datos) : [];
-  // return JSON.parse(datos) || []
 }
 
 export function agregarListado(key) {
   const checkear = obtenerDelLocalStorage(key);
 
-  if (checkear.length === 0) {
+  if (checkear?.length === null) {
     guardarEnLocalStorage(key, movieSerieFullList);
   }
 }
@@ -36,7 +35,7 @@ export function obtenerDelSessionStorage(key) {
 }
 
 export function obtenerPeliculasOSerieLS(tipo) {
-  const peliculasLocalStorage = obtenerDelLocalStorage("MoviesSeries") || [];
+  const peliculasLocalStorage = obtenerDelLocalStorage("MoviesSeries" || []);
 
   const filterMovies = peliculasLocalStorage.filter((movie) => {
     return movie.tipo === tipo;
@@ -48,9 +47,9 @@ export function obtenerPeliculasOSerieLS(tipo) {
 export function filtrarYMostrar(genero) {
   const peliculasLocalStorage = obtenerDelLocalStorage("MoviesSeries");
 
-  const filterMovies = peliculasLocalStorage.filter((movie) => {
-    return movie.genero === genero;
-  });
+  const filterMovies = peliculasLocalStorage.filter(
+    (movie) => movie.genero === genero
+  );
 
   return filterMovies;
 }
