@@ -23,7 +23,7 @@ import "./css/editPerfil.css";
 import "./css/initPage.css";
 import "./css/login.css";
 import "./css/aboutPage.css";
-import "./css/passwordRecover.css";
+import "./css/RecoverPasswordPage.css";
 import "./css/crudFilter.css";
 import "./css/alertMessage.css";
 

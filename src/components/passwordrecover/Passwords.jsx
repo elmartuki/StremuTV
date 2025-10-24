@@ -1,6 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { obtenerDelLocalStorage } from "../../utils/localStorage";
 import { useState } from "react";
+import backPassword from "../../assets/passwordRecover.svg";
 
 export default function Passwords() {
   const [usuarioCorreo, setUsuarioCorreo] = useState("");
@@ -13,7 +14,7 @@ export default function Passwords() {
     const usuario = usuarios.find((u) => u.correo === usuarioCorreo);
 
     if (!usuario) {
-      alert("❌ Correo inexistente");
+      alert("Correo inexistente");
       return;
     }
 
@@ -21,12 +22,12 @@ export default function Passwords() {
 
     emailjs
       .send(
-        "service_cj4ecar",    
-        "template_bpv9zif",   
+        "service_cj4ecar",
+        "template_bpv9zif",
         {
           user_email: usuarioCorreo,
           message: "Solicitud de restablecimiento de contraseña",
-          reset_link: resetLink, 
+          reset_link: resetLink,
         },
         "AOCYzaxwB2mV7irZ0"
       )
@@ -44,16 +45,54 @@ export default function Passwords() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Recuperar contraseña</h2>
-      <input
-        type="email"
-        value={usuarioCorreo}
-        onChange={(e) => setUsuarioCorreo(e.target.value)}
-        placeholder="tu@email.com"
-      />
-      <button type="submit">Enviar correo</button>
-      {messagePass && <p>{messagePass.msg}</p>}
-    </form>
+    <>
+      <form onSubmit={handleSubmit} className="form-password">
+        <div className="img">
+          <img src={backPassword} alt="password" />
+        </div>
+
+        <h2 className="title-password">Recuperar contraseña</h2>
+
+        <div className="input-password">
+          <input
+            type="email"
+            value={usuarioCorreo}
+            onChange={(e) => setUsuarioCorreo(e.target.value)}
+            placeholder="tu@email.com"
+            required
+          />
+        </div>
+
+        <div className="button">
+          <button type="submit">Enviar correo</button>
+        </div>
+
+        {/* 👇 Esta es la parte nueva (opción 2) */}
+        {messagePass && (
+          <div style={{ textAlign: "center", marginTop: "15px" }}>
+            {messagePass.ok ? (
+              <p style={{ color: "limegreen" }}>
+                {messagePass.msg}
+                <br />
+                <a
+                  href="https://mail.google.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: "#8a2be2",
+                    fontWeight: "600",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Abrir Gmail
+                </a>
+              </p>
+            ) : (
+              <p style={{ color: "red" }}>{messagePass.msg}</p>
+            )}
+          </div>
+        )}
+      </form>
+    </>
   );
 }
