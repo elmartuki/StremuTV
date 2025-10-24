@@ -25,6 +25,7 @@ import "./css/login.css";
 import "./css/aboutPage.css";
 import "./css/crudFilter.css";
 import "./css/alertMessage.css";
+import "./css/PricingPlans.css";
 
 import { useEffect, useState } from "react";
 import { movieSerieFullList } from "./db/MovieSerie.js";
