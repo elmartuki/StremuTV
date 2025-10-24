@@ -24,7 +24,7 @@ export default function RecoverSection() {
     usuario.password = contraseña;
     localStorage.setItem("usuarios", JSON.stringify([usuario]));
 
-    alert("✅ Contraseña nueva guardada con éxito");
+    console.log("✅ Contraseña nueva guardada con éxito");
     setTimeout(() => {
       window.location.href =
         "https://trabajo-jygdvrifg-elmartukis-projects.vercel.app/login";
