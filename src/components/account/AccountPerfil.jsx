@@ -152,11 +152,13 @@ export default function AccountPerfil() {
                 minLength="2"
                 maxLength="15"
                 type="text"
+                pattern="^[A-Za-z0-9_]+$"
                 placeholder="Ingrese su nuevo usuario"
               />
               <input
                 onChange={(event) => setEditPhoto(event.target.value)}
                 type="text"
+                maxLength="300"
                 placeholder="Ingrese su nueva foto de perfil (URL)"
               />
 
