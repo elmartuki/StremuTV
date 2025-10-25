@@ -31,6 +31,8 @@ export default function AccountConfig({ closeConfig }) {
     setFavCount(listaFavoritos.length);
   }, [FavCount]);
 
+  console.log();
+
   return (
     <>
       <section className="account-config-section">
@@ -43,23 +45,25 @@ export default function AccountConfig({ closeConfig }) {
           </div>
 
           <div className="account-config_perfil">
-            <div>
-              <img src={usuario.perfil} alt="" />
+            <div className="account-config_perfil-account">
+              <div>
+                <img src={usuario.perfil} alt="" />
+              </div>
+
+              <div>
+                <p>{usuario.usuario}</p>
+                <p>{usuario.correo}</p>
+              </div>
             </div>
 
-            <div>
-              <p>{usuario.usuario}</p>
-              <p>{usuario.correo}</p>
+            <div className="account-config_buttons">
+              <NavLink to="/perfil/edit-perfil">
+                <button>
+                  <img src={edit} alt="" />
+                  Editar perfil
+                </button>
+              </NavLink>
             </div>
-          </div>
-
-          <div className="account-config_buttons">
-            <NavLink to="/perfil/edit-perfil">
-              <button>
-                <img src={edit} alt="" />
-                Editar perfil
-              </button>
-            </NavLink>
           </div>
 
           <div className="account-config_list">
@@ -78,13 +82,12 @@ export default function AccountConfig({ closeConfig }) {
 
             <button>
               <img src={addIcon} alt="" />
-              Crear una nueva lista
+              Crear una nueva lista.
             </button>
           </div>
 
-          <p>Suscripcion</p>
-
           <div className="account-config_sub">
+            <p>Suscripcion</p>
             <article className="suscripcion">
               <div>
                 <p>Plan Premiun</p>

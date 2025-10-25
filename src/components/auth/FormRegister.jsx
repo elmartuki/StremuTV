@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   agregarAlLocalStorage,
   obtenerDelLocalStorage,
+  obtenerPeliculasOSerieLS,
 } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 import personAdd from "../../assets/personAdd.svg";
@@ -75,6 +76,34 @@ export default function FormRegister() {
     }
   }
 
+  const [indice, setIndice] = useState(0);
+
+  const movieList = obtenerPeliculasOSerieLS("Serie");
+
+  const topFive = movieList.slice(30, 60);
+
+  useEffect(() => {
+    const reset = setTimeout(() => {
+      if (indice < 4) {
+        setIndice(indice + 1);
+      } else if (indice > 0) {
+        setIndice(0);
+        clearInterval();
+      }
+    }, 8000);
+
+    if (indice.lenght === 0) {
+      reset(reset);
+    }
+  }, [indice]);
+  console.log("TopFive: ", topFive);
+
+  let url;
+
+  if (topFive && topFive.length > 0 && topFive[indice]) {
+    ({ url } = topFive[indice]);
+  }
+
   return (
     <>
       <AlertModal showAlert={showAlert} alertText={alertText} />
@@ -87,6 +116,10 @@ export default function FormRegister() {
       </div>
 
       <section className="form-login-section">
+        <article className="form-login-bg">
+          <img src={url} alt="" />
+        </article>
+
         <article>
           <div className="form-login-topbar">
             {perfil ? (

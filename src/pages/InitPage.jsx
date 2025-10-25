@@ -29,7 +29,7 @@ export default function InitPage() {
 
   const movieList = obtenerDelLocalStorage("MoviesSeries");
 
-  const tendencias = movieList.slice(0, 5);
+  const tendencias = movieList.slice(29, 34);
 
   return (
     <main className="container">

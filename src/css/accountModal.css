@@ -47,6 +47,16 @@
     align-items: center;
     color: rgba(255, 255, 255, 0.884);
     gap: 10px;
+    width: 100%;
+    flex-direction: column;
+    align-items: baseline;
+
+    .account-config_perfil-account {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
     div:nth-child(1) {
       img {
         width: 60px;
@@ -61,6 +71,12 @@
     display: flex;
     justify-content: center;
     width: 100%;
+
+    transition: 0.5s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
     button {
       width: 90vw;
       border-radius: 8px;
@@ -91,6 +107,14 @@
       background-color: transparent;
       border: none;
       color: rgba(255, 255, 255, 0.884);
+      border-radius: 8px;
+      transition: 0.5s;
+
+      &:hover {
+        transform: scale(1.02);
+        padding: 0px 15px;
+        background-color: #262626;
+      }
 
       div {
         display: flex;
@@ -113,6 +137,12 @@
       padding: 10px 10px;
       border-radius: 8px;
       gap: 5px;
+
+      transition: 0.5s;
+
+      &:hover {
+        transform: scale(1.03);
+      }
 
       img {
         filter: invert();
@@ -150,6 +180,12 @@
           border: none;
           color: white;
         }
+
+        transition: 0.5s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
   }
@@ -171,6 +207,14 @@
         opacity: 80%;
         gap: 10px;
         justify-content: space-between;
+        border-radius: 8px;
+        transition: 0.5s;
+
+        &:hover {
+          transform: scale(1.02);
+          padding: 10px 15px;
+          background-color: #262626;
+        }
 
         img {
           display: flex;
@@ -204,4 +248,58 @@
 
 .white {
   filter: invert();
+}
+
+@media (min-width: 1024px) {
+  .account-config-section {
+    overflow-y: auto;
+  }
+
+  .account-config {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .account-config_perfil {
+      width: 40%;
+      background-color: #202020;
+      padding: 20px;
+      border-radius: 8px;
+      justify-content: center;
+
+      .account-config_buttons {
+        width: 100%;
+        align-items: center;
+        height: fit-content;
+        button {
+          width: 30vw;
+        }
+      }
+    }
+
+    .account-config_list {
+      width: 55%;
+      background-color: #202020;
+      border-radius: 8px;
+      padding: 20px;
+      height: fit-content;
+    }
+
+    .account-config_sub {
+      width: 40%;
+      background-color: #202020;
+      border-radius: 8px;
+      padding: 20px;
+      height: fit-content;
+    }
+
+    .account-config_config {
+      width: 55%;
+      background-color: #202020;
+      border-radius: 8px;
+      padding: 20px;
+      height: fit-content;
+    }
+  }
 }

@@ -4,7 +4,7 @@ import usserImg from "../assets/usser.svg";
 import FilterSearch from "./filters/FilterSearch.jsx";
 import { obtenerDelLocalStorage } from "../utils/localStorage.js";
 import AccountModal from "./account/AccountConfig.jsx";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
@@ -53,6 +53,9 @@ export default function Header() {
     setOpenSearchModal(false);
   }
 
+  const location = useLocation();
+  const url = location.pathname;
+
   return (
     <>
       <header className="">
@@ -81,10 +84,30 @@ export default function Header() {
             )}
 
             <div className="navbar_link">
-              <a href="">Peliculas</a>
-              <a href="">Series</a>
-              <a href="">Tendencias</a>
-              <a href="">Categorias</a>
+              <Link
+                className={url === "/home" ? "navbar-activo" : ""}
+                to="/home"
+              >
+                Inicio
+              </Link>
+              <Link
+                className={url === "/movies" ? "navbar-activo" : ""}
+                to="/movies"
+              >
+                Peliculas
+              </Link>
+              <Link
+                className={url === "/series" ? "navbar-activo" : ""}
+                to="/series"
+              >
+                Series
+              </Link>
+              <Link
+                className={url === "/favoritos" ? "navbar-activo" : ""}
+                to="/favoritos"
+              >
+                Favoritos
+              </Link>
             </div>
           </div>
 

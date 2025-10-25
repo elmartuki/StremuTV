@@ -78,8 +78,14 @@
     border-radius: 8px;
     font-size: 16px;
     padding: 5px 10px;
+    border: 2px solid #391759;
+    transition: 0.5s;
+    cursor: pointer;
 
-    border: 1px solid white;
+    &:hover {
+      transform: scale(1.05);
+      background-color: #391759;
+    }
   }
 
   input[type="radio"] {
@@ -153,5 +159,42 @@
   background-color: #391759;
   img {
     filter: invert();
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-edit {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modal-edit {
+    width: 60%;
+  }
+
+  .genero-section {
+    overflow-x: hidden;
+
+    .modal-edit_buttons {
+      display: flex;
+      flex-wrap: wrap;
+
+      label {
+        border: 2px solid #32144d;
+      }
+    }
+
+    .modal-edit_inputs_buttons {
+      label {
+        border: 2px solid #32144d !important;
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .modal-edit {
+    width: 40%;
   }
 }

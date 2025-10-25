@@ -62,7 +62,7 @@
   display: flex;
   width: 100%;
   justify-self: end;
-
+  cursor: pointer;
   align-items: end;
 }
 
@@ -90,11 +90,18 @@
       padding: 0px 15px;
       border-radius: 10px;
 
+      transition: 0.5s;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
       input {
         border: none;
         padding: 8px 5px;
         background-color: #262626;
         color: white;
+        width: 100%;
 
         &:focus {
           outline: none;
@@ -123,5 +130,66 @@
       color: #8f0eff;
       font-weight: 600;
     }
+  }
+}
+
+.form-login-bg {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .form-login {
+    width: 80%;
+
+    button {
+      transition: 0.5s;
+      &:hover {
+        transform: scale(1.05);
+        background-color: #32144d;
+      }
+    }
+  }
+
+  .form-login-section {
+    flex-direction: row;
+  }
+
+  .form-login-bg {
+    display: flex;
+    width: 40%;
+
+    img {
+      width: 55%;
+      height: 100vh;
+      object-fit: cover;
+      border-radius: 8px;
+      position: relative;
+      animation: showingIMG 8s ease infinite;
+
+      transition: 0.5s;
+
+      &:hover {
+        width: 60%;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@keyframes showingIMG {
+  0% {
+    opacity: 0%;
+  }
+
+  25% {
+    opacity: 100%;
+  }
+
+  75% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0%;
   }
 }
