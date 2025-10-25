@@ -16,6 +16,7 @@ import InitPage from "../pages/InitPage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
 import PricingPlans from "../pages/PricingPlans.jsx";
 import TermUse from "../pages/TermUsePage.jsx";
+import UsserRoutes from "./UsserRoutes.jsx";
 
 export default function AppRouter() {
   return (
@@ -30,16 +31,6 @@ export default function AppRouter() {
           }
         />
 
-        <Route
-          path="/home"
-          element={
-            <>
-              <Header />
-              <HomePage />
-              <Footer />
-            </>
-          }
-        />
         <Route
           path="/registro"
           element={
@@ -74,130 +65,6 @@ export default function AppRouter() {
             </>
           }
         />
-        <Route
-          path="/movies"
-          element={
-            <>
-              <Header />
-              <MoviesPage />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/series"
-          element={
-            <>
-              <Header />
-              <SeriesPage />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/favoritos/"
-          element={
-            <>
-              <Header />
-              <FavoritosPage />
-              <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/favoritos/:id"
-          element={
-            <>
-              <MoreDetails />
-              <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/series/:id"
-          element={
-            <>
-              <MoreDetails /> <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/pelicula/:id"
-          element={
-            <>
-              <MoreDetails /> <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/pelicula/terror/:id"
-          element={
-            <>
-              <MoreDetails /> <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/pelicula/comedia/:id"
-          element={
-            <>
-              <MoreDetails /> <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/pelicula/accion/:id"
-          element={
-            <>
-              <MoreDetails /> <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/pelicula/fantasia/:id"
-          element={
-            <>
-              <MoreDetails /> <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/pelicula/ciencia-ficcion/:id"
-          element={
-            <>
-              <MoreDetails /> <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/pelicula/drama/:id"
-          element={
-            <>
-              <MoreDetails /> <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/perfil/"
-          element={
-            <>
-              <AccountModal /> <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/perfil/edit-perfil"
-          element={
-            <>
-              <AccountPerfil />
-            </>
-          }
-        />
 
         <Route
           path="/sobre-nosotros"
@@ -209,7 +76,7 @@ export default function AppRouter() {
           }
         />
         <Route
-          path="/subscripciones"
+          path="/suscripciones"
           element={
             <>
               <PricingPlans />
@@ -217,6 +84,145 @@ export default function AppRouter() {
             </>
           }
         />
+
+        {/* RUTAS CON ACCESOS PARA LOS USUARIOS */}
+
+        <Route element={<UsserRoutes />}>
+          <Route
+            path="/home"
+            element={
+              <>
+                <Header />
+                <HomePage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/perfil/edit-perfil"
+            element={
+              <>
+                <AccountPerfil />
+              </>
+            }
+          />
+
+          <Route
+            path="/perfil/"
+            element={
+              <>
+                <AccountModal /> <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/movies"
+            element={
+              <>
+                <Header />
+                <MoviesPage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/series"
+            element={
+              <>
+                <Header />
+                <SeriesPage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/favoritos/"
+            element={
+              <>
+                <Header />
+                <FavoritosPage />
+                <Footer />
+              </>
+            }
+          />
+
+          <Route
+            path="/favoritos/:id"
+            element={
+              <>
+                <MoreDetails />
+                <Footer />
+              </>
+            }
+          />
+
+          <Route
+            path="/series/:id"
+            element={
+              <>
+                <MoreDetails /> <Footer />
+              </>
+            }
+          />
+
+          <Route
+            path="/pelicula/:id"
+            element={
+              <>
+                <MoreDetails /> <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/pelicula/terror/:id"
+            element={
+              <>
+                <MoreDetails /> <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/pelicula/comedia/:id"
+            element={
+              <>
+                <MoreDetails /> <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/pelicula/accion/:id"
+            element={
+              <>
+                <MoreDetails /> <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/pelicula/fantasia/:id"
+            element={
+              <>
+                <MoreDetails /> <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/pelicula/ciencia-ficcion/:id"
+            element={
+              <>
+                <MoreDetails /> <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/pelicula/drama/:id"
+            element={
+              <>
+                <MoreDetails /> <Footer />
+              </>
+            }
+          />
+        </Route>
+
         <Route path="*" element={<Error404Page />} />
       </Routes>
     </>

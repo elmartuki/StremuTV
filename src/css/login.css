@@ -133,8 +133,10 @@
   }
 }
 
-.form-login-bg {
-  display: none;
+.form-login-section {
+  .form-login-bg {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
@@ -152,6 +154,9 @@
 
   .form-login-section {
     flex-direction: row;
+  }
+
+  .form-login-section {
   }
 
   .form-login-bg {
@@ -191,5 +196,13 @@
 
   100% {
     opacity: 0%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .form-login-section {
+    .form-login-bg {
+      display: flex !important;
+    }
   }
 }
