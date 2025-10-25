@@ -90,11 +90,23 @@ export default function AccountConfig({ closeConfig }) {
             <p>Suscripcion</p>
             <article className="suscripcion">
               <div>
-                <p>Plan Premiun</p>
-                <p>Se renueva el 24 de nomviembre, 2024</p>
+                <p>Plan {usuario.subActiva}</p>
+                <p>{usuario.subPrecio}</p>
+                {usuario?.subVencimiento && (
+                  <p>
+                    Se renueva el{" "}
+                    {new Date(usuario.subVencimiento).toLocaleDateString("es-AR", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </p>
+                )}
               </div>
               <div>
-                <button>Gestionar</button>
+                <NavLink to="/suscripciones">
+                  <button>Gestionar</button>
+                </NavLink>
               </div>
             </article>
           </div>

@@ -1,6 +1,10 @@
 import React, { useState, useRef } from "react";
 import { TiTick } from "react-icons/ti";
-
+import back from "../assets/back.svg";
+import {
+  guardarEnLocalStorage,
+  obtenerDelLocalStorage,
+} from "../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 
 const monthlyPlans = [
@@ -221,6 +225,9 @@ export default function PlanSelector() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const usserList = obtenerDelLocalStorage("usuarios");
+    const usserKey = obtenerDelLocalStorage("UsserKey");
+
     if (!firstName) {
       alert("Ingresa Nombre (máx 12 letras).");
       return;
@@ -251,13 +258,74 @@ export default function PlanSelector() {
       `✅ Pago realizado con éxito. Gracias ${firstName} ${lastName} por elegir el plan ${selectedPlan.name}!`
     );
 
+    const changeSub = usserList.find((u) => {
+      return u.id === usserKey.id;
+    });
+
+    if (changeSub.length > 0) {
+      const asignarSub = usserList.find((u) => u.id === usserKey.id);
+
+      if (asignarSub) {
+        const ahora = new Date();
+        const vencimiento = new Date(ahora);
+        vencimiento.setDate(vencimiento.getDate() + 30);
+
+        const usuarioActualizado = {
+          ...asignarSub,
+          subActiva: selectedPlan.name,
+          subPrecio: selectedPlan.price,
+          subVencimiento: vencimiento,
+        };
+
+        const nuevaLista = usserList.map((u) =>
+          u.id === usserKey.id ? usuarioActualizado : u
+        );
+
+        guardarEnLocalStorage("usuarios", nuevaLista);
+        guardarEnLocalStorage("UsserKey", usuarioActualizado);
+      }
+
+      handleClose();
+
+      navegacion("/home");
+    } else {
+      const usuarioEncontrado = usserList.find((u) => {
+        return Number(u.id) === Number(changeSub.id);
+      });
+
+      const ahora = new Date();
+      const vencimiento = new Date(ahora);
+      vencimiento.setDate(vencimiento.getDate() + 30);
+
+      const suscripcionActualizada = {
+        ...usuarioEncontrado,
+        subActiva: selectedPlan.name,
+        subPrecio: selectedPlan.price,
+        subVencimiento: vencimiento,
+      };
+
+      const nuevaLista = usserList.map((u) =>
+        u.id === usserKey.id ? suscripcionActualizada : u
+      );
+
+      guardarEnLocalStorage("usuarios", nuevaLista);
+      guardarEnLocalStorage("UsserKey", suscripcionActualizada);
+    }
     handleClose();
 
     navegacion("/home");
   };
 
+  const navigate = useNavigate();
+
   return (
     <section className="Subsection">
+      <div className="form-login-back">
+        <button onClick={() => navigate(-1)}>
+          <img src={back} alt="" />
+          <p>Volver</p>
+        </button>
+      </div>
       <div className="plan-container">
         <h2 className="title">Elige tu Plan</h2>
 

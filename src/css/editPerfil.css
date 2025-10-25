@@ -97,6 +97,7 @@
 
 @media (min-width: 1024px) {
   .edit-perfil-section {
+    width: 100%;
     .edit-perfil {
       .edit-perfil_inputs {
         form {

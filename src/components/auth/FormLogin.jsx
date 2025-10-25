@@ -82,13 +82,33 @@ export default function FormLogin() {
         setShowMessage(false);
       }, 5000);
     } else {
-      setAlertText("Ingresaste correctamente.");
-      setShowConfirm(true);
-      setTimeout(() => setShowConfirm(false), 5000);
+      const usserList = obtenerDelLocalStorage("usuarios") || [];
 
-      setTimeout(() => navigate("/home"), 5000);
+      const usuarioActual =
+        usserList.find((u) => u.id === usuarioValid.id) || usuarioValid;
 
-      guardarEnLocalStorage("UsserKey", usuarioValid);
+      guardarEnLocalStorage("UsserKey", usuarioActual);
+
+      const accepTyc = obtenerDelLocalStorage("UsserKey");
+
+      if (accepTyc.tyc === true) {
+        if (usuarioActual.subActiva) {
+          setTimeout(() => navigate("/home"), 5000);
+          setAlertText("Ingresaste correctamente.");
+          setShowConfirm(true);
+          setTimeout(() => setShowConfirm(false), 5000);
+        } else {
+          setTimeout(() => navigate("/suscripciones"), 5000);
+          setAlertText("Ingresaste correctamente.");
+          setShowConfirm(true);
+          setTimeout(() => setShowConfirm(false), 5000);
+        }
+      } else {
+        setAlertText("No se puede ingresar porque no aceptaste los TyC.");
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 5000);
+        setTimeout(() => navigate("/"), 5000);
+      }
     }
   }
 
@@ -141,6 +161,7 @@ export default function FormLogin() {
                 <input
                   type="text"
                   value={usuarioCorreo}
+                  maxLength="25"
                   onChange={(event) => {
                     setUsuarioCorreo(event.target.value);
                   }}
@@ -160,6 +181,7 @@ export default function FormLogin() {
                   }}
                   value={password}
                   placeholder="Ingrese la contraseña"
+                  maxLength={20}
                 />
                 <div className="show-password">
                   {showPassword ? (
