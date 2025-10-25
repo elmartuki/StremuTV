@@ -43,7 +43,7 @@ export default function CreateForm({
               type="text"
               value={nombre}
               maxLength={30}
-              onChange={(e) => setNombre(e.target.value)}
+              onChange={(e) => setNombre(e.target.value).trim()}
               placeholder="Nombre"
               required
             />
@@ -171,7 +171,7 @@ export default function CreateForm({
               value={descripcion}
               maxLength={400}
               required
-              onChange={(e) => setDescripcion(e.target.value)}
+              onChange={(e) => setDescripcion(e.target.value).trim()}
             />
 
             <label htmlFor="url">Foto de portada</label>
@@ -180,7 +180,7 @@ export default function CreateForm({
               type="text"
               value={url}
               required
-              onChange={(e) => setURL(e.target.value)}
+              onChange={(e) => setURL(e.target.value).trim()}
             />
 
             <div className="modal-edit_inputs_img-previw">

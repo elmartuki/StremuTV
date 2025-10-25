@@ -148,7 +148,7 @@ export default function AccountPerfil() {
           <div className="edit-perfil_inputs">
             <form onSubmit={handleSubmit}>
               <input
-                onChange={(event) => setUssername(event.target.value)}
+                onChange={(event) => setUssername(event.target.value).trim()}
                 minLength="2"
                 maxLength="15"
                 type="text"
@@ -156,7 +156,7 @@ export default function AccountPerfil() {
                 placeholder="Ingrese su nuevo usuario"
               />
               <input
-                onChange={(event) => setEditPhoto(event.target.value)}
+                onChange={(event) => setEditPhoto(event.target.value).trim()}
                 type="text"
                 maxLength="300"
                 placeholder="Ingrese su nueva foto de perfil (URL)"
