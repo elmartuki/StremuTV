@@ -31,7 +31,6 @@ export default function TermUse() {
 
     const ultimo = usserList.length - 1;
 
-    console.log(usserList[ultimo]);
 
     const actualizarUsuario = {
       ...usserList[ultimo],

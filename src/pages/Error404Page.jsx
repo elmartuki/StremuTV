@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { Container, Button } from "react-bootstrap";
+import { obtenerDelLocalStorage } from "../utils/localStorage";
 
 export default function Error404Page() {
+  const usserKey = obtenerDelLocalStorage("UsserKey");
+
   return (
     <Container
       fluid
@@ -13,14 +16,30 @@ export default function Error404Page() {
         La página que estás buscando no existe o fue movida. No te preocupes,
         podés volver al inicio fácilmente.
       </p>
-      <Link to="/">
-        <Button
-          variant="outline-light"
-          className="d-flex align-items-center gap-2"
-        >
-          <i className="bi bi-arrow-left"></i> Volver al inicio
-        </Button>
-      </Link>
+
+      {usserKey ? (
+        <>
+          <Link to="/home">
+            <Button
+              variant="outline-light"
+              className="d-flex align-items-center gap-2"
+            >
+              <i className="bi bi-arrow-left"></i> Volver al inicio
+            </Button>
+          </Link>
+        </>
+      ) : (
+        <>
+          <Link to="/">
+            <Button
+              variant="outline-light"
+              className="d-flex align-items-center gap-2"
+            >
+              <i className="bi bi-arrow-left"></i> Volver al inicio
+            </Button>
+          </Link>
+        </>
+      )}
     </Container>
   );
 }
