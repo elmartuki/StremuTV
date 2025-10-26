@@ -27,7 +27,6 @@ export default function Important() {
       reset(reset);
     }
   }, [indice]);
-  console.log("TopFive: ", topFive);
 
   let id, nombre, descripcion, url;
 

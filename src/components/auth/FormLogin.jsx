@@ -42,72 +42,91 @@ export default function FormLogin() {
       password: password,
     };
 
-    const notExits = listadoUsuarios.some(
-      (u) =>
-        u.usuario === datosIngresados.usuarioCorreo ||
-        u.correo === datosIngresados.usuarioCorreo
-    );
+    const ADMIN_USUARIO = import.meta.env.VITE_ADMIN_USUARIO;
+    const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+    const VITE_ADMIN_IMG = import.meta.env.VITE_ADMIN_IMG;
 
-    console.log(notExits);
+    if (
+      ADMIN_USUARIO === datosIngresados.usuarioCorreo &&
+      ADMIN_PASSWORD === password
+    ) {
+      setAlertText("Hola de nuevo Jefe. :)");
+      setShowConfirm(true);
+      setTimeout(() => setShowConfirm(false), 5000);
 
-    if (notExits) {
+      const addminKey = {
+        usuario: ADMIN_USUARIO,
+        perfil: VITE_ADMIN_IMG,
+        rol: "admin",
+      };
+      guardarEnLocalStorage("UsserKey", addminKey);
+      navigate("/admin");
     } else {
-      setAlertText("La cuenta que ingresaste no existe.");
-      setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
-      return;
-    }
-
-    const usuarioValid = listadoUsuarios.find(
-      (u) =>
-        u.usuario === datosIngresados.usuarioCorreo ||
-        u.correo === datosIngresados.usuarioCorreo
-    );
-
-    if (!usuarioValid) {
-      setAlertText(
-        "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
+      const notExits = listadoUsuarios.some(
+        (u) =>
+          u.usuario === datosIngresados.usuarioCorreo ||
+          u.correo === datosIngresados.usuarioCorreo
       );
-      setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
-    } else if (usuarioValid.password !== datosIngresados.password) {
-      setShowMessage(true);
-      setAlertText(
-        "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
-      );
-      setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
 
-      setTimeout(() => {
-        setShowMessage(false);
-      }, 5000);
-    } else {
-      const usserList = obtenerDelLocalStorage("usuarios") || [];
-
-      const usuarioActual =
-        usserList.find((u) => u.id === usuarioValid.id) || usuarioValid;
-
-      guardarEnLocalStorage("UsserKey", usuarioActual);
-
-      const accepTyc = obtenerDelLocalStorage("UsserKey");
-
-      if (accepTyc.tyc === true) {
-        if (usuarioActual.subActiva) {
-          setTimeout(() => navigate("/home"), 5000);
-          setAlertText("Ingresaste correctamente.");
-          setShowConfirm(true);
-          setTimeout(() => setShowConfirm(false), 5000);
-        } else {
-          setTimeout(() => navigate("/suscripciones"), 5000);
-          setAlertText("Ingresaste correctamente.");
-          setShowConfirm(true);
-          setTimeout(() => setShowConfirm(false), 5000);
-        }
+      if (notExits) {
       } else {
-        setAlertText("No se puede ingresar porque no aceptaste los TyC.");
+        setAlertText("La cuenta que ingresaste no existe.");
         setShowAlert(true);
         setTimeout(() => setShowAlert(false), 5000);
-        setTimeout(() => navigate("/"), 5000);
+        return;
+      }
+
+      const usuarioValid = listadoUsuarios.find(
+        (u) =>
+          u.usuario === datosIngresados.usuarioCorreo ||
+          u.correo === datosIngresados.usuarioCorreo
+      );
+
+      if (!usuarioValid) {
+        setAlertText(
+          "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
+        );
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 5000);
+      } else if (usuarioValid.password !== datosIngresados.password) {
+        setShowMessage(true);
+        setAlertText(
+          "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
+        );
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 5000);
+
+        setTimeout(() => {
+          setShowMessage(false);
+        }, 5000);
+      } else {
+        const usserList = obtenerDelLocalStorage("usuarios") || [];
+
+        const usuarioActual =
+          usserList.find((u) => u.id === usuarioValid.id) || usuarioValid;
+
+        guardarEnLocalStorage("UsserKey", usuarioActual);
+
+        const accepTyc = obtenerDelLocalStorage("UsserKey");
+
+        if (accepTyc.tyc === true) {
+          if (usuarioActual.subActiva) {
+            setTimeout(() => navigate("/home"), 5000);
+            setAlertText("Ingresaste correctamente.");
+            setShowConfirm(true);
+            setTimeout(() => setShowConfirm(false), 5000);
+          } else {
+            setTimeout(() => navigate("/suscripciones"), 5000);
+            setAlertText("Ingresaste correctamente.");
+            setShowConfirm(true);
+            setTimeout(() => setShowConfirm(false), 5000);
+          }
+        } else {
+          setAlertText("No se puede ingresar porque no aceptaste los TyC.");
+          setShowAlert(true);
+          setTimeout(() => setShowAlert(false), 5000);
+          setTimeout(() => navigate("/"), 5000);
+        }
       }
     }
   }
@@ -132,7 +151,6 @@ export default function FormLogin() {
       reset(reset);
     }
   }, [indice]);
-  console.log("TopFive: ", topFive);
 
   let url;
 

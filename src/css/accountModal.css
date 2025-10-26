@@ -137,8 +137,13 @@
       padding: 10px 10px;
       border-radius: 8px;
       gap: 5px;
-
       transition: 0.5s;
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
       &:hover {
         transform: scale(1.03);

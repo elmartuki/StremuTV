@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage.jsx";
 import Error404Page from "../pages/Error404Page.jsx";
 import AdminPage from "../pages/AdminPage.jsx";
@@ -17,44 +17,35 @@ import AboutPage from "../pages/AboutPage.jsx";
 import PricingPlans from "../pages/PricingPlans.jsx";
 import TermUse from "../pages/TermUsePage.jsx";
 import UsserRoutes from "./UsserRoutes.jsx";
+import AdminRoutes from "./AdminRoutes.jsx";
 
 export default function AppRouter() {
   return (
-    <>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <InitPage />
-            </>
-          }
-        />
+    <Routes>
+      <Route path="/" element={<InitPage />} />
+      <Route path="/registro" element={<RegisterPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/termsuse" element={<TermUse />} />
+      <Route
+        path="/sobre-nosotros"
+        element={
+          <>
+            <AboutPage />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/suscripciones"
+        element={
+          <>
+            <PricingPlans />
+            <Footer />
+          </>
+        }
+      />
 
-        <Route
-          path="/registro"
-          element={
-            <>
-              <RegisterPage />
-            </>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <>
-              <LoginPage />
-            </>
-          }
-        />
-        <Route
-          path="/termsuse"
-          element={
-            <>
-              <TermUse />
-            </>
-          }
-        />
+      <Route element={<AdminRoutes />}>
         <Route
           path="/admin"
           element={
@@ -65,166 +56,145 @@ export default function AppRouter() {
             </>
           }
         />
+      </Route>
 
+      <Route element={<UsserRoutes />}>
         <Route
-          path="/sobre-nosotros"
+          path="/home"
           element={
             <>
-              <AboutPage />
+              <Header />
+              <HomePage />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/perfil/edit-perfil" element={<AccountPerfil />} />
+        <Route
+          path="/perfil"
+          element={
+            <>
+              <AccountModal />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
+          path="/movies"
+          element={
+            <>
+              <Header />
+              <MoviesPage />
               <Footer />
             </>
           }
         />
         <Route
-          path="/suscripciones"
+          path="/series"
           element={
             <>
-              <PricingPlans />
+              <Header />
+              <SeriesPage />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/favoritos"
+          element={
+            <>
+              <Header />
+              <FavoritosPage />
               <Footer />
             </>
           }
         />
 
-        {/* RUTAS CON ACCESOS PARA LOS USUARIOS */}
+        <Route
+          path="/favoritos/:id"
+          element={
+            <>
+              <MoreDetails />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/series/:id"
+          element={
+            <>
+              <MoreDetails />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/pelicula/:id"
+          element={
+            <>
+              <MoreDetails />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/pelicula/terror/:id"
+          element={
+            <>
+              <MoreDetails />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/pelicula/comedia/:id"
+          element={
+            <>
+              <MoreDetails />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/pelicula/accion/:id"
+          element={
+            <>
+              <MoreDetails />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/pelicula/fantasia/:id"
+          element={
+            <>
+              <MoreDetails />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/pelicula/ciencia-ficcion/:id"
+          element={
+            <>
+              <MoreDetails />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/pelicula/drama/:id"
+          element={
+            <>
+              <MoreDetails />
+              <Footer />
+            </>
+          }
+        />
+      </Route>
 
-        <Route element={<UsserRoutes />}>
-          <Route
-            path="/home"
-            element={
-              <>
-                <Header />
-                <HomePage />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/perfil/edit-perfil"
-            element={
-              <>
-                <AccountPerfil />
-              </>
-            }
-          />
-
-          <Route
-            path="/perfil/"
-            element={
-              <>
-                <AccountModal /> <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/movies"
-            element={
-              <>
-                <Header />
-                <MoviesPage />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/series"
-            element={
-              <>
-                <Header />
-                <SeriesPage />
-                <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/favoritos/"
-            element={
-              <>
-                <Header />
-                <FavoritosPage />
-                <Footer />
-              </>
-            }
-          />
-
-          <Route
-            path="/favoritos/:id"
-            element={
-              <>
-                <MoreDetails />
-                <Footer />
-              </>
-            }
-          />
-
-          <Route
-            path="/series/:id"
-            element={
-              <>
-                <MoreDetails /> <Footer />
-              </>
-            }
-          />
-
-          <Route
-            path="/pelicula/:id"
-            element={
-              <>
-                <MoreDetails /> <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/pelicula/terror/:id"
-            element={
-              <>
-                <MoreDetails /> <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/pelicula/comedia/:id"
-            element={
-              <>
-                <MoreDetails /> <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/pelicula/accion/:id"
-            element={
-              <>
-                <MoreDetails /> <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/pelicula/fantasia/:id"
-            element={
-              <>
-                <MoreDetails /> <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/pelicula/ciencia-ficcion/:id"
-            element={
-              <>
-                <MoreDetails /> <Footer />
-              </>
-            }
-          />
-          <Route
-            path="/pelicula/drama/:id"
-            element={
-              <>
-                <MoreDetails /> <Footer />
-              </>
-            }
-          />
-        </Route>
-
-        <Route path="*" element={<Error404Page />} />
-      </Routes>
-    </>
+      <Route path="*" element={<Error404Page />} />
+    </Routes>
   );
 }

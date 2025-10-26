@@ -60,7 +60,7 @@
 
 .show-password {
   display: flex;
-  width: 100%;
+  width: 10px !important;
   justify-self: end;
   cursor: pointer;
   align-items: end;

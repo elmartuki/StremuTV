@@ -37,6 +37,7 @@ export default function FormRegister() {
       perfil: perfil.trim(),
       correo: correo.trim().toLowerCase(),
       password,
+      rol: "usuario",
     };
 
     const existeCorreo = listadoUsuarios.find(
@@ -96,7 +97,6 @@ export default function FormRegister() {
       reset(reset);
     }
   }, [indice]);
-  console.log("TopFive: ", topFive);
 
   let url;
 

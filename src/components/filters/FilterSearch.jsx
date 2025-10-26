@@ -16,7 +16,6 @@ export default function FilterSearch({ handleClose }) {
     movie.nombre.toLowerCase().includes(texto)
   );
 
-  console.log(texto);
 
   return (
     <>

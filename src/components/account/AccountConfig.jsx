@@ -31,8 +31,6 @@ export default function AccountConfig({ closeConfig }) {
     setFavCount(listaFavoritos.length);
   }, [FavCount]);
 
-  console.log();
-
   return (
     <>
       <section className="account-config-section">
@@ -81,8 +79,10 @@ export default function AccountConfig({ closeConfig }) {
             </NavLink>
 
             <button>
-              <img src={addIcon} alt="" />
-              Crear una nueva lista.
+              <NavLink to="*">
+                <img src={addIcon} alt="" />
+                Crear una nueva lista.
+              </NavLink>
             </button>
           </div>
 
@@ -95,11 +95,14 @@ export default function AccountConfig({ closeConfig }) {
                 {usuario?.subVencimiento && (
                   <p>
                     Se renueva el{" "}
-                    {new Date(usuario.subVencimiento).toLocaleDateString("es-AR", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
+                    {new Date(usuario.subVencimiento).toLocaleDateString(
+                      "es-AR",
+                      {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      }
+                    )}
                   </p>
                 )}
               </div>

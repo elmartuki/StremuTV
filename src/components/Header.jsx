@@ -108,6 +108,19 @@ export default function Header() {
               >
                 Favoritos
               </Link>
+
+              {usuarios.rol === "admin" ? (
+                <>
+                  <Link
+                    className={url === "/admin" ? "navbar-activo" : ""}
+                    to="/admin"
+                  >
+                    Admin
+                  </Link>
+                </>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
 
