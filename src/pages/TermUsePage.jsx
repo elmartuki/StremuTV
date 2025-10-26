@@ -5,12 +5,14 @@ import {
   guardarEnLocalStorage,
   obtenerDelLocalStorage,
 } from "../utils/localStorage";
+import AlertConfirm from "../components/alerts/AlertConfirm";
 
 export default function TermUse() {
   const [checked, setChecked] = useState(false);
   const [scrolledToEnd, setScrolledToEnd] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
+  const [message, setMessage] = useState("");
   const contentRef = useRef(null);
   const navigate = useNavigate();
 
@@ -25,12 +27,13 @@ export default function TermUse() {
   };
 
   const handleAccept = () => {
+    setMessage("✅ Has aceptado los Términos y Condiciones correctamente");
     setShowMessage(true);
+    setTimeout(() => setShowMessage(false), 5000);
 
     const usserList = obtenerDelLocalStorage("usuarios");
 
     const ultimo = usserList.length - 1;
-
 
     const actualizarUsuario = {
       ...usserList[ultimo],
@@ -45,7 +48,7 @@ export default function TermUse() {
 
     setTimeout(() => {
       navigate("/login");
-    }, 2500);
+    }, 5000);
   };
 
   useEffect(() => {
@@ -56,12 +59,7 @@ export default function TermUse() {
 
   return (
     <div className="termuse-container">
-      {/* 🔔 Mensaje visual */}
-      {showMessage && (
-        <div className="termuse-message">
-          ✅ Has aceptado los Términos y Condiciones correctamente
-        </div>
-      )}
+      <AlertConfirm alertText={message} showConfirm={showMessage} />
 
       <div className="termuse-card">
         <h1 className="termuse-title">Términos y Condiciones de Uso</h1>

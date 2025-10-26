@@ -6,6 +6,8 @@ import {
   obtenerDelLocalStorage,
 } from "../utils/localStorage";
 import { useNavigate } from "react-router-dom";
+import AlertModal from "../components/alerts/AlertModal";
+import AlertConfirm from "../components/alerts/AlertConfirm";
 
 const monthlyPlans = [
   {
@@ -40,6 +42,9 @@ const yearlyPlans = [
 export default function PlanSelector() {
   const [isMonthly, setIsMonthly] = useState(true);
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const [message, setMessage] = useState("");
+  const [alert, setAlert] = useState(false);
+  const [confirm, setConfirm] = useState(false);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -233,30 +238,41 @@ export default function PlanSelector() {
       return;
     }
     if (!lastName) {
-      alert("Ingresa Apellido (máx 12 letras).");
+      setMessage("Ingresa Apellido (máx 12 letras).");
+      setAlert(true);
+      setTimeout(() => setAlert(false), 5000);
+
       return;
     }
 
     const digitsCard = cardNumber.replace(/\s/g, "");
     if (digitsCard.length !== 16) {
-      alert("El número de tarjeta debe tener 16 dígitos.");
+      setMessage("El número de tarjeta debe tener 16 dígitos.");
+      setAlert(true);
+      setTimeout(() => setAlert(false), 5000);
       return;
     }
     if (
       !/^\d{2}\/\d{2}$/.test(expiry) ||
       !validateExpiryMonth(expiry.slice(0, 2))
     ) {
-      alert("Vencimiento inválido. Usa MM/YY y mes entre 01 y 12.");
+      setMessage("Vencimiento inválido. Usa MM/YY y mes entre 01 y 12.");
+      setAlert(true);
+      setTimeout(() => setAlert(false), 5000);
       return;
     }
     if (cvv.length !== 3) {
-      alert("CVV inválido. Debe tener 3 dígitos.");
+      setMessage("CVV inválido. Debe tener 3 dígitos.");
+      setAlert(true);
+      setTimeout(() => setAlert(false), 5000);
       return;
     }
 
-    alert(
+    setMessage(
       `✅ Pago realizado con éxito. Gracias ${firstName} ${lastName} por elegir el plan ${selectedPlan.name}!`
     );
+    setConfirm(true);
+    setTimeout(() => setConfirm(false), 5000);
 
     const changeSub = usserList.find((u) => {
       return u.id === usserKey.id;
@@ -285,9 +301,10 @@ export default function PlanSelector() {
         guardarEnLocalStorage("UsserKey", usuarioActualizado);
       }
 
-      handleClose();
-
-      navegacion("/home");
+      setTimeout(() => {
+        handleClose();
+        navegacion("/home");
+      }, 5000);
     } else {
       const usuarioEncontrado = usserList.find((u) => {
         return Number(u.id) === Number(changeSub.id);
@@ -311,15 +328,19 @@ export default function PlanSelector() {
       guardarEnLocalStorage("usuarios", nuevaLista);
       guardarEnLocalStorage("UsserKey", suscripcionActualizada);
     }
-    handleClose();
 
-    navegacion("/home");
+    setTimeout(() => {
+      handleClose();
+      navegacion("/home");
+    }, 5000);
   };
 
   const navigate = useNavigate();
 
   return (
     <section className="Subsection">
+      <AlertModal alertText={message} showAlert={alert} />
+      <AlertConfirm alertText={message} showConfirm={confirm} />
       <div className="form-login-back">
         <button onClick={() => navigate(-1)}>
           <img src={back} alt="" />

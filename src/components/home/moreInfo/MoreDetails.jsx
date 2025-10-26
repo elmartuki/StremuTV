@@ -161,6 +161,7 @@ export default function MoreDetails() {
                 muted={isMuted}
                 loop
                 src={videoURL}
+                controls
               ></video>
             </div>
           ) : (
@@ -176,6 +177,7 @@ export default function MoreDetails() {
                   muted={isMuted}
                   loop
                   src={videoURL}
+                  controls
                 ></video>
               </div>
             </>
