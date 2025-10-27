@@ -6,6 +6,8 @@ import addIcon from "../../assets/add.svg";
 import infoIcon from "../../assets/info.svg";
 import contacto from "../../assets/contact.svg";
 import sessionIcon from "../../assets/logout.svg";
+import dispositivos from "../../assets/dispositivos.svg";
+import help from "../../assets/help.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { obtenerDelLocalStorage } from "../../utils/localStorage";
@@ -115,7 +117,7 @@ export default function AccountConfig({ closeConfig }) {
           </div>
 
           <div className="account-config_config">
-            <p>Ajuste de la cuenta</p>
+            <p>Ajustes de la cuenta.</p>
 
             <div className="account-config_config_buttons">
               <button>
@@ -130,6 +132,26 @@ export default function AccountConfig({ closeConfig }) {
                   <div>
                     <img src={contacto} alt="" />
                     Sobre Nosotros
+                  </div>
+                </NavLink>
+
+                <img src={right} alt="" />
+              </button>
+              <button>
+                <NavLink to="*">
+                  <div>
+                    <img src={dispositivos} alt="" />
+                    Dispositivos Compatibles
+                  </div>
+                </NavLink>
+
+                <img src={right} alt="" />
+              </button>
+              <button>
+                <NavLink to="*">
+                  <div>
+                    <img src={help} alt="" />
+                    Ayuda
                   </div>
                 </NavLink>
 
