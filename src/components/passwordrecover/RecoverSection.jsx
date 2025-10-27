@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import { obtenerDelLocalStorage } from "../../utils/localStorage";
+import show from "../../assets/passwordOn.svg";
+import hide from "../../assets/passwordOff.svg";
 
 export default function RecoverSection() {
   const [contraseña, setContraseña] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  function handleShow() {
+    setShowPassword(true);
+  }
 
+  function handleHide() {
+    setShowPassword(false);
+  }
   function handlePassword(event) {
     event.preventDefault();
 
@@ -32,18 +41,35 @@ export default function RecoverSection() {
   }
 
   return (
-    <form onSubmit={handlePassword}>
-      <h2 style={{ color: "white" }}>Generar nueva contraseña</h2>
+    <form onSubmit={handlePassword} className="form-recover">
+      <article className="article-recover">
+        <h2 className="title-recover" style={{ color: "white" }}>
+          Generar nueva contraseña
+        </h2>
+        <div className="container-recover">
+          <div className="input-recover">
+            <input
+              type={showPassword ? "text" : "password"}
+              onChange={(event) => {
+                setContraseña(event.target.value);
+              }}
+              value={contraseña}
+              placeholder="Ingrese la contraseña"
+            />
+            <div className="show-password">
+              {showPassword ? (
+                <img onClick={handleHide} src={hide} alt="" />
+              ) : (
+                <img onClick={handleShow} src={show} alt="" />
+              )}
+            </div>
+          </div>
+        </div>
 
-      <input
-        onChange={(e) => setContraseña(e.target.value)}
-        value={contraseña}
-        type="password"
-        placeholder="Nueva contraseña"
-        required
-      />
-
-      <button type="submit">Confirmar</button>
+        <div className="button-recover">
+          <button type="submit">Guardar</button>
+        </div>
+      </article>
     </form>
   );
 }

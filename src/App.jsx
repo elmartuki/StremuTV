@@ -26,6 +26,7 @@ import "./css/aboutPage.css";
 import "./css/RecoverPasswordPage.css";
 import "./css/crudFilter.css";
 import "./css/alertMessage.css";
+import "./css/recoverSection.css";
 
 import { useEffect, useState } from "react";
 import { movieSerieFullList } from "./db/MovieSerie.js";
