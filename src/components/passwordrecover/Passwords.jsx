@@ -1,11 +1,18 @@
 import emailjs from "@emailjs/browser";
-import { obtenerDelLocalStorage } from "../../utils/localStorage";
-import { useState } from "react";
+import {
+  obtenerDelLocalStorage,
+  obtenerPeliculasOSerieLS,
+} from "../../utils/localStorage";
+import { useEffect, useState } from "react";
 import backPassword from "../../assets/passwordRecover.svg";
+import back from "../../assets/back.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Passwords() {
   const [usuarioCorreo, setUsuarioCorreo] = useState("");
   const [messagePass, setMessagePass] = useState(null);
+
+  const navigate = useNavigate();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -44,55 +51,95 @@ export default function Passwords() {
       });
   }
 
+  const [indice, setIndice] = useState(0);
+
+  const movieList = obtenerPeliculasOSerieLS("Serie");
+
+  const topFive = movieList.slice(60, 90);
+
+  useEffect(() => {
+    const reset = setTimeout(() => {
+      if (indice < 4) {
+        setIndice(indice + 1);
+      } else if (indice > 0) {
+        setIndice(0);
+        clearInterval();
+      }
+    }, 8000);
+
+    if (indice.lenght === 0) {
+      reset(reset);
+    }
+  }, [indice]);
+
+  let url;
+
+  if (topFive && topFive.length > 0 && topFive[indice]) {
+    ({ url } = topFive[indice]);
+  }
+
   return (
     <>
-      <form onSubmit={handleSubmit} className="form-password">
-        <div className="img">
-          <img src={backPassword} alt="password" />
-        </div>
+      <div className="form-login-back">
+        <button onClick={() => navigate("/login")}>
+          <img src={back} alt="" />
+          <p>Volver</p>
+        </button>
+      </div>
 
-        <h2 className="title-password">Recuperar contraseña</h2>
-
-        <div className="input-password">
-          <input
-            type="email"
-            value={usuarioCorreo}
-            onChange={(e) => setUsuarioCorreo(e.target.value)}
-            placeholder="tu@email.com"
-            required
-          />
-        </div>
-
-        <div className="button">
-          <button type="submit">Enviar correo</button>
-        </div>
-
-        {/* 👇 Esta es la parte nueva (opción 2) */}
-        {messagePass && (
-          <div style={{ textAlign: "center", marginTop: "15px" }}>
-            {messagePass.ok ? (
-              <p style={{ color: "limegreen" }}>
-                {messagePass.msg}
-                <br />
-                <a
-                  href="https://mail.google.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: "#8a2be2",
-                    fontWeight: "600",
-                    textDecoration: "underline",
-                  }}
-                >
-                  Abrir Gmail
-                </a>
-              </p>
-            ) : (
-              <p style={{ color: "red" }}>{messagePass.msg}</p>
-            )}
+      <section className="form-login-section">
+        <article className="form-login-bg">
+          <img src={url} alt="" />
+        </article>
+        <article>
+          <div className="img">
+            <img src={backPassword} alt="password" />
           </div>
-        )}
-      </form>
+
+          <h2 className="title-password">Recuperar contraseña</h2>
+
+          <form className="form-rec" onSubmit={handleSubmit}>
+            <div className="input-password">
+              <input
+                type="email"
+                value={usuarioCorreo}
+                onChange={(e) => setUsuarioCorreo(e.target.value)}
+                placeholder="tu@email.com"
+                required
+              />
+            </div>
+
+            <div className="button">
+              <button type="submit">Enviar correo</button>
+            </div>
+          </form>
+
+          {messagePass && (
+            <div style={{ textAlign: "center", marginTop: "15px" }}>
+              {messagePass.ok ? (
+                <p style={{ color: "limegreen" }}>
+                  {messagePass.msg}
+                  <br />
+                  <a
+                    href="https://mail.google.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "#8a2be2",
+                      fontWeight: "600",
+                      textDecoration: "underline",
+                    }}
+                  >
+                    Abrir Gmail
+                  </a>
+                </p>
+              ) : (
+                <p style={{ color: "red" }}>{messagePass.msg}</p>
+              )}
+            </div>
+          )}
+        </article>
+      </section>
     </>
   );
 }

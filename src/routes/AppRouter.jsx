@@ -29,6 +29,22 @@ export default function AppRouter() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/termsuse" element={<TermUse />} />
       <Route
+        path="/password/:id"
+        element={
+          <>
+            <RecoverPasswordPage />
+          </>
+        }
+      />
+      <Route
+        path="/recover-section/:id"
+        element={
+          <>
+            <RecoverSection />
+          </>
+        }
+      />
+      <Route
         path="/sobre-nosotros"
         element={
           <>
@@ -119,22 +135,6 @@ export default function AppRouter() {
             <>
               <MoreDetails />
               <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/password/:id"
-          element={
-            <>
-              <RecoverPasswordPage />
-            </>
-          }
-        />
-        <Route
-          path="/recover-section/:id"
-          element={
-            <>
-              <RecoverSection />
             </>
           }
         />

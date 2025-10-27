@@ -1,81 +1,55 @@
-.form-recover {
-  width: 100%;
-  height: 100dvh;
-  background-color: #090011;
-}
-
-.article-recover {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  .title-recover {
-    text-align: center;
-    font-size: 37px;
-  }
-
-  .input-recover:has(input:hover) {
-    border: 3px solid #3c185d;
-    transition: 0.1s;
-  }
-
-  input:focus {
-    outline: none;
-  }
-
-  .input-recover {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #262626;
-    padding: 0px 8px;
-    border-radius: 10px;
-    input {
-      border: none;
-      padding: 8px 0px;
-      background-color: #262626;
-      color: white;
-    }
-    .show-password {
-      width: 9%;
+.form-login-section {
+  article {
+    .form-rec {
       display: flex;
-      justify-content: end;
-      cursor: pointer;
-      img {
-        vertical-align: middle;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+      .input-password {
+        display: flex;
+        width: 100%;
+        border-radius: 8px;
+        padding: 5px 10px;
+        background-color: #202020;
+        transition: 0.1s;
+        outline: 2px solid #202020;
+        input {
+          background-color: transparent;
+          border: none;
+          width: 90%;
+          color: rgba(255, 255, 255, 0.847);
+
+          &:focus {
+            outline: none;
+          }
+        }
       }
-    }
-  }
-  .button-recover {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10%;
-    button {
-      border: none;
-      border-radius: 10px;
-      padding: 0px 10px;
-      font-size: 18px;
+      button {
+        width: 100%;
+        background-color: transparent;
+        border: 2px solid #32144d;
+        color: rgba(255, 255, 255, 0.872);
+        border-radius: 8px;
+        padding: 5px 10px;
+      }
     }
   }
 }
 
-@media (min-width: 768px) {
-  .article-recover {
-    .title-recover {
-      font-size: 40px;
-    }
-    .input-recover {
-      input {
-        width: 500px;
+.input-password:has(input:focus) {
+  outline: 3px solid #32144d !important;
+}
+
+@media (min-width: 1024px) {
+  .form-login-section {
+    article {
+      .img {
+        img {
+          width: 60px;
+        }
       }
-    }
-    .button-recover {
-      button {
-        width: 300px;
+      .form-rec {
+        width: 60%;
       }
     }
   }
