@@ -314,6 +314,7 @@ video {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+  pointer-events: all;
 
   .preview-more-movies_title {
     width: 100%;
