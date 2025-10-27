@@ -23,8 +23,10 @@ import "./css/editPerfil.css";
 import "./css/initPage.css";
 import "./css/login.css";
 import "./css/aboutPage.css";
+import "./css/RecoverPasswordPage.css";
 import "./css/crudFilter.css";
 import "./css/alertMessage.css";
+import "./css/recoverSection.css";
 import "./css/PricingPlans.css";
 
 import { useEffect, useState } from "react";
