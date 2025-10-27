@@ -64,6 +64,11 @@
           border-radius: 8px;
           padding: 10px 10px;
           color: rgba(255, 255, 255, 0.804);
+          transition: 0.5s;
+
+          &:hover {
+            transform: scale(1.02);
+          }
 
           &:focus {
             outline: none;
@@ -74,10 +79,38 @@
           border: none;
           padding: 10px 10px;
           border-radius: 8px;
-          background-color: #32144d;
+          border: 2px solid #32144d;
+          background-color: transparent;
           color: white;
+
+          transition: 0.5s;
+
+          &:hover {
+            transform: scale(1.02);
+            background-color: #32144d;
+          }
         }
       }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .edit-perfil-section {
+    width: 100%;
+    .edit-perfil {
+      .edit-perfil_inputs {
+        form {
+          width: 50%;
+          margin: auto;
+        }
+      }
+    }
+
+    .edit-perfil_img {
+      background: #202020;
+      padding: 20px;
+      border-radius: 8px;
     }
   }
 }

@@ -1,12 +1,11 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { obtenerDelSessionStorage } from "../utils/localStorage.js";
+import { obtenerDelLocalStorage } from "../utils/localStorage.js";
 
 export default function AdminRoutes() {
-  const usuarioDelSessionStorage = obtenerDelSessionStorage("usuario");
+  const user = obtenerDelLocalStorage("UsserKey");
 
-  if (usuarioDelSessionStorage) {
+  if (user?.rol === "admin") {
     return <Outlet />;
-  } else {
-    return <Navigate to="/" />;
   }
+  return <Navigate to="/home" replace />;
 }

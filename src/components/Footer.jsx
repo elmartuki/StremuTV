@@ -2,11 +2,15 @@ import home from "../assets/home.svg";
 import movies from "../assets/movies.svg";
 import series from "../assets/series.svg";
 import guardados from "../assets/guardados.svg";
+import admin from "../assets/admin.svg"
 import { NavLink, useLocation } from "react-router-dom";
+import { obtenerDelLocalStorage } from "../utils/localStorage";
 
 export default function Footer() {
   const location = useLocation();
   const url = location.pathname;
+
+  const usuario = obtenerDelLocalStorage("UsserKey");
 
   return (
     <footer className="footer">
@@ -39,6 +43,20 @@ export default function Footer() {
             Favoritos
           </NavLink>
         </div>
+
+        {usuario.rol === "admin" ? (
+          <>
+            <div className={url === "/admin" ? "footer-activo" : ""}>
+              <NavLink to="/admin">
+                {" "}
+                <img src={admin} alt="" />
+                Admin
+              </NavLink>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </footer>
   );

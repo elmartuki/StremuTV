@@ -3,15 +3,17 @@ import compartir from "../../../assets/compartir.svg";
 import play from "../../../assets/play.svg";
 import star from "../../../assets/star.svg";
 import fav from "../../../assets/favorite.svg";
+import sonido from "../../../assets/sonido.svg";
+import sonidont from "../../../assets/sonidont.svg";
 import { repartoCompleto } from "../../../db/Reparto";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import {
   filtrarYMostrar,
   guardarEnLocalStorage,
   obtenerDelLocalStorage,
   obtenerPeliculasOSerieLS,
 } from "../../../utils/localStorage";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ConfirmFav from "../../fav/ConfirmFav";
 import ErrorModal from "./ErrorModal";
 
@@ -23,7 +25,6 @@ export default function MoreDetails() {
   const [showError, setShowError] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [active, setActive] = useState(false);
-  const [listFavoritos, setListFavoritos] = useState([]);
 
   const { id } = useParams();
 
@@ -53,11 +54,15 @@ export default function MoreDetails() {
     return Number(buscar.id) === Number(id);
   });
 
-  let url, video, nombre, genero, descripcion, fecha;
+  let url, videoURL, nombre, genero, descripcion, fecha;
 
   if (articulo) {
-    ({ url, video, nombre, genero, descripcion, fecha } = articulo);
+    ({ url, videoURL, nombre, genero, descripcion, fecha } = articulo);
   }
+
+  const favoritos = obtenerDelLocalStorage("favoritos");
+
+  let addedFav = favoritos.some((item) => item.nombre === articulo.nombre);
 
   function handleFav() {
     let thisExist = false;
@@ -103,6 +108,23 @@ export default function MoreDetails() {
     window.scrollTo(0, 0);
   }, []);
 
+  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isMutedIcon, setIsMutedIcon] = useState(true);
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+
+    setIsMutedIcon((prev) => !prev);
+    if (video) {
+      video.muted = !video.muted;
+    }
+  };
+
+  const recomendados = obtenerDelLocalStorage("MoviesSeries");
+
+  const twelve = recomendados.slice(0, 20);
+
   return (
     <>
       <div style={{ display: showError ? "flex" : "none" }}>
@@ -132,19 +154,33 @@ export default function MoreDetails() {
               style={{ margin: showVideo ? "20px 0px 0px 0px" : "0px" }}
               className="preview_img"
             >
-              <iframe
-                src={video}
-                width="640"
-                height="360"
-                allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                allowfullscreen
-                frameborder="0"
-              ></iframe>
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                muted={isMuted}
+                loop
+                src={videoURL}
+                controls
+              ></video>
             </div>
           ) : (
-            <div className="preview_img">
-              <img src={url} alt={nombre} />
-            </div>
+            <>
+              <div className="preview_img">
+                <img src={url} alt={nombre} />
+              </div>
+              <div className="preview-video">
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  playsInline
+                  muted={isMuted}
+                  loop
+                  src={videoURL}
+                  controls
+                ></video>
+              </div>
+            </>
           )}
 
           <div
@@ -159,16 +195,22 @@ export default function MoreDetails() {
                 <div className="preview_buttons">
                   <div className="fav-buttons">
                     <button
-                      className={active ? "fav-active" : "fav-disabled"}
+                      className={
+                        (active ? "fav-active" : "fav-disabled",
+                        addedFav ? "fav-active" : "fav-disabled")
+                      }
+                      style={{ background: addedFav ? "rgb(206, 0, 0)" : "" }}
                       onClick={handleFav}
                     >
                       <img className="fav" src={fav} alt="" />
-                      Favoritos
                     </button>
 
-                    <button>
-                      <img className="filter-invert" src={compartir} alt="" />
-                      Compartir
+                    <button onClick={toggleMute}>
+                      {isMutedIcon ? (
+                        <img className="filter-invert" src={sonidont} alt="" />
+                      ) : (
+                        <img className="filter-invert" src={sonido} alt="" />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -192,7 +234,7 @@ export default function MoreDetails() {
                   </div>
                 </div>
                 <div className="preview_buttons">
-                  <button>
+                  <button className="hidden-btn">
                     <img
                       className="filter-invert"
                       onClick={handlePlay}
@@ -204,52 +246,65 @@ export default function MoreDetails() {
                   <div className="fav-buttons">
                     <button
                       className={active ? "fav-active" : "fav-disabled"}
+                      style={{ background: addedFav ? "rgb(206, 0, 0)" : "" }}
                       onClick={handleFav}
                     >
                       <img className="fav" src={fav} alt="" />
-                      Favoritos
                     </button>
-                    <button>
-                      <img className="filter-invert" src={compartir} alt="" />
-                      Compartir
+                    <button onClick={toggleMute}>
+                      {isMutedIcon ? (
+                        <img className="filter-invert" src={sonidont} alt="" />
+                      ) : (
+                        <img className="filter-invert" src={sonido} alt="" />
+                      )}
                     </button>
                   </div>
                 </div>
               </>
             )}
-
-            <div className="preview_description">
-              <p>Sinapsis</p>
-              <p>{descripcion}</p>
-            </div>
-
-            <div className="preview_reparto">
-              <p>Reparto Principal</p>
-              <div>
-                {repatoFullRandom.map((reparto) => {
-                  const { nombre, url_img } = reparto;
-                  return (
-                    <>
-                      <div className="preview_reparto-card">
-                        <div className="preview_reparto-card_img">
-                          <img src={url_img} alt="" />
+            <section className="seccion-preview">
+              <div className="preview_description">
+                <p>Sinapsis</p>
+                <p>{descripcion}</p>
+              </div>
+              <div className="preview_reparto">
+                <p>Reparto Principal</p>
+                <div>
+                  {repatoFullRandom.map((reparto) => {
+                    const { nombre, url_img } = reparto;
+                    return (
+                      <>
+                        <div className="preview_reparto-card">
+                          <div className="preview_reparto-card_img">
+                            <img src={url_img} alt="" />
+                          </div>
+                          <p>{nombre}</p>
                         </div>
-                        <p>{nombre}</p>
-                      </div>
-                    </>
-                  );
-                })}
+                      </>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-
-            <div className="preview_clips">
-              <p>Trailers y Clips</p>
-              <div>
-                <div className="preview_clips_preview"></div>
-                <div className="preview_clips_preview"></div>
-                <div className="preview_clips_preview"></div>
+              <div className="preview-more-movies">
+                <p className="preview-more-movies_title">
+                  Series y peliculas recomendadas.
+                </p>
+                {twelve.map(({ id, nombre, url }) => (
+                  <NavLink
+                    to={`/pelicula/accion/${id}`}
+                    className="movies-card-home"
+                    key={id}
+                  >
+                    <div className="movies-card-home_img">
+                      <img src={url} />
+                    </div>
+                    <div className="movies-card-home_title">
+                      <p>{nombre}</p>
+                    </div>
+                  </NavLink>
+                ))}
               </div>
-            </div>
+            </section>
           </div>
         </article>
       </section>

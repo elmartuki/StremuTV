@@ -131,3 +131,19 @@
     }
   }
 }
+
+@media (min-width: 1024px) {
+  .card-important-home {
+    width: 100%;
+  }
+
+  .card-important_details {
+    align-items: center;
+    justify-content: center;
+    .card-important_details-buttons {
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   guardarEnLocalStorage,
   obtenerDelLocalStorage,
+  obtenerPeliculasOSerieLS,
 } from "../../utils/localStorage";
 import { NavLink, useNavigate } from "react-router-dom";
 import show from "../../assets/passwordOn.svg";
@@ -41,55 +42,122 @@ export default function FormLogin() {
       password: password,
     };
 
-    const notExits = listadoUsuarios.some(
-      (u) =>
-        u.usuario === datosIngresados.usuarioCorreo ||
-        u.correo === datosIngresados.usuarioCorreo
-    );
+    const ADMIN_USUARIO = import.meta.env.VITE_ADMIN_USUARIO;
+    const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+    const VITE_ADMIN_IMG = import.meta.env.VITE_ADMIN_IMG;
 
-    console.log(notExits);
-
-    if (notExits) {
-    } else {
-      setAlertText("La cuenta que ingresaste no existe.");
-      setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
-      return;
-    }
-
-    const usuarioValid = listadoUsuarios.find(
-      (u) =>
-        u.usuario === datosIngresados.usuarioCorreo ||
-        u.correo === datosIngresados.usuarioCorreo
-    );
-
-    if (!usuarioValid) {
-      setAlertText(
-        "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
-      );
-      setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
-    } else if (usuarioValid.password !== datosIngresados.password) {
-      setShowMessage(true);
-      setAlertText(
-        "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
-      );
-      setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
-
-      setTimeout(() => {
-        setShowMessage(false);
-      }, 5000);
-    } else {
-      setAlertText("Ingresaste correctamente.");
+    if (
+      ADMIN_USUARIO === datosIngresados.usuarioCorreo &&
+      ADMIN_PASSWORD === password
+    ) {
+      setAlertText("Hola de nuevo Jefe. :)");
       setShowConfirm(true);
       setTimeout(() => setShowConfirm(false), 5000);
 
-      setTimeout(() => navigate("/home"), 5000);
+      const addminKey = {
+        usuario: ADMIN_USUARIO,
+        perfil: VITE_ADMIN_IMG,
+        rol: "admin",
+      };
+      guardarEnLocalStorage("UsserKey", addminKey);
+      navigate("/admin");
+    } else {
+      const notExits = listadoUsuarios.some(
+        (u) =>
+          u.usuario === datosIngresados.usuarioCorreo ||
+          u.correo === datosIngresados.usuarioCorreo
+      );
 
-      guardarEnLocalStorage("UsserKey", usuarioValid);
+      if (notExits) {
+      } else {
+        setAlertText("La cuenta que ingresaste no existe.");
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 5000);
+        return;
+      }
+
+      const usuarioValid = listadoUsuarios.find(
+        (u) =>
+          u.usuario === datosIngresados.usuarioCorreo ||
+          u.correo === datosIngresados.usuarioCorreo
+      );
+
+      if (!usuarioValid) {
+        setAlertText(
+          "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
+        );
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 5000);
+      } else if (usuarioValid.password !== datosIngresados.password) {
+        setShowMessage(true);
+        setAlertText(
+          "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
+        );
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 5000);
+
+        setTimeout(() => {
+          setShowMessage(false);
+        }, 5000);
+      } else {
+        const usserList = obtenerDelLocalStorage("usuarios") || [];
+
+        const usuarioActual =
+          usserList.find((u) => u.id === usuarioValid.id) || usuarioValid;
+
+        guardarEnLocalStorage("UsserKey", usuarioActual);
+
+        const accepTyc = obtenerDelLocalStorage("UsserKey");
+
+        if (accepTyc.tyc === true) {
+          if (usuarioActual.subActiva) {
+            setTimeout(() => navigate("/home"), 5000);
+            setAlertText("Ingresaste correctamente.");
+            setShowConfirm(true);
+            setTimeout(() => setShowConfirm(false), 5000);
+          } else {
+            setTimeout(() => navigate("/suscripciones"), 5000);
+            setAlertText("Ingresaste correctamente.");
+            setShowConfirm(true);
+            setTimeout(() => setShowConfirm(false), 5000);
+          }
+        } else {
+          setAlertText("No se puede ingresar porque no aceptaste los TyC.");
+          setShowAlert(true);
+          setTimeout(() => setShowAlert(false), 5000);
+          setTimeout(() => navigate("/"), 5000);
+        }
+      }
     }
   }
+
+  const [indice, setIndice] = useState(0);
+
+  const movieList = obtenerPeliculasOSerieLS("Serie");
+
+  const topFive = movieList.slice(10, 30);
+
+  useEffect(() => {
+    const reset = setTimeout(() => {
+      if (indice < 4) {
+        setIndice(indice + 1);
+      } else if (indice > 0) {
+        setIndice(0);
+        clearInterval();
+      }
+    }, 8000);
+
+    if (indice.lenght === 0) {
+      reset(reset);
+    }
+  }, [indice]);
+
+  let url;
+
+  if (topFive && topFive.length > 0 && topFive[indice]) {
+    ({ url } = topFive[indice]);
+  }
+
   return (
     <>
       <AlertModal alertText={alertText} showAlert={showAlert} />
@@ -111,6 +179,7 @@ export default function FormLogin() {
                 <input
                   type="text"
                   value={usuarioCorreo}
+                  maxLength="25"
                   onChange={(event) => {
                     setUsuarioCorreo(event.target.value);
                   }}
@@ -130,6 +199,7 @@ export default function FormLogin() {
                   }}
                   value={password}
                   placeholder="Ingrese la contraseña"
+                  maxLength={20}
                 />
                 <div className="show-password">
                   {showPassword ? (
@@ -155,6 +225,10 @@ export default function FormLogin() {
               </p>
             </div>
           </form>
+        </article>
+
+        <article className="form-login-bg">
+          <img src={url} alt="" />
         </article>
       </section>
     </>

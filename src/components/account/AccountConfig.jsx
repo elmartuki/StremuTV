@@ -43,23 +43,25 @@ export default function AccountConfig({ closeConfig }) {
           </div>
 
           <div className="account-config_perfil">
-            <div>
-              <img src={usuario.perfil} alt="" />
+            <div className="account-config_perfil-account">
+              <div>
+                <img src={usuario.perfil} alt="" />
+              </div>
+
+              <div>
+                <p>{usuario.usuario}</p>
+                <p>{usuario.correo}</p>
+              </div>
             </div>
 
-            <div>
-              <p>{usuario.usuario}</p>
-              <p>{usuario.correo}</p>
+            <div className="account-config_buttons">
+              <NavLink to="/perfil/edit-perfil">
+                <button>
+                  <img src={edit} alt="" />
+                  Editar perfil
+                </button>
+              </NavLink>
             </div>
-          </div>
-
-          <div className="account-config_buttons">
-            <NavLink to="/perfil/edit-perfil">
-              <button>
-                <img src={edit} alt="" />
-                Editar perfil
-              </button>
-            </NavLink>
           </div>
 
           <div className="account-config_list">
@@ -77,21 +79,37 @@ export default function AccountConfig({ closeConfig }) {
             </NavLink>
 
             <button>
-              <img src={addIcon} alt="" />
-              Crear una nueva lista
+              <NavLink to="*">
+                <img src={addIcon} alt="" />
+                Crear una nueva lista.
+              </NavLink>
             </button>
           </div>
 
-          <p>Suscripcion</p>
-
           <div className="account-config_sub">
+            <p>Suscripcion</p>
             <article className="suscripcion">
               <div>
-                <p>Plan Premiun</p>
-                <p>Se renueva el 24 de nomviembre, 2024</p>
+                <p>Plan {usuario.subActiva}</p>
+                <p>{usuario.subPrecio}</p>
+                {usuario?.subVencimiento && (
+                  <p>
+                    Se renueva el{" "}
+                    {new Date(usuario.subVencimiento).toLocaleDateString(
+                      "es-AR",
+                      {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      }
+                    )}
+                  </p>
+                )}
               </div>
               <div>
-                <button>Gestionar</button>
+                <NavLink to="/suscripciones">
+                  <button>Gestionar</button>
+                </NavLink>
               </div>
             </article>
           </div>

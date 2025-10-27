@@ -1,0 +1,291 @@
+.Subsection {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #141414;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Contenedor principal */
+.plan-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  text-align: center;
+  background-color: #141414;
+}
+
+/* Evita que se desborde en pantallas bajas */
+@media (max-height: 750px) {
+  .plan-container {
+    justify-content: flex-start;
+  }
+}
+
+/* Título */
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.toggle {
+  background: none;
+  color: #aaa;
+  border: 1px solid #3c185d;
+  padding: 0.6rem 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.toggle.active {
+  background-color: #3c185d;
+  color: white;
+  border: none;
+}
+
+/* Descripción */
+.description {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+/* Contenedor de planes */
+.plans {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.plan-card {
+  background-color: #141414;
+  border: 1px solid #3c185d;
+  border-radius: 12px;
+  width: 240px;
+  height: 240px;
+  padding: 1.5rem;
+  position: relative;
+  transition: transform 0.2s ease, border 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.plan-card:hover {
+  transform: scale(1.05);
+  border-color: #4b1d73;
+}
+
+.plan-card.popular {
+  border: 2px solid #4b1d73;
+}
+
+.badge {
+  background-color: #3c185d;
+  color: white;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Precio */
+.price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.8rem 0;
+}
+
+.choose-btn {
+  background-color: #3c185d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.2s;
+}
+
+.choose-btn:hover {
+  background-color: #4b1d73;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  color: #bbb;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.subscription-info {
+  margin-top: 2rem;
+  color: #aaa;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+.progress-bar {
+  background: #222;
+  border-radius: 8px;
+  height: 6px;
+  margin: 0.5rem auto;
+  width: 100%;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: #3c185d;
+  width: 60%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .plans {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .plan-card {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .choose-btn {
+    width: 100%;
+  }
+
+  .subscription-info {
+    font-size: 0.8rem;
+  }
+}
+
+.payment-modal {
+  position: fixed;
+  inset: 0;
+  background: #141414;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #141414;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 420px;
+  color: white;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  color: #bbb;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.payment-form input {
+  width: 100%;
+  background: #3c185d;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 0.2rem;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.payment-form label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.card-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+
+.card-details > div {
+  flex: 1;
+}
+
+.pay-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #3c185d, #3c185d);
+  color: white;
+  border: none;
+  border-radius: 10px;
+
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: 0.3s;
+}
+
+.pay-btn:hover {
+  background: linear-gradient(90deg, #7d3ae0, #a163ff);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

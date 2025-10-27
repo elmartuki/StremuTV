@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage.jsx";
 import Error404Page from "../pages/Error404Page.jsx";
 import AdminPage from "../pages/AdminPage.jsx";
@@ -16,55 +16,38 @@ import InitPage from "../pages/InitPage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
 import RecoverPasswordPage from "../pages/RecoverPasswordPage.jsx";
 import RecoverSection from "../components/passwordrecover/RecoverSection.jsx";
+import PricingPlans from "../pages/PricingPlans.jsx";
 import TermUse from "../pages/TermUsePage.jsx";
+import UsserRoutes from "./UsserRoutes.jsx";
+import AdminRoutes from "./AdminRoutes.jsx";
 
 export default function AppRouter() {
   return (
-    <>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <InitPage />
-            </>
-          }
-        />
+    <Routes>
+      <Route path="/" element={<InitPage />} />
+      <Route path="/registro" element={<RegisterPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/termsuse" element={<TermUse />} />
+      <Route
+        path="/sobre-nosotros"
+        element={
+          <>
+            <AboutPage />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/suscripciones"
+        element={
+          <>
+            <PricingPlans />
+            <Footer />
+          </>
+        }
+      />
 
-        <Route
-          path="/home"
-          element={
-            <>
-              <Header />
-              <HomePage />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/registro"
-          element={
-            <>
-              <RegisterPage />
-            </>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <>
-              <LoginPage />
-            </>
-          }
-        />
-        <Route
-          path="/termsuse"
-          element={
-            <>
-              <TermUse />
-            </>
-          }
-        />
+      <Route element={<AdminRoutes />}>
         <Route
           path="/admin"
           element={
@@ -75,6 +58,30 @@ export default function AppRouter() {
             </>
           }
         />
+      </Route>
+
+      <Route element={<UsserRoutes />}>
+        <Route
+          path="/home"
+          element={
+            <>
+              <Header />
+              <HomePage />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/perfil/edit-perfil" element={<AccountPerfil />} />
+        <Route
+          path="/perfil"
+          element={
+            <>
+              <AccountModal />
+              <Footer />
+            </>
+          }
+        />
+
         <Route
           path="/movies"
           element={
@@ -96,7 +103,7 @@ export default function AppRouter() {
           }
         />
         <Route
-          path="/favoritos/"
+          path="/favoritos"
           element={
             <>
               <Header />
@@ -115,7 +122,6 @@ export default function AppRouter() {
             </>
           }
         />
-
         <Route
           path="/password/:id"
           element={
@@ -136,16 +142,17 @@ export default function AppRouter() {
           path="/series/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
-
         <Route
           path="/pelicula/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -153,7 +160,8 @@ export default function AppRouter() {
           path="/pelicula/terror/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -161,7 +169,8 @@ export default function AppRouter() {
           path="/pelicula/comedia/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -169,7 +178,8 @@ export default function AppRouter() {
           path="/pelicula/accion/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -177,7 +187,8 @@ export default function AppRouter() {
           path="/pelicula/fantasia/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -185,7 +196,8 @@ export default function AppRouter() {
           path="/pelicula/ciencia-ficcion/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -193,41 +205,14 @@ export default function AppRouter() {
           path="/pelicula/drama/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/perfil/"
-          element={
-            <>
-              <AccountModal /> <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/perfil/edit-perfil"
-          element={
-            <>
-              <AccountPerfil />
-            </>
-          }
-        />
-
-        <Route
-          path="/sobre-nosotros"
-          element={
-            <>
-              <AboutPage />
+              <MoreDetails />
               <Footer />
             </>
           }
         />
+      </Route>
 
-        <Route path="*" element={<Error404Page />} />
-      </Routes>
-    </>
+      <Route path="*" element={<Error404Page />} />
+    </Routes>
   );
 }
