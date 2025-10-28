@@ -112,7 +112,7 @@
   margin: 0.3rem 0;
 }
 
-/* ======= RESPONSIVE ======= */
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
   .seccion-contacto {
     flex-direction: column;
