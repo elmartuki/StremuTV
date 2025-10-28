@@ -13,7 +13,7 @@ export default function Drama() {
           key={id}
         >
           <div className="movies-card-home_img">
-            <img src={url} />
+            <img src={url} alt={nombre} />
           </div>
           <div className="movies-card-home_title">
             <p>{nombre}</p>

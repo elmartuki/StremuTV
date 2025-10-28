@@ -2,7 +2,7 @@ import home from "../assets/home.svg";
 import movies from "../assets/movies.svg";
 import series from "../assets/series.svg";
 import guardados from "../assets/guardados.svg";
-import admin from "../assets/admin.svg"
+import admin from "../assets/admin.svg";
 import { NavLink, useLocation } from "react-router-dom";
 import { obtenerDelLocalStorage } from "../utils/localStorage";
 
@@ -17,21 +17,21 @@ export default function Footer() {
       <div className="footer_links">
         <div className={url === "/home" ? "footer-activo" : ""}>
           <NavLink to="/home">
-            <img src={home} alt="" />
+            <img src={home} alt="Seccion inicio" />
             <a href="">Inicio</a>
           </NavLink>
         </div>
 
         <div className={url === "/movies" ? "footer-activo" : ""}>
           <NavLink to="/movies">
-            <img src={series} alt="" />
+            <img src={series} alt="Seccion peliculas" />
             Peliculas
           </NavLink>
         </div>
 
         <div className={url === "/series" ? "footer-activo" : ""}>
           <NavLink to="/series">
-            <img src={movies} alt="" />
+            <img src={movies} alt="Seccion series" />
             Series
           </NavLink>
         </div>
@@ -39,7 +39,7 @@ export default function Footer() {
         <div className={url === "/favoritos" ? "footer-activo" : ""}>
           <NavLink to="/favoritos">
             {" "}
-            <img src={guardados} alt="" />
+            <img src={guardados} alt="seccion favoritos" />
             Favoritos
           </NavLink>
         </div>
@@ -49,7 +49,7 @@ export default function Footer() {
             <div className={url === "/admin" ? "footer-activo" : ""}>
               <NavLink to="/admin">
                 {" "}
-                <img src={admin} alt="" />
+                <img src={admin} alt="seccion admin" />
                 Admin
               </NavLink>
             </div>

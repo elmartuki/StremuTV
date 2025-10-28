@@ -9,7 +9,7 @@ export default function AboutPage() {
     <main className="about-container">
       <div className="edit-perfil-topbar">
         <button onClick={() => navigate(-1)}>
-          <img src={back} alt="" />
+          <img src={back} alt="boton para volver para atras" />
           Volver
         </button>
       </div>
@@ -80,7 +80,7 @@ export default function AboutPage() {
           <div className="team-card">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqVg_URh9Mvrm3NYaTlCUyiM7r382ohELc1g&s"
-              alt=""
+              alt="MD"
             />
             <h4>Martin Diaz</h4>
           </div>

@@ -343,7 +343,7 @@ export default function PlanSelector() {
       <AlertConfirm alertText={message} showConfirm={confirm} />
       <div className="form-login-back">
         <button onClick={() => navigate(-1)}>
-          <img src={back} alt="" />
+          <img src={back} alt="Boton para volver para atras" />
           <p>Volver</p>
         </button>
       </div>

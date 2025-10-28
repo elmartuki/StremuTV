@@ -54,7 +54,7 @@ export default function Important() {
                 </div>
                 <div className="card-important_details-buttons">
                   <button type="button">
-                    <img src={info} alt="" />
+                    <img src={info} alt="boton para ver mas info de la pelicula o serie" />
                     Mas info
                   </button>
                 </div>

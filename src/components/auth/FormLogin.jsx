@@ -60,7 +60,7 @@ export default function FormLogin() {
         rol: "admin",
       };
       guardarEnLocalStorage("UsserKey", addminKey);
-      navigate("/admin");
+      setTimeout(() => navigate("/admin"), 5000);
     } else {
       const notExits = listadoUsuarios.some(
         (u) =>
@@ -153,9 +153,10 @@ export default function FormLogin() {
   }, [indice]);
 
   let url;
+  let nombre;
 
   if (topFive && topFive.length > 0 && topFive[indice]) {
-    ({ url } = topFive[indice]);
+    ({ url, nombre } = topFive[indice]);
   }
 
   return (
@@ -164,7 +165,7 @@ export default function FormLogin() {
       <AlertConfirm alertText={alertText} showConfirm={showConfirm} />
       <div className="form-login-back">
         <button onClick={() => navigate(-1)}>
-          <img src={back} alt="" />
+          <img src={back} alt="boton de volver para atras" />
           <p>Volver</p>
         </button>
       </div>
@@ -175,13 +176,13 @@ export default function FormLogin() {
             <div>
               <p>Email o nombre de usuario</p>
               <div className="inputs">
-                <img src={usser} alt="" />
+                <img src={usser} alt="icono de usuario" />
                 <input
                   type="text"
                   value={usuarioCorreo}
                   maxLength="25"
                   onChange={(event) => {
-                    setUsuarioCorreo(event.target.value);
+                    setUsuarioCorreo(event.target.value.trim());
                   }}
                   placeholder="Ingrese su Usuario"
                 />
@@ -191,11 +192,11 @@ export default function FormLogin() {
             <div>
               <p>Contraseña</p>
               <div className="inputs">
-                <img src={lock} alt="" />
+                <img src={lock} alt="icono de contraseña" />
                 <input
                   type={showPassword ? "text" : "password"}
                   onChange={(event) => {
-                    setPassword(event.target.value);
+                    setPassword(event.target.value.trim());
                   }}
                   value={password}
                   placeholder="Ingrese la contraseña"
@@ -203,9 +204,17 @@ export default function FormLogin() {
                 />
                 <div className="show-password">
                   {showPassword ? (
-                    <img onClick={handleHide} src={hide} alt="" />
+                    <img
+                      onClick={handleHide}
+                      src={hide}
+                      alt="icono de ocultar contraseña"
+                    />
                   ) : (
-                    <img onClick={handleShow} src={show} alt="" />
+                    <img
+                      onClick={handleShow}
+                      src={show}
+                      alt="icono de mostrar contraseña"
+                    />
                   )}
                 </div>
               </div>
@@ -228,7 +237,7 @@ export default function FormLogin() {
         </article>
 
         <article className="form-login-bg">
-          <img src={url} alt="" />
+          <img src={url} alt={nombre} />
         </article>
       </section>
     </>
