@@ -28,7 +28,7 @@ export default function Contact() {
 
   return (
     <div className="seccion-contacto">
-      {/* LADO IZQUIERDO - FORMULARIO */}
+      {/* formulario */}
       <div className="contenedor-formulario">
         <h2 className="titulo-contacto">Contáctanos</h2>
 
@@ -84,7 +84,7 @@ export default function Contact() {
         <p className="texto-privacidad">Política de Privacidad</p>
       </div>
 
-      {/* LADO DERECHO - MAPA + INFO */}
+      {/* ubicacion */}
       <div className="contenedor-mapa">
         <iframe
           title="Ubicación"

@@ -1,4 +1,4 @@
-/* ======= SECCIÓN GENERAL ======= */
+/* general */
 .seccion-contacto {
   background-color: #0d0d0d;
   color: #ffffff;
@@ -12,7 +12,7 @@
   gap: 2rem;
 }
 
-/* ======= FORMULARIO IZQUIERDA ======= */
+/* formulario */
 .contenedor-formulario {
   flex: 1;
   max-width: 450px;
@@ -83,7 +83,7 @@
   cursor: pointer;
 }
 
-/* ======= MAPA DERECHA ======= */
+/* ubicacion */
 .contenedor-mapa {
   flex: 1;
   max-width: 500px;
