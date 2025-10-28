@@ -23,6 +23,7 @@ import "./css/editPerfil.css";
 import "./css/initPage.css";
 import "./css/login.css";
 import "./css/aboutPage.css";
+import "./css/contacto.css";
 
 export default function App() {
   return (

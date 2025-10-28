@@ -14,6 +14,7 @@ import AccountPerfil from "../components/account/AccountPerfil.jsx";
 import AccountModal from "../components/account/AccountConfig.jsx";
 import InitPage from "../pages/InitPage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
+import Contact from "../components/contact-folder/Contact.jsx";
 
 export default function AppRouter() {
   return (
@@ -104,7 +105,15 @@ export default function AppRouter() {
             </>
           }
         />
-
+       <Route
+          path="/contacto/"
+          element={
+            <>
+              <Contact />
+              <Footer />
+            </>
+          }
+        />
         <Route
           path="/series/:id"
           element={
