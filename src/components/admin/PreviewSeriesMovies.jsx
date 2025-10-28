@@ -29,7 +29,7 @@ export default function ShowMoviesSeries({
     <section className="section-1">
       <div className="filter-search">
         <div>
-          <img src={searchImg} alt="" />
+          <img src={searchImg} alt="Buscar pelicula o serie" />
           <input
             onChange={handleText}
             value={wordToSearch}
@@ -57,7 +57,7 @@ export default function ShowMoviesSeries({
                 return (
                   <article key={id} className="card-movie-serie">
                     <div className="card-movie-serie_img">
-                      <img src={url} alt="" />
+                      <img src={url} alt={nombre} />
                     </div>
                     <div className="card-movie-serie_info">
                       <div>
@@ -91,7 +91,7 @@ export default function ShowMoviesSeries({
             return (
               <article key={id} className="card-movie-serie">
                 <div className="card-movie-serie_img">
-                  <img src={url} alt="" />
+                  <img src={url} alt={nombre} />
                 </div>
                 <div className="card-movie-serie_info">
                   <div>

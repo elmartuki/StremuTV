@@ -108,7 +108,7 @@ export default function FormCreateMovieSerie() {
   return (
     <>
       <button className="btn-añadir" onClick={openCreate}>
-        <img src={add} alt="" />
+        <img src={add} alt="boton de añadir" />
       </button>
       <CreateForm
         openCreateModal={openCreateModal}

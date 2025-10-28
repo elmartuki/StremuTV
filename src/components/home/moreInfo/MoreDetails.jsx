@@ -144,7 +144,7 @@ export default function MoreDetails() {
         >
           <div className="preview_topbar">
             <button onClick={() => navigate(-1)}>
-              <img src={volver} alt="" />
+              <img src={volver} alt="boton para volver para atras" />
               <p>Volver</p>
             </button>
           </div>
@@ -202,14 +202,14 @@ export default function MoreDetails() {
                       style={{ background: addedFav ? "rgb(206, 0, 0)" : "" }}
                       onClick={handleFav}
                     >
-                      <img className="fav" src={fav} alt="" />
+                      <img className="fav" src={fav} alt="boton para añedir o eliminar de favoritos" />
                     </button>
 
                     <button onClick={toggleMute}>
                       {isMutedIcon ? (
-                        <img className="filter-invert" src={sonidont} alt="" />
+                        <img className="filter-invert" src={sonidont} alt="boton para mutear" />
                       ) : (
-                        <img className="filter-invert" src={sonido} alt="" />
+                        <img className="filter-invert" src={sonido} alt="boton para desmutear" />
                       )}
                     </button>
                   </div>
@@ -228,7 +228,7 @@ export default function MoreDetails() {
                     <div>{genero}</div>
                     <span className="split"></span>
                     <div>
-                      <img src={star} alt="" />
+                      <img src={star} alt="icono de calificaciones" />
                       {randomStars}/10
                     </div>
                   </div>
@@ -239,7 +239,7 @@ export default function MoreDetails() {
                       className="filter-invert"
                       onClick={handlePlay}
                       src={play}
-                      alt=""
+                      alt="boton para reproducir el video"
                     />
                     Ver trailer
                   </button>
@@ -249,13 +249,13 @@ export default function MoreDetails() {
                       style={{ background: addedFav ? "rgb(206, 0, 0)" : "" }}
                       onClick={handleFav}
                     >
-                      <img className="fav" src={fav} alt="" />
+                      <img className="fav" src={fav} alt="boton para añadir a favoritos" />
                     </button>
                     <button onClick={toggleMute}>
                       {isMutedIcon ? (
-                        <img className="filter-invert" src={sonidont} alt="" />
+                        <img className="filter-invert" src={sonidont} alt="boton para mutear" />
                       ) : (
-                        <img className="filter-invert" src={sonido} alt="" />
+                        <img className="filter-invert" src={sonido} alt="boton para desmutear" />
                       )}
                     </button>
                   </div>
@@ -276,7 +276,7 @@ export default function MoreDetails() {
                       <>
                         <div className="preview_reparto-card">
                           <div className="preview_reparto-card_img">
-                            <img src={url_img} alt="" />
+                            <img src={url_img} alt={nombre} />
                           </div>
                           <p>{nombre}</p>
                         </div>

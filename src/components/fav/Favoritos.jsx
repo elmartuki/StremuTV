@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import close from "../../assets/close.svg";
 import ModalConfirmar from "./ModalConfirmar";
-import { agregarAlLocalStorage, guardarEnLocalStorage } from "../../utils/localStorage";
+import {
+  agregarAlLocalStorage,
+  guardarEnLocalStorage,
+} from "../../utils/localStorage";
 
 export default function Favoritos({ onUpdateList, favoritos }) {
   const [listFavoritos, setListFavoritos] = useState([]);
@@ -49,11 +52,11 @@ export default function Favoritos({ onUpdateList, favoritos }) {
                 onClick={() => handleDeleteFav(id)}
                 className="btn-delete"
               >
-                <img src={close} alt="" />
+                <img src={close} alt="boton de eliminar" />
               </button>
               <NavLink to={`/favoritos/${id}`}>
                 <div className="movie-card_img">
-                  <img src={url} />
+                  <img src={url} alt={nombre} />
                 </div>
                 <p>{nombre}</p>
               </NavLink>

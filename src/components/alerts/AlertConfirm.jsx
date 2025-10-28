@@ -5,7 +5,7 @@ export default function AlertConfirm({ showConfirm, alertText }) {
   return (
     <section className="alert-section-bg">
       <article className="alert-message">
-        <img src={alertCheck} alt="" />
+        <img src={alertCheck} alt="icono de alerta" />
 
         <p>{alertText}</p>
       </article>
