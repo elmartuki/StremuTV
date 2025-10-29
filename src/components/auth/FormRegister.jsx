@@ -199,7 +199,7 @@ export default function FormRegister() {
                   placeholder="Correo"
                   value={correo}
                   minLength="10"
-                  maxLength="25"
+                  maxLength="40"
                   required
                   className="inputs"
                 />

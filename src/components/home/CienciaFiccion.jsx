@@ -1,12 +1,22 @@
+import { useEffect, useState } from "react";
 import { filtrarYMostrar } from "../../utils/localStorage";
 import { NavLink } from "react-router-dom";
 
-export default function CienciaFiccion() {
+export default function CienciaFiccion({ showMore }) {
   const list = filtrarYMostrar("Ciencia Ficcion") || [];
-  const moviesRandom = list.sort(() => Math.random() - 0.5);
+  const [resize, setResize] = useState(window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => setResize(window.innerWidth >= 1024);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
+
+  const listToShow = resize ? list.slice(0, showMore) : list;
   return (
     <>
-      {moviesRandom.map(({ id, nombre, url }) => (
+      {listToShow.map(({ id, nombre, url, fecha, genero, descripcion }) => (
         <NavLink
           to={`/pelicula/ciencia-ficcion/${id}`}
           className="movies-card-home"

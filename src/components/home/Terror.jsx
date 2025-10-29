@@ -1,12 +1,23 @@
+import { useEffect, useState } from "react";
 import { filtrarYMostrar } from "../../utils/localStorage";
 import { NavLink } from "react-router-dom";
 
-export default function Movies() {
+export default function Movies({ showMore }) {
   const terrorList = filtrarYMostrar("Terror") || [];
-  const moviesRandom = terrorList.sort(() => Math.random() - 0.5);
+  const [resize, setResize] = useState(window.innerWidth >= 1024);
+
+  useEffect(() => {
+    const handleResize = () => setResize(window.innerWidth >= 1024);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
+
+  const listToShow = resize ? terrorList.slice(0, showMore) : terrorList;
+
   return (
     <>
-      {moviesRandom.map(({ id, nombre, url, fecha, genero, descripcion }) => (
+      {listToShow.map(({ id, nombre, url, fecha, genero, descripcion }) => (
         <NavLink
           to={`/pelicula/terror/${id}`}
           className="movies-card-home"
