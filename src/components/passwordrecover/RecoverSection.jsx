@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
 import {
+  guardarEnLocalStorage,
   obtenerDelLocalStorage,
   obtenerPeliculasOSerieLS,
 } from "../../utils/localStorage";
 import show from "../../assets/passwordOn.svg";
 import hide from "../../assets/passwordOff.svg";
 import back from "../../assets/back.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import AlertModal from "../alerts/AlertModal";
+import AlertConfirm from "../alerts/AlertConfirm";
 
 export default function RecoverSection() {
   const [contraseña, setContraseña] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [alertText, setAlertText] = useState("");
 
   const navigate = useNavigate();
+
+  const { id } = useParams();
 
   function handleShow() {
     setShowPassword(true);
@@ -24,28 +32,42 @@ export default function RecoverSection() {
   function handlePassword(event) {
     event.preventDefault();
 
-    const listadoUsuarios = obtenerDelLocalStorage("usuarios") || [];
+    const listadoUsuarios = obtenerDelLocalStorage("usuarios");
 
-    if (listadoUsuarios.length === 0) {
-      alert("No hay usuarios registrados");
-      return;
+    const existeContraseña = listadoUsuarios.find((usuario) => {
+      return usuario.password === contraseña;
+    });
+
+    if (existeContraseña) {
+      setAlertText("Ingresaste la misma contraseña.");
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 3000);
+    } else {
+      const actualizarContrasenia = listadoUsuarios.find((usser) => {
+        return Number(usser.id) === Number(id);
+      });
+
+      const contraseniaNueva = {
+        ...actualizarContrasenia,
+        password: contraseña,
+      };
+
+      const actualizarListado = listadoUsuarios.map((usuario) => {
+        return Number(usuario.id) === Number(contraseniaNueva.id)
+          ? contraseniaNueva
+          : usuario;
+      });
+
+      guardarEnLocalStorage("usuarios", actualizarListado);
+
+      setAlertText("Se actualizo la contraseña exitosamente.");
+      setShowConfirm(true);
+      setTimeout(() => setShowConfirm(false), 3000);
+
+      setTimeout(() => {
+        navigate("https://stremutv.vercel.app/login");
+      }, 3000);
     }
-
-    const [usuario] = listadoUsuarios;
-
-    if (usuario.password === contraseña) {
-      alert("⚠️ Esta contraseña ya existe, elige otra diferente");
-      return;
-    }
-
-    usuario.password = contraseña;
-    localStorage.setItem("usuarios", JSON.stringify([usuario]));
-
-    console.log("✅ Contraseña nueva guardada con éxito");
-    setTimeout(() => {
-      window.location.href =
-        "https://trabajo-jygdvrifg-elmartukis-projects.vercel.app/login";
-    }, 2000);
   }
 
   const [indice, setIndice] = useState(0);
@@ -78,6 +100,8 @@ export default function RecoverSection() {
 
   return (
     <>
+      <AlertModal alertText={alertText} showAlert={showAlert} />
+      <AlertConfirm alertText={alertText} showConfirm={showConfirm} />
       <div className="form-login-back">
         <button onClick={() => navigate("/login")}>
           <img src={back} alt="boton para volver para atras" />
@@ -95,6 +119,9 @@ export default function RecoverSection() {
               <div className="input-recover">
                 <input
                   type={showPassword ? "text" : "password"}
+                  minLength={8}
+                  maxLength={20}
+                  required
                   onChange={(event) => {
                     setContraseña(event.target.value);
                   }}
@@ -119,7 +146,7 @@ export default function RecoverSection() {
               </div>
             </div>
 
-            <button type="submit">Enviar correo</button>
+            <button type="submit">Guardar</button>
           </form>
         </article>
         <article className="form-login-bg">

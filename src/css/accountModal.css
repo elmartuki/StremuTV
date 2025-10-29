@@ -99,15 +99,27 @@
     color: rgba(255, 255, 255, 0.836);
     gap: 10px;
 
-    button {
+    .card-add-show {
+      width: 100%;
+      background-color: red;
+      .container-add-show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .account-config_list_access {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-direction: column;
       width: 100%;
       background-color: transparent;
       border: none;
       color: rgba(255, 255, 255, 0.884);
       border-radius: 8px;
+
       transition: 0.5s;
 
       &:hover {
@@ -118,22 +130,26 @@
 
       div {
         display: flex;
+        width: 100%;
+        justify-content: space-between;
         align-items: center;
         gap: 10px;
 
-        img {
+        img:nth-child(1) {
           padding: 10px;
           background-color: #242424;
+
           border-radius: 8px;
         }
       }
     }
 
-    button:nth-child(3) {
+    .account-config_list_add {
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: #262626;
+      border: none;
       padding: 10px 10px;
       border-radius: 8px;
       gap: 5px;
@@ -152,6 +168,9 @@
       img {
         filter: invert();
         opacity: 80%;
+      }
+      .card-add-show {
+        width: 100%;
       }
     }
   }

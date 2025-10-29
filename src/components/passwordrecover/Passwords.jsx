@@ -25,7 +25,7 @@ export default function Passwords() {
       return;
     }
 
-    const resetLink = `https://trabajo-jygdvrifg-elmartukis-projects.vercel.app/recover-section/${usuario.id}`;
+    const resetLink = `https://stremutv.vercel.app/recover-section/${usuario.id}`;
 
     emailjs
       .send(

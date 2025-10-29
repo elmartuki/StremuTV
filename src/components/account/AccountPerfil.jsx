@@ -72,6 +72,8 @@ export default function AccountPerfil() {
           };
 
           setShowModal(true);
+          setMessage("Se modificó la foto.");
+          setTimeout(() => setShowModal(false), 5000);
           setMessage("Se modifico la foto.");
           setTimeout(() => setShowModal(false), 3000);
 
