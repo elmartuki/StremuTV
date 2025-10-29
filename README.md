@@ -1,4 +1,4 @@
-# 🎥 StremuTV
+<img width="1919" height="978" alt="Captura de pantalla 2025-10-27 153644" src="https://github.com/user-attachments/assets/8ab66317-444e-45f1-b927-be742ed34587" /># 🎥 StremuTV
 
 **StremuTV** es una plataforma web de **streaming de películas y series**, desarrollada con tecnologías modernas para ofrecer una experiencia fluida, rápida y visualmente atractiva.  
 Podés explorar, buscar y reproducir contenido de forma simple desde cualquier dispositivo.
@@ -29,7 +29,13 @@ Podés explorar, buscar y reproducir contenido de forma simple desde cualquier d
 
 ---
 
-## 🖥️ Capturas de pantalla (ejemplo)
+## 🖥️ Capturas de pantalla 
+
+<img width="1919" height="978" alt="Captura de pantalla 2025-10-27 153644" src="https://github.com/user-attachments/assets/078fda3f-fa96-465e-b3a7-ec444e1b0d94" />
+<img width="1918" height="977" alt="image" src="https://github.com/user-attachments/assets/4e471df7-3a4e-472d-8704-bde067864d0d" />
+<img width="1918" height="976" alt="image" src="https://github.com/user-attachments/assets/80633f0e-897f-4d85-b4d9-69c39b9b13a7" />
+<img width="1918" height="946" alt="image" src="https://github.com/user-attachments/assets/bb71b81b-3b69-4e22-ada6-2a28156ffda2" />
+<img width="1918" height="947" alt="image" src="https://github.com/user-attachments/assets/0a035b03-b021-4a5c-9009-1552e855a309" />
 
 
 ## 🧩 Próximas mejoras (Roadmap)
