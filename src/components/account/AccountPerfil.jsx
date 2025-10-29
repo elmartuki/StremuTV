@@ -36,12 +36,12 @@ export default function AccountPerfil() {
     if (existeUsuario) {
       setShowAlert(true);
       setMessage("El usuario que ingresaste ya existe.");
-      setTimeout(() => setShowAlert(false), 5000);
+      setTimeout(() => setShowAlert(false), 3000);
     } else {
       if (editPhoto === "" && usserName === "") {
         setShowModal(true);
         setMessage("Guardado sin cambios.");
-        setTimeout(() => setShowModal(false), 5000);
+        setTimeout(() => setShowModal(false), 3000);
       } else {
         if (editPhoto === "") {
           const updateUsser = {
@@ -51,7 +51,7 @@ export default function AccountPerfil() {
 
           setShowModal(true);
           setMessage("Se modifico el usuario.");
-          setTimeout(() => setShowModal(false), 5000);
+          setTimeout(() => setShowModal(false), 3000);
 
           const usserFinded = usuarioList.map((usuario) => {
             if (usuario.id === usuarioLogueado.id) {
@@ -73,7 +73,7 @@ export default function AccountPerfil() {
 
           setShowModal(true);
           setMessage("Se modifico la foto.");
-          setTimeout(() => setShowModal(false), 5000);
+          setTimeout(() => setShowModal(false), 3000);
 
           const usserFinded = usuarioList.map((usuario) => {
             if (usuario.id === usuarioLogueado.id) {
@@ -112,7 +112,7 @@ export default function AccountPerfil() {
   }
 
   function handleBack() {
-    setTimeout(() => navigate(-1), 5000);
+    setTimeout(() => navigate(-1), 3000);
   }
 
   return (

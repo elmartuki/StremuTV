@@ -20,6 +20,7 @@ import PricingPlans from "../pages/PricingPlans.jsx";
 import TermUse from "../pages/TermUsePage.jsx";
 import UsserRoutes from "./UsserRoutes.jsx";
 import AdminRoutes from "./AdminRoutes.jsx";
+import UssersPanel from "../components/ussers/UssersPanel.jsx";
 
 export default function AppRouter() {
   return (
@@ -70,6 +71,16 @@ export default function AppRouter() {
             <>
               <Header />
               <AdminPage />
+              <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/usuarios"
+          element={
+            <>
+              <Header />
+              <UssersPanel />
               <Footer />
             </>
           }

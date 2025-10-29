@@ -117,6 +117,13 @@ export default function Header() {
                   >
                     Admin
                   </Link>
+
+                  <Link
+                    className={url === "/usuarios" ? "navbar-activo" : ""}
+                    to="/usuarios"
+                  >
+                    Usuarios
+                  </Link>
                 </>
               ) : (
                 <></>
@@ -142,7 +149,10 @@ export default function Header() {
               ) : (
                 <div>
                   <button className="usser-not-log" onClick={handleOpenLogin}>
-                    <img src={usserImg} alt="imagen del usuario sin loguearse" />
+                    <img
+                      src={usserImg}
+                      alt="imagen del usuario sin loguearse"
+                    />
                   </button>
                 </div>
               )}

@@ -240,7 +240,7 @@ export default function PlanSelector() {
     if (!lastName) {
       setMessage("Ingresa Apellido (máx 12 letras).");
       setAlert(true);
-      setTimeout(() => setAlert(false), 5000);
+      setTimeout(() => setAlert(false), 3000);
 
       return;
     }
@@ -249,7 +249,7 @@ export default function PlanSelector() {
     if (digitsCard.length !== 16) {
       setMessage("El número de tarjeta debe tener 16 dígitos.");
       setAlert(true);
-      setTimeout(() => setAlert(false), 5000);
+      setTimeout(() => setAlert(false), 3000);
       return;
     }
     if (
@@ -258,13 +258,13 @@ export default function PlanSelector() {
     ) {
       setMessage("Vencimiento inválido. Usa MM/YY y mes entre 01 y 12.");
       setAlert(true);
-      setTimeout(() => setAlert(false), 5000);
+      setTimeout(() => setAlert(false), 3000);
       return;
     }
     if (cvv.length !== 3) {
       setMessage("CVV inválido. Debe tener 3 dígitos.");
       setAlert(true);
-      setTimeout(() => setAlert(false), 5000);
+      setTimeout(() => setAlert(false), 3000);
       return;
     }
 
@@ -272,7 +272,7 @@ export default function PlanSelector() {
       `✅ Pago realizado con éxito. Gracias ${firstName} ${lastName} por elegir el plan ${selectedPlan.name}!`
     );
     setConfirm(true);
-    setTimeout(() => setConfirm(false), 5000);
+    setTimeout(() => setConfirm(false), 3000);
 
     const changeSub = usserList.find((u) => {
       return u.id === usserKey.id;
@@ -304,7 +304,7 @@ export default function PlanSelector() {
       setTimeout(() => {
         handleClose();
         navegacion("/home");
-      }, 5000);
+      }, 3000);
     } else {
       const usuarioEncontrado = usserList.find((u) => {
         return Number(u.id) === Number(changeSub.id);
@@ -332,7 +332,7 @@ export default function PlanSelector() {
     setTimeout(() => {
       handleClose();
       navegacion("/home");
-    }, 5000);
+    }, 3000);
   };
 
   const navigate = useNavigate();

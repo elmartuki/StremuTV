@@ -93,7 +93,7 @@ export default function MoreDetails() {
     setTimeout(() => {
       setConfirmModal(false);
       setShowError(false);
-    }, 5000);
+    }, 3000);
   }
 
   function closeMessage() {

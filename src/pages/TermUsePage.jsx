@@ -29,7 +29,7 @@ export default function TermUse() {
   const handleAccept = () => {
     setMessage("✅ Has aceptado los Términos y Condiciones correctamente");
     setShowMessage(true);
-    setTimeout(() => setShowMessage(false), 5000);
+    setTimeout(() => setShowMessage(false), 3000);
 
     const usserList = obtenerDelLocalStorage("usuarios");
 
@@ -48,7 +48,7 @@ export default function TermUse() {
 
     setTimeout(() => {
       navigate("/login");
-    }, 5000);
+    }, 3000);
   };
 
   useEffect(() => {
