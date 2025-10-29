@@ -1,5 +1,3 @@
-<img width="1919" height="978" alt="Captura de pantalla 2025-10-27 153644" src="https://github.com/user-attachments/assets/8ab66317-444e-45f1-b927-be742ed34587" /># 🎥 StremuTV
-
 **StremuTV** es una plataforma web de **streaming de películas y series**, desarrollada con tecnologías modernas para ofrecer una experiencia fluida, rápida y visualmente atractiva.  
 Podés explorar, buscar y reproducir contenido de forma simple desde cualquier dispositivo.
 
