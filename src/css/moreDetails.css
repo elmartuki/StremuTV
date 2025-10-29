@@ -185,6 +185,7 @@
   }
 
   .preview_reparto {
+    pointer-events: all;
     div {
       display: flex;
       flex: 0 0 auto;
@@ -291,13 +292,13 @@
 
   100% {
     transform: scale(1);
-    background-color: rgb(206, 0, 0);
+    background-color: rgba(153, 0, 0, 1);
   }
 }
 
 @keyframes heart-bg-disabled {
   0% {
-    background-color: rgb(206, 0, 0);
+    background-color: rgba(153, 0, 0, 1);
   }
 
   100% {
@@ -348,6 +349,7 @@ video {
 
   .movies-card-home {
     width: clamp(130px, 25vw, 130px);
+    pointer-events: all;
 
     p {
       display: -webkit-box;

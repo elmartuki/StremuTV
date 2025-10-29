@@ -199,17 +199,31 @@ export default function MoreDetails() {
                         (active ? "fav-active" : "fav-disabled",
                         addedFav ? "fav-active" : "fav-disabled")
                       }
-                      style={{ background: addedFav ? "rgb(206, 0, 0)" : "" }}
+                      style={{
+                        background: addedFav ? "rgba(153, 0, 0, 1)" : "",
+                      }}
                       onClick={handleFav}
                     >
-                      <img className="fav" src={fav} alt="boton para añedir o eliminar de favoritos" />
+                      <img
+                        className="fav"
+                        src={fav}
+                        alt="boton para añedir o eliminar de favoritos"
+                      />
                     </button>
 
                     <button onClick={toggleMute}>
                       {isMutedIcon ? (
-                        <img className="filter-invert" src={sonidont} alt="boton para mutear" />
+                        <img
+                          className="filter-invert"
+                          src={sonidont}
+                          alt="boton para mutear"
+                        />
                       ) : (
-                        <img className="filter-invert" src={sonido} alt="boton para desmutear" />
+                        <img
+                          className="filter-invert"
+                          src={sonido}
+                          alt="boton para desmutear"
+                        />
                       )}
                     </button>
                   </div>
@@ -246,16 +260,30 @@ export default function MoreDetails() {
                   <div className="fav-buttons">
                     <button
                       className={active ? "fav-active" : "fav-disabled"}
-                      style={{ background: addedFav ? "rgb(206, 0, 0)" : "" }}
+                      style={{
+                        background: addedFav ? "rgba(153, 0, 0, 1)" : "",
+                      }}
                       onClick={handleFav}
                     >
-                      <img className="fav" src={fav} alt="boton para añadir a favoritos" />
+                      <img
+                        className="fav"
+                        src={fav}
+                        alt="boton para añadir a favoritos"
+                      />
                     </button>
                     <button onClick={toggleMute}>
                       {isMutedIcon ? (
-                        <img className="filter-invert" src={sonidont} alt="boton para mutear" />
+                        <img
+                          className="filter-invert"
+                          src={sonidont}
+                          alt="boton para mutear"
+                        />
                       ) : (
-                        <img className="filter-invert" src={sonido} alt="boton para desmutear" />
+                        <img
+                          className="filter-invert"
+                          src={sonido}
+                          alt="boton para desmutear"
+                        />
                       )}
                     </button>
                   </div>
