@@ -52,7 +52,7 @@ export default function FormLogin() {
     ) {
       setAlertText("Hola de nuevo Jefe. :)");
       setShowConfirm(true);
-      setTimeout(() => setShowConfirm(false), 5000);
+      setTimeout(() => setShowConfirm(false), 3000);
 
       const addminKey = {
         usuario: ADMIN_USUARIO,
@@ -60,7 +60,7 @@ export default function FormLogin() {
         rol: "admin",
       };
       guardarEnLocalStorage("UsserKey", addminKey);
-      navigate("/admin");
+      setTimeout(() => navigate("/admin"), 3000);
     } else {
       const notExits = listadoUsuarios.some(
         (u) =>
@@ -72,7 +72,7 @@ export default function FormLogin() {
       } else {
         setAlertText("La cuenta que ingresaste no existe.");
         setShowAlert(true);
-        setTimeout(() => setShowAlert(false), 5000);
+        setTimeout(() => setShowAlert(false), 3000);
         return;
       }
 
@@ -87,18 +87,18 @@ export default function FormLogin() {
           "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
         );
         setShowAlert(true);
-        setTimeout(() => setShowAlert(false), 5000);
+        setTimeout(() => setShowAlert(false), 3000);
       } else if (usuarioValid.password !== datosIngresados.password) {
         setShowMessage(true);
         setAlertText(
           "No se pudo iniciar sesión. Revisá tus datos e intentá otra vez."
         );
         setShowAlert(true);
-        setTimeout(() => setShowAlert(false), 5000);
+        setTimeout(() => setShowAlert(false), 3000);
 
         setTimeout(() => {
           setShowMessage(false);
-        }, 5000);
+        }, 3000);
       } else {
         const usserList = obtenerDelLocalStorage("usuarios") || [];
 
@@ -109,23 +109,33 @@ export default function FormLogin() {
 
         const accepTyc = obtenerDelLocalStorage("UsserKey");
 
-        if (accepTyc.tyc === true) {
-          if (usuarioActual.subActiva) {
-            setTimeout(() => navigate("/home"), 5000);
-            setAlertText("Ingresaste correctamente.");
-            setShowConfirm(true);
-            setTimeout(() => setShowConfirm(false), 5000);
-          } else {
-            setTimeout(() => navigate("/suscripciones"), 5000);
-            setAlertText("Ingresaste correctamente.");
-            setShowConfirm(true);
-            setTimeout(() => setShowConfirm(false), 5000);
-          }
-        } else {
-          setAlertText("No se puede ingresar porque no aceptaste los TyC.");
+        const arebaned = obtenerDelLocalStorage("UsserKey");
+
+        if (arebaned.baneado === true) {
+          setAlertText("No puedes ingresar, ya que fuiste baneado.");
           setShowAlert(true);
-          setTimeout(() => setShowAlert(false), 5000);
-          setTimeout(() => navigate("/"), 5000);
+          setTimeout(() => setShowAlert(false), 3000);
+          setTimeout(() => navigate("/login"), 3000);
+          return;
+        } else {
+          if (accepTyc.tyc === true) {
+            if (usuarioActual.subActiva) {
+              setTimeout(() => navigate("/home"), 3000);
+              setAlertText("Ingresaste correctamente.");
+              setShowConfirm(true);
+              setTimeout(() => setShowConfirm(false), 3000);
+            } else {
+              setTimeout(() => navigate("/suscripciones"), 3000);
+              setAlertText("Ingresaste correctamente.");
+              setShowConfirm(true);
+              setTimeout(() => setShowConfirm(false), 3000);
+            }
+          } else {
+            setAlertText("No se puede ingresar porque no aceptaste los TyC.");
+            setShowAlert(true);
+            setTimeout(() => setShowAlert(false), 3000);
+            setTimeout(() => navigate("/"), 3000);
+          }
         }
       }
     }
@@ -153,9 +163,10 @@ export default function FormLogin() {
   }, [indice]);
 
   let url;
+  let nombre;
 
   if (topFive && topFive.length > 0 && topFive[indice]) {
-    ({ url } = topFive[indice]);
+    ({ url, nombre } = topFive[indice]);
   }
 
   return (
@@ -164,7 +175,7 @@ export default function FormLogin() {
       <AlertConfirm alertText={alertText} showConfirm={showConfirm} />
       <div className="form-login-back">
         <button onClick={() => navigate(-1)}>
-          <img src={back} alt="" />
+          <img src={back} alt="boton de volver para atras" />
           <p>Volver</p>
         </button>
       </div>
@@ -175,13 +186,13 @@ export default function FormLogin() {
             <div>
               <p>Email o nombre de usuario</p>
               <div className="inputs">
-                <img src={usser} alt="" />
+                <img src={usser} alt="icono de usuario" />
                 <input
                   type="text"
                   value={usuarioCorreo}
-                  maxLength="25"
+                  maxLength="40"
                   onChange={(event) => {
-                    setUsuarioCorreo(event.target.value);
+                    setUsuarioCorreo(event.target.value.trim());
                   }}
                   placeholder="Ingrese su Usuario"
                 />
@@ -191,11 +202,11 @@ export default function FormLogin() {
             <div>
               <p>Contraseña</p>
               <div className="inputs">
-                <img src={lock} alt="" />
+                <img src={lock} alt="icono de contraseña" />
                 <input
                   type={showPassword ? "text" : "password"}
                   onChange={(event) => {
-                    setPassword(event.target.value);
+                    setPassword(event.target.value.trim());
                   }}
                   value={password}
                   placeholder="Ingrese la contraseña"
@@ -203,9 +214,17 @@ export default function FormLogin() {
                 />
                 <div className="show-password">
                   {showPassword ? (
-                    <img onClick={handleHide} src={hide} alt="" />
+                    <img
+                      onClick={handleHide}
+                      src={hide}
+                      alt="icono de ocultar contraseña"
+                    />
                   ) : (
-                    <img onClick={handleShow} src={show} alt="" />
+                    <img
+                      onClick={handleShow}
+                      src={show}
+                      alt="icono de mostrar contraseña"
+                    />
                   )}
                 </div>
               </div>
@@ -228,7 +247,7 @@ export default function FormLogin() {
         </article>
 
         <article className="form-login-bg">
-          <img src={url} alt="" />
+          <img src={url} alt={nombre} />
         </article>
       </section>
     </>

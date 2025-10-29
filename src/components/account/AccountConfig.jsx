@@ -39,7 +39,7 @@ export default function AccountConfig({ closeConfig }) {
         <article className="account-config">
           <div className="account-config_topbar">
             <button className="" onClick={() => navigate(-1)}>
-              <img src={back} alt="" />
+              <img src={back} alt="volver una pagina atras" />
               Volver
             </button>
           </div>
@@ -47,7 +47,7 @@ export default function AccountConfig({ closeConfig }) {
           <div className="account-config_perfil">
             <div className="account-config_perfil-account">
               <div>
-                <img src={usuario.perfil} alt="" />
+                <img src={usuario.perfil} alt="foto de perfil del usuario" />
               </div>
 
               <div>
@@ -59,7 +59,7 @@ export default function AccountConfig({ closeConfig }) {
             <div className="account-config_buttons">
               <NavLink to="/perfil/edit-perfil">
                 <button>
-                  <img src={edit} alt="" />
+                  <img src={edit} alt="editar perfil" />
                   Editar perfil
                 </button>
               </NavLink>
@@ -70,17 +70,19 @@ export default function AccountConfig({ closeConfig }) {
             <NavLink onClick={closeConfig} to="/favoritos">
               <button className="account-config_list_access">
                 <div>
-                  <img src={favIcon} alt="" />
+                  <img src={favIcon} alt="seccion favoritos" />
                   <p>Favoritos</p>
                   <p>{FavCount}</p>
                   <img src={right} alt="" />
                 </div>
+
+                <img src={right} alt="abrir seccion favoritos" />
               </button>
             </NavLink>
 
             <button className="account-config_list_add">
               <NavLink to="*">
-                <img src={addIcon} alt="" />
+                <img src={addIcon} alt="crear una nueva lista" />
                 Crear una nueva lista.
               </NavLink>
             </button>
@@ -120,44 +122,54 @@ export default function AccountConfig({ closeConfig }) {
             <div className="account-config_config_buttons">
               <button>
                 <div>
-                  <img className="white" src={infoIcon} alt="" />
+                  <img
+                    className="white"
+                    src={infoIcon}
+                    alt="icono de informacion"
+                  />
                   Contacto
                 </div>
-                <img src={right} alt="" />
+                <img src={right} alt="abrir seccion de contacto" />
               </button>
               <button>
                 <NavLink to="/sobre-nosotros">
                   <div>
-                    <img src={contacto} alt="" />
+                    <img src={contacto} alt="icono de sobre nosotros" />
                     Sobre Nosotros
                   </div>
                 </NavLink>
 
-                <img src={right} alt="" />
+                <img src={right} alt="abrir seccion sobre nosotros" />
               </button>
               <button>
                 <NavLink to="*">
                   <div>
-                    <img src={dispositivos} alt="" />
+                    <img
+                      src={dispositivos}
+                      alt="icono de dispositivos compatibles"
+                    />
                     Dispositivos Compatibles
                   </div>
                 </NavLink>
 
-                <img src={right} alt="" />
+                <img
+                  src={right}
+                  alt="abrir seccion de dispositivos compatibles"
+                />
               </button>
               <button>
                 <NavLink to="*">
                   <div>
-                    <img src={help} alt="" />
+                    <img src={help} alt="icono de ayuda" />
                     Ayuda
                   </div>
                 </NavLink>
 
-                <img src={right} alt="" />
+                <img src={right} alt="abrir seccion de ayuda" />
               </button>
               <button onClick={cerrarSession}>
                 <div>
-                  <img src={sessionIcon} alt="" />
+                  <img src={sessionIcon} alt="icono de cerrar sesión" />
                   Cerrar Sesión
                 </div>
               </button>

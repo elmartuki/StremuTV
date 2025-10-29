@@ -11,6 +11,12 @@
   width: 95%;
   margin: auto;
 
+  transition: 0.5s;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
   div {
     display: flex;
     padding: 8px 10px;

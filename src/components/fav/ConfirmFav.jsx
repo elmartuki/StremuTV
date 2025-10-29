@@ -9,7 +9,7 @@ export default function ConfirmFav({
       <section onClick={closeMessage} className="message-background">
         <article className="message">
           <div className="message_img">
-            <img src={img} alt="" />
+            <img src={img} />
             <p>{nombre}</p>
           </div>
         </article>

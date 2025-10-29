@@ -7,6 +7,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import personAdd from "../../assets/personAdd.svg";
 import back from "../../assets/back.svg";
+import show from "../../assets/passwordOn.svg";
+import hide from "../../assets/passwordOff.svg";
 import AlertModal from "../alerts/AlertModal";
 import AlertConfirm from "../alerts/AlertConfirm";
 
@@ -16,6 +18,8 @@ export default function FormRegister() {
   const [password, setPassword] = useState("");
   const [perfil, setPerfil] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordTwo, setShowPasswordTwo] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [alertText, setAlertText] = useState("");
@@ -26,12 +30,29 @@ export default function FormRegister() {
     setShowPreview(true);
   }
 
+  function handleShow() {
+    setShowPassword(true);
+  }
+
+  function handleHide() {
+    setShowPassword(false);
+  }
+
+  function handleShowTwo() {
+    setShowPasswordTwo(true);
+  }
+
+  function handleHideTwo() {
+    setShowPasswordTwo(false);
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
     const listadoUsuarios = obtenerDelLocalStorage("usuarios") || [];
 
     const nuevoUsuario = {
+      baneado: false,
       id: Date.now(),
       usuario: usuario.trim(),
       perfil: perfil.trim(),
@@ -51,21 +72,21 @@ export default function FormRegister() {
     if (existeCorreo) {
       setAlertText("El correo que ingresaste ya existe.");
       setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
+      setTimeout(() => setShowAlert(false), 3000);
     } else if (existeUsuario) {
       setAlertText("El usuario que ingresaste ya existe.");
       setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
+      setTimeout(() => setShowAlert(false), 3000);
     } else if (password !== repeatPassword) {
       setAlertText("Las contraseñas no coinciden.");
       setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
+      setTimeout(() => setShowAlert(false), 3000);
     } else {
       agregarAlLocalStorage("usuarios", nuevoUsuario);
 
       setAlertText("Se creó la cuenta exitosamente.");
       setShowConfirm(true);
-      setTimeout(() => setShowConfirm(false), 5000);
+      setTimeout(() => setShowConfirm(false), 3000);
 
       setUsuario("");
       setCorreo("");
@@ -99,9 +120,10 @@ export default function FormRegister() {
   }, [indice]);
 
   let url;
+  let nombre;
 
   if (topFive && topFive.length > 0 && topFive[indice]) {
-    ({ url } = topFive[indice]);
+    ({ url, nombre } = topFive[indice]);
   }
 
   return (
@@ -110,22 +132,26 @@ export default function FormRegister() {
       <AlertConfirm showConfirm={showConfirm} alertText={alertText} />
       <div className="form-login-back">
         <button onClick={() => navigate("/")}>
-          <img src={back} alt="" />
+          <img src={back} alt="boton de volver para atras" />
           <p>Volver</p>
         </button>
       </div>
 
       <section className="form-login-section">
         <article className="form-login-bg">
-          <img src={url} alt="" />
+          <img src={url} alt={nombre} />
         </article>
 
         <article>
           <div className="form-login-topbar">
             {perfil ? (
-              <img style={{ padding: "0px" }} src={perfil} alt="" />
+              <img
+                style={{ padding: "0px" }}
+                src={perfil}
+                alt="imagen de perfil del usuario"
+              />
             ) : (
-              <img src={personAdd} alt="" />
+              <img src={personAdd} alt="icono de añadir usuario" />
             )}
 
             <h2 className="title-login">Registrate</h2>
@@ -136,7 +162,7 @@ export default function FormRegister() {
               <p>Nombre de usuario</p>
               <div className="inputs">
                 <input
-                  onChange={(e) => setUsuario(e.target.value)}
+                  onChange={(e) => setUsuario(e.target.value.trim())}
                   type="text"
                   placeholder="Usuario"
                   value={usuario}
@@ -153,7 +179,7 @@ export default function FormRegister() {
               <p>Foto de perfil</p>
               <div className="inputs">
                 <input
-                  onChange={(e) => setPerfil(e.target.value)}
+                  onChange={(e) => setPerfil(e.target.value.trim())}
                   type="text"
                   placeholder="Perfil (URL o nombre)"
                   value={perfil}
@@ -169,12 +195,12 @@ export default function FormRegister() {
               <p>Correo</p>
               <div className="inputs">
                 <input
-                  onChange={(e) => setCorreo(e.target.value)}
+                  onChange={(e) => setCorreo(e.target.value.trim())}
                   type="email"
                   placeholder="Correo"
                   value={correo}
                   minLength="10"
-                  maxLength="25"
+                  maxLength="40"
                   required
                   className="inputs"
                 />
@@ -184,8 +210,8 @@ export default function FormRegister() {
               <p>Contraseña</p>
               <div className="inputs">
                 <input
-                  onChange={(e) => setPassword(e.target.value)}
-                  type="password"
+                  type={showPassword ? "text" : "password"}
+                  onChange={(e) => setPassword(e.target.value.trim())}
                   placeholder="Contraseña"
                   value={password}
                   minLength={8}
@@ -195,19 +221,50 @@ export default function FormRegister() {
                   required
                   className="inputs"
                 />
+
+                <div className="show-password">
+                  {showPassword ? (
+                    <img
+                      onClick={handleHide}
+                      src={hide}
+                      alt="icono de ocultar contraseña"
+                    />
+                  ) : (
+                    <img
+                      onClick={handleShow}
+                      src={show}
+                      alt="icono de mostrar contraseña"
+                    />
+                  )}
+                </div>
               </div>
             </div>
             <div>
               <p>Repite la contraseña</p>
               <div className="inputs">
                 <input
-                  onChange={(e) => setRepeatPassword(e.target.value)}
-                  type="password"
+                  type={showPasswordTwo ? "text" : "password"}
+                  onChange={(e) => setRepeatPassword(e.target.value.trim())}
                   placeholder="Repite la contraseña"
                   value={repeatPassword}
                   maxLength={20}
                   required
                 />
+                <div className="show-password">
+                  {showPasswordTwo ? (
+                    <img
+                      onClick={handleHideTwo}
+                      src={hide}
+                      alt="icono de ocultar contraseña"
+                    />
+                  ) : (
+                    <img
+                      onClick={handleShowTwo}
+                      src={show}
+                      alt="icono de mostrar contraseña"
+                    />
+                  )}
+                </div>
               </div>
             </div>
 

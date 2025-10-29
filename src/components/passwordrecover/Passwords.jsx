@@ -73,23 +73,24 @@ export default function Passwords() {
   }, [indice]);
 
   let url;
+  let nombre;
 
   if (topFive && topFive.length > 0 && topFive[indice]) {
-    ({ url } = topFive[indice]);
+    ({ url, nombre } = topFive[indice]);
   }
 
   return (
     <>
       <div className="form-login-back">
         <button onClick={() => navigate("/login")}>
-          <img src={back} alt="" />
+          <img src={back} alt="boton para volver para atras" />
           <p>Volver</p>
         </button>
       </div>
 
       <section className="form-login-section">
         <article className="form-login-bg">
-          <img src={url} alt="" />
+          <img src={url} alt={nombre} />
         </article>
         <article>
           <div className="img">

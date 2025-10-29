@@ -8,7 +8,7 @@
   align-items: baseline;
   justify-content: center;
   pointer-events: none;
-  animation: alertAnimation 5s ease 1;
+  animation: alertAnimation 3s ease 1;
 
   .errorModal {
     display: flex;
@@ -27,12 +27,12 @@
     transform: translateY(-10%);
   }
 
-  50% {
+  75% {
+    transform: translateY(0%);
     opacity: 100%;
   }
 
   100% {
     opacity: 0%;
-    transform: translateY(0%);
   }
 }
