@@ -72,7 +72,7 @@ export default function AccountPerfil() {
           };
 
           setShowModal(true);
-          setMessage("Se modifico la foto.");
+          setMessage("Se modificó la foto.");
           setTimeout(() => setShowModal(false), 5000);
 
           const usserFinded = usuarioList.map((usuario) => {
