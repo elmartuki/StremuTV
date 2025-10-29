@@ -180,7 +180,7 @@ export default function FormLogin() {
                 <input
                   type="text"
                   value={usuarioCorreo}
-                  maxLength="25"
+                  maxLength="40"
                   onChange={(event) => {
                     setUsuarioCorreo(event.target.value.trim());
                   }}
