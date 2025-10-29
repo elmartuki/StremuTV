@@ -172,7 +172,6 @@
       border-radius: 8px;
       position: relative;
       animation: showingIMG 8s ease infinite;
-
       transition: 0.5s;
 
       &:hover {

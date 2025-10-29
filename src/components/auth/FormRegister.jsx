@@ -52,6 +52,7 @@ export default function FormRegister() {
     const listadoUsuarios = obtenerDelLocalStorage("usuarios") || [];
 
     const nuevoUsuario = {
+      baneado: false,
       id: Date.now(),
       usuario: usuario.trim(),
       perfil: perfil.trim(),
@@ -71,21 +72,21 @@ export default function FormRegister() {
     if (existeCorreo) {
       setAlertText("El correo que ingresaste ya existe.");
       setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
+      setTimeout(() => setShowAlert(false), 3000);
     } else if (existeUsuario) {
       setAlertText("El usuario que ingresaste ya existe.");
       setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
+      setTimeout(() => setShowAlert(false), 3000);
     } else if (password !== repeatPassword) {
       setAlertText("Las contraseñas no coinciden.");
       setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 5000);
+      setTimeout(() => setShowAlert(false), 3000);
     } else {
       agregarAlLocalStorage("usuarios", nuevoUsuario);
 
       setAlertText("Se creó la cuenta exitosamente.");
       setShowConfirm(true);
-      setTimeout(() => setShowConfirm(false), 5000);
+      setTimeout(() => setShowConfirm(false), 3000);
 
       setUsuario("");
       setCorreo("");

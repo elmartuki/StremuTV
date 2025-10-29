@@ -9,7 +9,7 @@
   bottom: 60px;
   right: 0;
   pointer-events: none;
-  animation: addFavMessage 5s ease-in-out 1;
+  animation: addFavMessage 3s ease-in-out 1;
 
   .message {
     display: flex;
