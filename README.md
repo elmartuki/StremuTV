@@ -1,16 +1,59 @@
-# React + Vite
+# 🎥 StremuTV
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**StremuTV** es una plataforma web de **streaming de películas y series**, desarrollada con tecnologías modernas para ofrecer una experiencia fluida, rápida y visualmente atractiva.  
+Podés explorar, buscar y reproducir contenido de forma simple desde cualquier dispositivo.
 
-Currently, two official plugins are available:
+🌐 **Sitio en vivo:** [https://stremutv.vercel.app/](https://stremutv.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Características principales
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- 🎬 Catálogo dinámico de películas y series.  
+- 🔍 Buscador integrado para encontrar contenido rápidamente.  
+- 💾 Sistema de almacenamiento local para gestionar datos o favoritos.  
+- ⚡ Interfaz moderna, responsiva y animaciones suaves.  
+- 🚫 Sistema de validación y restricciones para usuarios baneados (si aplica).  
+- 🧩 CRUD completo para la gestión de usuarios (ver, filtrar, banear/desbanear).  
+- 🎨 Notificaciones visuales con alertas personalizadas y tiempos ajustados.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧰 Tecnologías utilizadas
+
+- **React.js** — desarrollo de componentes e interfaz dinámica.  
+- **Vite** — entorno de desarrollo rápido y moderno.  
+- **CSS3 / Animaciones personalizadas** — para una mejor experiencia visual.  
+- **LocalStorage API** — persistencia de datos en el cliente.  
+- **Vercel** — hosting y despliegue continuo.
+
+---
+
+## 🖥️ Capturas de pantalla (ejemplo)
+
+
+## 🧩 Próximas mejoras (Roadmap)
+
+- [ ] Listas personalizadas.  
+- [ ] Paginación de resultados.  
+- [ ] Integración con API externa de películas (ej. TMDb).  
+- [ ] Dark Mode.  
+- [ ] Reproductor integrado con control de calidad.  
+
+---
+
+## 🧑‍💻 Desarrollado por
+
+Proyecto creado por **Juan Jose Salvi**, **Martin Diaz**.  
+Inspirado en las plataformas de streaming más populares, buscando ofrecer una experiencia simple y fluida para el usuario final.
+
+---
+
+## 📜 Licencia
+
+Este proyecto está bajo la licencia StremuTV ©2025.
+
+---
+
+💡 *“El entretenimiento debería ser tan simple como hacer clic en reproducir.”*  
+**— StremuTV**
