@@ -142,7 +142,7 @@ export default function AccountConfig({ closeConfig }) {
                 <img src={right} alt="abrir seccion sobre nosotros" />
               </button>
               <button>
-                <NavLink to="*">
+                <NavLink to="/dispositivos">
                   <div>
                     <img
                       src={dispositivos}

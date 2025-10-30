@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
+import back from "../assets/back.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function CompatibleDevices() {
   const [filter, setFilter] = useState("all");
+
+  const navigate = useNavigate();
 
   const devices = [
     {
@@ -60,60 +64,62 @@ export default function CompatibleDevices() {
     filter === "all" ? devices : devices.filter((d) => d.os === filter);
 
   return (
-    <Container className="py-5">
+    <Container fluid className="pb-5 text-light">
+      <div className="edit-perfil-topbar">
+        <button onClick={() => navigate(-1)}>
+          <img src={back} alt="boton para volver atras" />
+          Volver
+        </button>
+      </div>
       <h1 className="text-center mb-4 fw-bold">📱 Dispositivos Compatibles</h1>
-      <p className="text-center text-muted mb-5">
-        Consulta la lista de equipos compatibles con nuestra aplicación.  
+      <p className="text-center text-light mb-5 opacity-75">
+        Consulta la lista de equipos compatibles con nuestra aplicación.
         Si tu dispositivo no aparece, puedes probar igualmente, ya que seguimos ampliando compatibilidad.
       </p>
 
       {/* Filtros */}
       <div className="text-center mb-4">
-        <Button
-          variant={filter === "all" ? "primary" : "outline-primary"}
-          className="mx-1"
-          onClick={() => setFilter("all")}
-        >
-          Todos
-        </Button>
-        <Button
-          variant={filter === "Android" ? "primary" : "outline-primary"}
-          className="mx-1"
-          onClick={() => setFilter("Android")}
-        >
-          Android
-        </Button>
-        <Button
-          variant={filter === "iOS" ? "primary" : "outline-primary"}
-          className="mx-1"
-          onClick={() => setFilter("iOS")}
-        >
-          iOS
-        </Button>
-        <Button
-          variant={filter === "Windows" ? "primary" : "outline-primary"}
-          className="mx-1"
-          onClick={() => setFilter("Windows")}
-        >
-          Windows
-        </Button>
-        <Button
-          variant={filter === "macOS" ? "primary" : "outline-primary"}
-          className="mx-1"
-          onClick={() => setFilter("macOS")}
-        >
-          macOS
-        </Button>
+        {["all", "Android", "iOS", "Windows", "macOS"].map((type) => (
+          <Button
+            key={type}
+            variant={filter === type ? "primary" : "outline-light"}
+            className="mx-1"
+            onClick={() => setFilter(type)}
+          >
+            {type === "all"
+              ? "Todos"
+              : type === "iOS"
+                ? "iOS"
+                : type === "macOS"
+                  ? "macOS"
+                  : type}
+          </Button>
+        ))}
       </div>
 
       {/* Lista de dispositivos */}
-      <Row xs={1} md={2} lg={3} className="g-4">
+      <Row
+        xs={1}
+        sm={2}
+        md={3}
+        className="g-4 justify-content-center w-100 px-3"
+      >
         {filteredDevices.map((device) => (
-          <Col key={device.id}>
-            <Card className="h-100 shadow-sm border-0">
+          <Col key={device.id} className="d-flex">
+            <Card
+              className="flex-fill shadow-lg border-0"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(70,70,120,0.9), rgba(50,50,80,0.8))",
+                borderRadius: "15px",
+                color: "white",
+              }}
+            >
               <Card.Body>
-                <Card.Title className="fw-semibold">{device.name}</Card.Title>
-                <Card.Text className="text-muted mb-2">
+                <Card.Title className="fw-semibold text-light">
+                  {device.name}
+                </Card.Title>
+                <Card.Text className="text-light opacity-75 mb-3">
                   <strong>Sistema:</strong> {device.os}
                   <br />
                   <strong>Versión mínima:</strong> {device.version}
@@ -123,9 +129,10 @@ export default function CompatibleDevices() {
                     device.status === "Compatible"
                       ? "success"
                       : device.status === "Parcialmente compatible"
-                      ? "warning"
-                      : "secondary"
+                        ? "warning"
+                        : "secondary"
                   }
+                  text={device.status === "Parcialmente compatible" ? "dark" : "light"}
                   className="p-2"
                 >
                   {device.status}
@@ -136,8 +143,9 @@ export default function CompatibleDevices() {
         ))}
       </Row>
 
+      {/* Texto final */}
       <div className="text-center mt-5">
-        <p className="text-muted small">
+        <p className="text-light small opacity-75">
           ⚙️ Última actualización: {new Date().toLocaleDateString()}
         </p>
       </div>
