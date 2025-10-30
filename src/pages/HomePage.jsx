@@ -76,23 +76,23 @@ export default function HomePage() {
           <Important />
         </section>
 
-        <p className="section_home-title">Peliculas Destacadas</p>
-        <section className="section_home">
-          <Movies showMore={showFive1} />
-        </section>
-        <div className="home-page_button">
-          <button onClick={showMore1}>
-            <img src={flechaabajo} alt="boton para ver mas" />
-            Ver más
-          </button>
-        </div>
-
         <p className="section_home-title">Series Destacadas</p>
         <section className="section_home">
           <Series showMore={showFive2} />
         </section>
         <div className="home-page_button">
           <button onClick={showMore2}>
+            <img src={flechaabajo} alt="boton para ver mas" />
+            Ver más
+          </button>
+        </div>
+
+        <p className="section_home-title">Peliculas Destacadas</p>
+        <section className="section_home">
+          <Movies showMore={showFive1} />
+        </section>
+        <div className="home-page_button">
+          <button onClick={showMore1}>
             <img src={flechaabajo} alt="boton para ver mas" />
             Ver más
           </button>

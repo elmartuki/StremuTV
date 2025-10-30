@@ -6,7 +6,6 @@ import "./css/crud.css";
 import "./css/filter.css";
 import "./css/modal.css";
 import "./css/modalDelete.css";
-import "./css/moreDetails.css";
 import "./css/movies.css";
 import "./css/moviesSection.css";
 import "./css/preview.css";
