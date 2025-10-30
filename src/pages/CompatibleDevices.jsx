@@ -94,6 +94,10 @@ export default function CompatibleDevices() {
               : type === "macOS"
               ? "macOS"
               : type}
+                ? "iOS"
+                : type === "macOS"
+                  ? "macOS"
+                  : type}
           </Button>
         ))}
       </div>
@@ -138,6 +142,10 @@ export default function CompatibleDevices() {
                       ? "dark"
                       : "light"
                   }
+                        ? "warning"
+                        : "secondary"
+                  }
+                  text={device.status === "Parcialmente compatible" ? "dark" : "light"}
                   className="p-2"
                 >
                   {device.status}

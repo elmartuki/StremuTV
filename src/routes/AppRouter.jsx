@@ -56,6 +56,15 @@ export default function AppRouter() {
         }
       />
       <Route
+        path="/dispositivos"
+        element={
+          <>
+            <CompatibleDevices />
+            <Footer />
+          </>
+        }
+      />
+      <Route
         path="/suscripciones"
         element={
           <>
