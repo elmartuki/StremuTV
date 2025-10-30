@@ -121,6 +121,7 @@ export default function AccountConfig({ closeConfig }) {
 
             <div className="account-config_config_buttons">
               <button>
+                 <NavLink to="/contacto">
                 <div>
                   <img
                     className="white"
@@ -129,6 +130,7 @@ export default function AccountConfig({ closeConfig }) {
                   />
                   Contacto
                 </div>
+                   </NavLink>
                 <img src={right} alt="abrir seccion de contacto" />
               </button>
               <button>
