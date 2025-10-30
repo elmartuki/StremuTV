@@ -14,6 +14,7 @@ import AccountPerfil from "../components/account/AccountPerfil.jsx";
 import AccountModal from "../components/account/AccountConfig.jsx";
 import InitPage from "../pages/InitPage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
+import Contact from "../components/contact-folder/Contact.jsx";
 import RecoverPasswordPage from "../pages/RecoverPasswordPage.jsx";
 import RecoverSection from "../components/passwordrecover/RecoverSection.jsx";
 import PricingPlans from "../pages/PricingPlans.jsx";
@@ -174,6 +175,15 @@ export default function AppRouter() {
           element={
             <>
               <MoreDetails />
+              <Footer />
+            </>
+          }
+        />
+       <Route
+          path="/contacto/"
+          element={
+            <>
+              <Contact />
               <Footer />
             </>
           }
