@@ -101,7 +101,10 @@ export default function CompatibleDevices() {
           </Button>
         ))}
       </div>
+
+
       
+
 
       {/* Lista de dispositivos */}
       <Row
