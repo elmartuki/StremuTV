@@ -42,6 +42,7 @@ export default function Movies({ showMore }) {
           </div>
         </NavLink>
       ))}
+      
     </>
   );
 }
