@@ -1,0 +1,23 @@
+.series-section {
+  .section_home {
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    max-height: max-content;
+    justify-content: center;
+
+    .preview-video {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .series-section {
+    .section_home {
+      justify-content: baseline;
+      .preview-video {
+        display: flex;
+      }
+    }
+  }
+}

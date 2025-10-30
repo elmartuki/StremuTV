@@ -24,6 +24,7 @@ export default function Comedia({ showMore }) {
             </div>
 
             <div className="preview-video">
+              <img src={url} alt={nombre} />
               <video autoPlay muted loop src={videoURL}></video>
               <div className="preview-video_details">
                 <p>{nombre}</p>

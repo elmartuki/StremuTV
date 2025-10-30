@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { obtenerPeliculasOSerieLS } from "../utils/localStorage";
 import Series from "../components/series/Series";
 import Filter from "./Filter";
+import "../css/moviesSeries.css";
 
 export default function SeriesPage() {
   const [openFilterModal, setOpenFilterModal] = useState(false);
@@ -39,9 +40,11 @@ export default function SeriesPage() {
         <Filter generoObtenido={handleFilter} />
       </section>
 
-      <section className="section-movies">
-        <Series seriesMovies={seriesFiltered} />
-      </section>
+      <div className="series-section">
+        <section className="section_home">
+          <Series seriesMovies={seriesFiltered} />
+        </section>
+      </div>
     </>
   );
 }

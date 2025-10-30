@@ -12,31 +12,28 @@ export default function MoviesSection({ seriesMovies }) {
   } else {
     return (
       <>
-        {listado.map(({ nombre, id, url, descripcion, videoURL }) => {
-          return (
-            <>
-              <article className="movie-card">
-                <NavLink to={`/pelicula/${id}`} key={id}>
-                  <div className="movie-card_img">
-                    <img src={url} alt={nombre} />
-                  </div>
+        {listado.map(({ id, nombre, url, videoURL, descripcion }) => (
+          <NavLink to={`/series/${id}`} className="movies-card-home" key={id}>
+            <div className="movies-card-home_img">
+              <div className="preview-img">
+                <img src={url} alt={nombre} />
+              </div>
 
-                  <div className="preview-video">
-                    <video autoPlay muted loop src={videoURL}></video>
-                    <div className="preview-video_details">
-                      <p>{nombre}</p>
-                      <p>{descripcion}</p>
-                      <button>Mas info</button>
-                    </div>
-                  </div>
-                  <div className="movies-card-home_title">
-                    <p className="movies-card-title">{nombre}</p>
-                  </div>
-                </NavLink>
-              </article>
-            </>
-          );
-        })}
+              <div className="preview-video">
+                <img src={url} alt={nombre} />
+                <video autoPlay muted loop src={videoURL}></video>
+                <div className="preview-video_details">
+                  <p>{nombre}</p>
+                  <p>{descripcion}</p>
+                  <button>Mas info</button>
+                </div>
+              </div>
+            </div>
+            <div className="movies-card-home_title">
+              <p>{nombre}</p>
+            </div>
+          </NavLink>
+        ))}
       </>
     );
   }
