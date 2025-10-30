@@ -3,15 +3,20 @@ import compartir from "../../../assets/compartir.svg";
 import play from "../../../assets/play.svg";
 import star from "../../../assets/star.svg";
 import fav from "../../../assets/favorite.svg";
+import sonido from "../../../assets/sonido.svg";
+import sonidont from "../../../assets/sonidont.svg";
 import { repartoCompleto } from "../../../db/Reparto";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import {
   filtrarYMostrar,
+  guardarEnLocalStorage,
+  obtenerDelLocalStorage,
   obtenerPeliculasOSerieLS,
 } from "../../../utils/localStorage";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ConfirmFav from "../../fav/ConfirmFav";
 import ErrorModal from "./ErrorModal";
+import "../../../css/moreDetails.css";
 
 export default function MoreDetails() {
   const repatoFullRandom = [...repartoCompleto].sort(() => Math.random() - 0.5);
@@ -20,6 +25,7 @@ export default function MoreDetails() {
   const [confirmModal, setConfirmModal] = useState(false);
   const [showError, setShowError] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
+  const [active, setActive] = useState(false);
 
   const { id } = useParams();
 
@@ -46,38 +52,49 @@ export default function MoreDetails() {
   ];
 
   const articulo = catalogoCompleto.find((buscar) => {
-    return String(buscar.id) === String(id);
+    return Number(buscar.id) === Number(id);
   });
 
-  const { url, video, nombre, genero, descripcion, fecha } = articulo;
+  let url, videoURL, nombre, genero, descripcion, fecha;
+
+  if (articulo) {
+    ({ url, videoURL, nombre, genero, descripcion, fecha } = articulo);
+  }
+
+  const favoritos = obtenerDelLocalStorage("favoritos");
+
+  let addedFav = favoritos.some((item) => item.nombre === articulo.nombre);
 
   function handleFav() {
-    setTimeout(() => {
-      setConfirmModal(false);
-    }, 3000);
+    let thisExist = false;
 
-    const favoritos = JSON.parse(localStorage.getItem("favoritos") || "[]");
-
-    let existe = false;
-
-    favoritos.forEach((favorito) => {
-      if (favorito.id === articulo.id) {
-        existe = true;
+    const favoritos = obtenerDelLocalStorage("favoritos") || [];
+    favoritos.filter((item) => {
+      if (Number(item.id) === Number(articulo.id)) {
+        thisExist = true;
       }
     });
 
-    if (existe) {
-      setConfirmModal(false);
+    if (thisExist) {
+      const nuevos = favoritos.filter(
+        (item) => Number(item.id) !== Number(articulo.id)
+      );
+      guardarEnLocalStorage("favoritos", nuevos);
+      setActive(false);
       setShowError(true);
-
-      setTimeout(() => {
-        setShowError(false);
-      }, 3000);
+      setConfirmModal(false);
     } else {
+      const nuevos = [...favoritos, articulo];
+      guardarEnLocalStorage("favoritos", nuevos);
+      setActive(true);
+      setShowError(false);
       setConfirmModal(true);
-      favoritos.push(articulo);
-      localStorage.setItem("favoritos", JSON.stringify(favoritos));
     }
+
+    setTimeout(() => {
+      setConfirmModal(false);
+      setShowError(false);
+    }, 3000);
   }
 
   function closeMessage() {
@@ -91,6 +108,23 @@ export default function MoreDetails() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isMutedIcon, setIsMutedIcon] = useState(true);
+
+  const toggleMute = () => {
+    const video = videoRef.current;
+
+    setIsMutedIcon((prev) => !prev);
+    if (video) {
+      video.muted = !video.muted;
+    }
+  };
+
+  const recomendados = obtenerDelLocalStorage("MoviesSeries");
+
+  const twelve = recomendados.slice(0, 20);
 
   return (
     <>
@@ -111,7 +145,7 @@ export default function MoreDetails() {
         >
           <div className="preview_topbar">
             <button onClick={() => navigate(-1)}>
-              <img src={volver} alt="" />
+              <img src={volver} alt="boton para volver para atras" />
               <p>Volver</p>
             </button>
           </div>
@@ -121,19 +155,33 @@ export default function MoreDetails() {
               style={{ margin: showVideo ? "20px 0px 0px 0px" : "0px" }}
               className="preview_img"
             >
-              <iframe
-                src={video}
-                width="640"
-                height="360"
-                allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                allowfullscreen
-                frameborder="0"
-              ></iframe>
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                muted={isMuted}
+                loop
+                src={videoURL}
+                controls
+              ></video>
             </div>
           ) : (
-            <div className="preview_img">
-              <img src={url} alt={nombre} />
-            </div>
+            <>
+              <div className="preview_img">
+                <img src={url} alt={nombre} />
+              </div>
+              <div className="preview-video-2">
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  playsInline
+                  muted={isMuted}
+                  loop
+                  src={videoURL}
+                  controls
+                ></video>
+              </div>
+            </>
           )}
 
           <div
@@ -146,14 +194,38 @@ export default function MoreDetails() {
             {showVideo ? (
               <>
                 <div className="preview_buttons">
-                  <div>
-                    <button onClick={handleFav}>
-                      <img src={fav} alt="" />
-                      Favoritos
+                  <div className="fav-buttons">
+                    <button
+                      className={
+                        (active ? "fav-active" : "fav-disabled",
+                        addedFav ? "fav-active" : "fav-disabled")
+                      }
+                      style={{
+                        background: addedFav ? "rgba(153, 0, 0, 1)" : "",
+                      }}
+                      onClick={handleFav}
+                    >
+                      <img
+                        className="fav"
+                        src={fav}
+                        alt="boton para añedir o eliminar de favoritos"
+                      />
                     </button>
-                    <button>
-                      <img src={compartir} alt="" />
-                      Compartir
+
+                    <button onClick={toggleMute}>
+                      {isMutedIcon ? (
+                        <img
+                          className="filter-invert"
+                          src={sonidont}
+                          alt="boton para mutear"
+                        />
+                      ) : (
+                        <img
+                          className="filter-invert"
+                          src={sonido}
+                          alt="boton para desmutear"
+                        />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -171,62 +243,97 @@ export default function MoreDetails() {
                     <div>{genero}</div>
                     <span className="split"></span>
                     <div>
-                      <img src={star} alt="" />
+                      <img src={star} alt="icono de calificaciones" />
                       {randomStars}/10
                     </div>
                   </div>
                 </div>
                 <div className="preview_buttons">
-                  <button>
-                    <img onClick={handlePlay} src={play} alt="" />
+                  <button className="hidden-btn">
+                    <img
+                      className="filter-invert"
+                      onClick={handlePlay}
+                      src={play}
+                      alt="boton para reproducir el video"
+                    />
                     Ver trailer
                   </button>
-                  <div>
-                    <button onClick={handleFav}>
-                      <img src={fav} alt="" />
-                      Favoritos
+                  <div className="fav-buttons">
+                    <button
+                      className={active ? "fav-active" : "fav-disabled"}
+                      style={{
+                        background: addedFav ? "rgba(153, 0, 0, 1)" : "",
+                      }}
+                      onClick={handleFav}
+                    >
+                      <img
+                        className="fav"
+                        src={fav}
+                        alt="boton para añadir a favoritos"
+                      />
                     </button>
-                    <button>
-                      <img src={compartir} alt="" />
-                      Compartir
+                    <button onClick={toggleMute}>
+                      {isMutedIcon ? (
+                        <img
+                          className="filter-invert"
+                          src={sonidont}
+                          alt="boton para mutear"
+                        />
+                      ) : (
+                        <img
+                          className="filter-invert"
+                          src={sonido}
+                          alt="boton para desmutear"
+                        />
+                      )}
                     </button>
                   </div>
                 </div>
               </>
             )}
-
-            <div className="preview_description">
-              <p>Sinapsis</p>
-              <p>{descripcion}</p>
-            </div>
-
-            <div className="preview_reparto">
-              <p>Reparto Principal</p>
-              <div>
-                {repatoFullRandom.map((reparto, key) => {
-                  const { nombre, url_img } = reparto;
-                  return (
-                    <>
-                      <div key={key} className="preview_reparto-card">
-                        <div className="preview_reparto-card_img">
-                          <img src={url_img} alt="" />
+            <section className="seccion-preview">
+              <div className="preview_description">
+                <p>Sinapsis</p>
+                <p>{descripcion}</p>
+              </div>
+              <div className="preview_reparto">
+                <p>Reparto Principal</p>
+                <div>
+                  {repatoFullRandom.map((reparto) => {
+                    const { nombre, url_img } = reparto;
+                    return (
+                      <>
+                        <div className="preview_reparto-card">
+                          <div className="preview_reparto-card_img">
+                            <img src={url_img} alt={nombre} />
+                          </div>
+                          <p>{nombre}</p>
                         </div>
-                        <p>{nombre}</p>
-                      </div>
-                    </>
-                  );
-                })}
+                      </>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-
-            <div className="preview_clips">
-              <p>Trailers y Clips</p>
-              <div>
-                <div className="preview_clips_preview"></div>
-                <div className="preview_clips_preview"></div>
-                <div className="preview_clips_preview"></div>
+              <div className="preview-more-movies">
+                <p className="preview-more-movies_title">
+                  Series y peliculas recomendadas.
+                </p>
+                {twelve.map(({ id, nombre, url }) => (
+                  <NavLink
+                    to={`/pelicula/accion/${id}`}
+                    className="movies-card-home"
+                    key={id}
+                  >
+                    <div className="movies-card-home_img">
+                      <img src={url} />
+                    </div>
+                    <div className="movies-card-home_title">
+                      <p>{nombre}</p>
+                    </div>
+                  </NavLink>
+                ))}
               </div>
-            </div>
+            </section>
           </div>
         </article>
       </section>

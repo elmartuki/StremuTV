@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
-import { obtenerCatalogoCompleto } from "../utils/localStorage";
 import { NavLink } from "react-router-dom";
-
+import { obtenerDelLocalStorage } from "../utils/localStorage";
+import { useState } from "react";
 export default function InitPage() {
   const [active, setActive] = useState(null);
 
@@ -28,22 +27,16 @@ export default function InitPage() {
     ["¿Cómo cancelo?", "Puedes cancelar en cualquier momento desde tu cuenta."],
   ];
 
-  const tendenciasImg = obtenerCatalogoCompleto();
+  const movieList = obtenerDelLocalStorage("MoviesSeries");
 
-  const tendencias = [
-    { src: tendenciasImg[0].url, alt: "Naruto" },
-    { src: tendenciasImg[1].url, alt: "Monstruo" },
-    { src: tendenciasImg[2].url, alt: "Noches" },
-    { src: tendenciasImg[3].url, alt: "Batalla" },
-    { src: tendenciasImg[4].url, alt: "Reti" },
-  ];
+  const tendencias = movieList.slice(29, 34);
 
   return (
     <main className="container">
       <h1 className="title">
         Descubre tu <br /> próxima película favorita
       </h1>
-
+ 
       <section className="features">
         <div className="card">
           <span className="icon">
@@ -88,7 +81,7 @@ export default function InitPage() {
           {tendencias.map((item, index) => (
             <div className="trend" key={index}>
               <span>{index + 1}</span>
-              <img src={item.src} alt={item.alt} loading="lazy" />
+              <img src={item.url} alt={item.alt} loading="lazy" />
             </div>
           ))}
         </div>

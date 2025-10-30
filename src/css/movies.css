@@ -1,5 +1,9 @@
 .home-page {
   margin: 0px 0px 70px 0px;
+
+  .home-page_button {
+    display: none;
+  }
 }
 
 .section_home-title {
@@ -8,6 +12,10 @@
   color: rgba(255, 255, 255, 0.776);
   font-size: 17px;
   font-weight: 700;
+}
+
+.preview-video {
+  display: none;
 }
 
 .section_home {
@@ -21,17 +29,18 @@
 
   .movies-card-home {
     display: flex;
+    width: clamp(150px, 25vw, 160px);
     flex-direction: column;
-    flex: 0 0 auto;
-    width: 33vw;
+    flex: none;
     border-radius: 5px;
     color: rgba(255, 255, 255, 0.815);
+    animation: showingCard 0.5s ease-in 1;
 
     .movies-card-home_img {
       width: 100%;
       img {
         width: 100%;
-        height: 200px;
+        height: 250px;
         border-radius: 10px;
         object-fit: cover;
       }
@@ -45,5 +54,177 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+  }
+}
+
+@keyframes showingCard {
+  0% {
+    transform: scale(0);
+    opacity: 0%;
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 100%;
+  }
+}
+
+.preview-video_details {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .preview-video {
+    display: flex;
+  }
+
+  .home-page {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 40px;
+
+    .home-page_button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: transparent;
+        border: 2px solid #391759;
+        color: rgba(255, 255, 255, 0.779);
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+
+        &:hover {
+          background-color: #391759;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .section_home-title {
+    font-size: 24px;
+    padding: 0px 80px;
+  }
+
+  .section_home {
+    flex-wrap: wrap;
+    max-height: max-content;
+    overflow-x: hidden;
+    justify-content: center;
+    overflow-y: hidden;
+
+    .movies-card-home {
+      width: clamp(170px, 25vw, 170px);
+      transition: 0.5s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .movies-card-home_img {
+      width: 100%;
+      height: 280px;
+      position: relative;
+      z-index: -1;
+
+      .preview-img:hover {
+        opacity: 0;
+      }
+
+      .preview-video {
+        opacity: 0;
+      }
+
+      img {
+        width: 100%;
+        height: 280px !important;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+    }
+
+    .movies-card-home_img:has(:hover) .preview-img {
+      opacity: 0;
+    }
+
+    .movies-card-home_img:has(:hover) .preview-video {
+      opacity: 1;
+    }
+
+    .preview-video {
+      width: 100%;
+      position: absolute;
+      top: 0;
+
+      img {
+        position: absolute;
+        top: 0px;
+        z-index: -1;
+      }
+
+      .preview-video_details {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+        width: 200px;
+        height: 100%;
+        position: absolute;
+        background-color: #202020;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        bottom: 0;
+        left: 100%;
+        z-index: 100;
+
+        p:nth-child(1) {
+          font-size: 20px;
+          font-weight: 600;
+        }
+
+        button {
+          border: 2px solid #391759;
+          background-color: transparent;
+          color: rgba(255, 255, 255, 0.865);
+          padding: 5px 10px;
+          border-radius: 8px;
+          transition: 0.5s;
+
+          &:hover {
+            transform: scale(1.05);
+            background-color: #391759;
+          }
+        }
+      }
+
+      video {
+        width: 100%;
+        height: 280px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .section_home-title {
+    font-size: 24px;
+    padding: 0px 90px;
   }
 }

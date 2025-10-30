@@ -1,0 +1,56 @@
+.form-login-section {
+  article {
+    .form-rec {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+      .input-password {
+        display: flex;
+        width: 100%;
+        border-radius: 8px;
+        padding: 5px 10px;
+        background-color: #202020;
+        transition: 0.1s;
+        outline: 2px solid #202020;
+        input {
+          background-color: transparent;
+          border: none;
+          width: 90%;
+          color: rgba(255, 255, 255, 0.847);
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      button {
+        width: 100%;
+        background-color: transparent;
+        border: 2px solid #32144d;
+        color: rgba(255, 255, 255, 0.872);
+        border-radius: 8px;
+        padding: 5px 10px;
+      }
+    }
+  }
+}
+
+.input-password:has(input:focus) {
+  outline: 3px solid #32144d !important;
+}
+
+@media (min-width: 1024px) {
+  .form-login-section {
+    article {
+      .img {
+        img {
+          width: 60px;
+        }
+      }
+      .form-rec {
+        width: 60%;
+      }
+    }
+  }
+}

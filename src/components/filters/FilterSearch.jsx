@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { obtenerCatalogoCompleto } from "../../utils/localStorage";
 import { useState } from "react";
 import back from "../../assets/back.svg";
-import lupa from "../../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg";
+import lupa from "../../assets/search.svg";
 
 export default function FilterSearch({ handleClose }) {
   const listMoviesSeries = obtenerCatalogoCompleto();
@@ -16,15 +16,13 @@ export default function FilterSearch({ handleClose }) {
     movie.nombre.toLowerCase().includes(texto)
   );
 
-  console.log(texto);
-
   return (
     <>
       <section className="search">
         <div className="search-topbar">
           <div className="search-topbar_buttons">
             <button onClick={handleClose}>
-              <img src={back} alt="" />
+              <img src={back} alt="boton para volver atras" />
               <p>Volver</p>
             </button>
           </div>
@@ -32,7 +30,7 @@ export default function FilterSearch({ handleClose }) {
           <div className="search-topbar_input">
             <div className="buscador">
               <div>
-                <img src={lupa} alt="" />
+                <img src={lupa} alt="boton para buscar series o peliculas" />
               </div>
 
               <input
@@ -52,7 +50,7 @@ export default function FilterSearch({ handleClose }) {
                 <article className="search-result">
                   <NavLink to={`/pelicula/${id}`}>
                     <div className="search-result_img">
-                      <img src={url} alt="" />
+                      <img src={url} alt={nombre} />
                     </div>
 
                     <div className="search-result_title">

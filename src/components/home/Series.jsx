@@ -1,22 +1,48 @@
+import { useEffect, useState } from "react";
 import { obtenerPeliculasOSerieLS } from "../../utils/localStorage";
 import { NavLink } from "react-router-dom";
 
-export default function Movies() {
+export default function Movies({ showMore }) {
+  const [resize, setResize] = useState(window.innerWidth >= 1024);
   const movieList = obtenerPeliculasOSerieLS("Serie") || [];
-  const moviesRandom = movieList.sort(() => Math.random() - 0.5);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setResize(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const listToShow = resize ? movieList.slice(0, showMore) : movieList;
 
   return (
     <>
-      {moviesRandom.map(({ id, nombre, url }) => (
+      {listToShow.map(({ id, nombre, url, videoURL, descripcion }) => (
         <NavLink to={`/series/${id}`} className="movies-card-home" key={id}>
           <div className="movies-card-home_img">
-            <img src={url} alt={nombre} />
+            <div className="preview-img">
+              <img src={url} alt={nombre} />
+            </div>
+
+            <div className="preview-video">
+              <img src={url} alt={nombre} />
+              <video autoPlay muted loop src={videoURL}></video>
+              <div className="preview-video_details">
+                <p>{nombre}</p>
+                <p>{descripcion}</p>
+                <button>Mas info</button>
+              </div>
+            </div>
           </div>
           <div className="movies-card-home_title">
             <p>{nombre}</p>
           </div>
         </NavLink>
       ))}
+      
     </>
   );
 }

@@ -1,0 +1,53 @@
+.alert-section-bg {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  top: 10px;
+  justify-content: center;
+  align-items: baseline;
+  color: rgba(255, 255, 255, 0.906);
+  pointer-events: none;
+  z-index: 1001;
+  animation: alertAnimation 3s ease 1;
+
+  .alert-message-red {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 75%;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #202020;
+    border: 2px solid rgb(112, 19, 0);
+
+    img {
+      opacity: 80%;
+    }
+  }
+
+  .alert-message-green {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 75%;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #202020;
+    border: 2px solid rgb(0, 112, 0);
+    img {
+      opacity: 80%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .alert-section-bg {
+    .alert-message-green,
+    .alert-message-red {
+      width: fit-content;
+    }
+  }
+}

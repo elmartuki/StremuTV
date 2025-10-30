@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import searchImg from "../assets/search_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg";
+import searchImg from "../assets/search.svg";
 import usserImg from "../assets/usser.svg";
 import FilterSearch from "./filters/FilterSearch.jsx";
-import LoginModal from "./login/LoginModal.jsx";
-import { obtenerDelSessionStorage } from "../utils/localStorage.js";
+import { obtenerDelLocalStorage } from "../utils/localStorage.js";
 import AccountModal from "./account/AccountConfig.jsx";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
@@ -14,12 +13,12 @@ export default function Header() {
   const [usuarioLogueado, setUsuarioLogueado] = useState(null);
   const [openConfig, setOpenConfig] = useState(false);
 
-  const usuarios = obtenerDelSessionStorage("SavedUsser");
+  const usuarios = obtenerDelLocalStorage("UsserKey");
 
   const navigateTo = useNavigate();
 
   useEffect(() => {
-    const usuarios = obtenerDelSessionStorage("SavedUsser");
+    const usuarios = obtenerDelLocalStorage("UsserKey");
 
     if (usuarios) {
       setUsuarioLogueado(usuarios);
@@ -54,6 +53,9 @@ export default function Header() {
     setOpenSearchModal(false);
   }
 
+  const location = useLocation();
+  const url = location.pathname;
+
   return (
     <>
       <header className="">
@@ -66,7 +68,7 @@ export default function Header() {
               <div className="navbar_1-logo">
                 <NavLink to="/perfil/">
                   <button>
-                    <img src={usuarios.perfil} alt="" />
+                    <img src={usuarios.perfil} alt="imagen de perfil" />
                   </button>
                 </NavLink>
 
@@ -82,10 +84,50 @@ export default function Header() {
             )}
 
             <div className="navbar_link">
-              <a href="">Peliculas</a>
-              <a href="">Series</a>
-              <a href="">Tendencias</a>
-              <a href="">Categorias</a>
+              <Link
+                className={url === "/home" ? "navbar-activo" : ""}
+                to="/home"
+              >
+                Inicio
+              </Link>
+              <Link
+                className={url === "/movies" ? "navbar-activo" : ""}
+                to="/movies"
+              >
+                Peliculas
+              </Link>
+              <Link
+                className={url === "/series" ? "navbar-activo" : ""}
+                to="/series"
+              >
+                Series
+              </Link>
+              <Link
+                className={url === "/favoritos" ? "navbar-activo" : ""}
+                to="/favoritos"
+              >
+                Favoritos
+              </Link>
+
+              {usuarios.rol === "admin" ? (
+                <>
+                  <Link
+                    className={url === "/admin" ? "navbar-activo" : ""}
+                    to="/admin"
+                  >
+                    Admin
+                  </Link>
+
+                  <Link
+                    className={url === "/usuarios" ? "navbar-activo" : ""}
+                    to="/usuarios"
+                  >
+                    Usuarios
+                  </Link>
+                </>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
 
@@ -107,7 +149,10 @@ export default function Header() {
               ) : (
                 <div>
                   <button className="usser-not-log" onClick={handleOpenLogin}>
-                    <img src={usserImg} alt="" />
+                    <img
+                      src={usserImg}
+                      alt="imagen del usuario sin loguearse"
+                    />
                   </button>
                 </div>
               )}

@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "../pages/HomePage.jsx";
 import Error404Page from "../pages/Error404Page.jsx";
 import AdminPage from "../pages/AdminPage.jsx";
@@ -15,46 +15,76 @@ import AccountModal from "../components/account/AccountConfig.jsx";
 import InitPage from "../pages/InitPage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
 import Contact from "../components/contact-folder/Contact.jsx";
+import RecoverPasswordPage from "../pages/RecoverPasswordPage.jsx";
+import RecoverSection from "../components/passwordrecover/RecoverSection.jsx";
+import PricingPlans from "../pages/PricingPlans.jsx";
+import TermUse from "../pages/TermUsePage.jsx";
+import UsserRoutes from "./UsserRoutes.jsx";
+import AdminRoutes from "./AdminRoutes.jsx";
+import UssersPanel from "../components/ussers/UssersPanel.jsx";
+import CompatibleDevices from "../pages/CompatibleDevices.jsx";
+import FooterWeb from "../components/footer-web/FooterWeb.jsx";
 
 export default function AppRouter() {
   return (
-    <>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <InitPage />
-            </>
-          }
-        />
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <InitPage />
+            <FooterWeb />
+          </>
+        }
+      />
+      <Route path="/registro" element={<RegisterPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/termsuse" element={<TermUse />} />
+      <Route
+        path="/password/:id"
+        element={
+          <>
+            <RecoverPasswordPage />
+          </>
+        }
+      />
+      <Route
+        path="/recover-section/:id"
+        element={
+          <>
+            <RecoverSection />
+          </>
+        }
+      />
+      <Route
+        path="/sobre-nosotros"
+        element={
+          <>
+            <AboutPage />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/dispositivos"
+        element={
+          <>
+            <CompatibleDevices />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/suscripciones"
+        element={
+          <>
+            <PricingPlans />
+            <Footer />
+          </>
+        }
+      />
 
-        <Route
-          path="/home"
-          element={
-            <>
-              <Header />
-              <HomePage />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/registro"
-          element={
-            <>
-              <RegisterPage />
-            </>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <>
-              <LoginPage />
-            </>
-          }
-        />
+      <Route element={<AdminRoutes />}>
         <Route
           path="/admin"
           element={
@@ -65,6 +95,50 @@ export default function AppRouter() {
             </>
           }
         />
+        <Route
+          path="/usuarios"
+          element={
+            <>
+              <Header />
+              <UssersPanel />
+              <Footer />
+            </>
+          }
+        />
+      </Route>
+
+      <Route element={<UsserRoutes />}>
+        <Route
+          path="/home"
+          element={
+            <>
+              <Header />
+              <HomePage />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/perfil/edit-perfil" element={<AccountPerfil />} />
+        <Route
+          path="/perfil"
+          element={
+            <>
+              <AccountModal />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
+          path="/dispositivos"
+          element={
+            <>
+              <CompatibleDevices />
+              <Footer />
+            </>
+          }
+        />
+
         <Route
           path="/movies"
           element={
@@ -86,7 +160,7 @@ export default function AppRouter() {
           }
         />
         <Route
-          path="/favoritos/"
+          path="/favoritos"
           element={
             <>
               <Header />
@@ -118,16 +192,17 @@ export default function AppRouter() {
           path="/series/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
-
         <Route
           path="/pelicula/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -135,7 +210,8 @@ export default function AppRouter() {
           path="/pelicula/terror/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -143,7 +219,8 @@ export default function AppRouter() {
           path="/pelicula/comedia/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -151,7 +228,8 @@ export default function AppRouter() {
           path="/pelicula/accion/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -159,7 +237,8 @@ export default function AppRouter() {
           path="/pelicula/fantasia/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -167,7 +246,8 @@ export default function AppRouter() {
           path="/pelicula/ciencia-ficcion/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
+              <MoreDetails />
+              <Footer />
             </>
           }
         />
@@ -175,41 +255,14 @@ export default function AppRouter() {
           path="/pelicula/drama/:id"
           element={
             <>
-              <MoreDetails /> <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/perfil/"
-          element={
-            <>
-              <AccountModal /> <Footer />
-            </>
-          }
-        />
-
-        <Route
-          path="/perfil/edit-perfil"
-          element={
-            <>
-              <AccountPerfil />
-            </>
-          }
-        />
-
-        <Route
-          path="/sobre-nosotros"
-          element={
-            <>
-              <AboutPage />
+              <MoreDetails />
               <Footer />
             </>
           }
         />
+      </Route>
 
-        <Route path="*" element={<Error404Page />} />
-      </Routes>
-    </>
+      <Route path="*" element={<Error404Page />} />
+    </Routes>
   );
 }

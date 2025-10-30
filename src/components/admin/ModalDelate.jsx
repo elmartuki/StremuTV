@@ -7,7 +7,7 @@ export default function ModalDelate({
   if (!openModal) {
   } else {
     return (
-      <section className="modal-dele-background">
+      <section onClick={closeModal} className="modal-dele-background">
         <article className="modal-delete">
           <div className="modal-delete_title">
             <p>¿Estas seguro que quires eliminar {nombre}? </p>

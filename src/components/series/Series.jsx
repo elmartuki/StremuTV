@@ -12,20 +12,28 @@ export default function Series({ seriesMovies }) {
   } else {
     return (
       <>
-        {data.map(({ nombre, id, url }) => {
-          return (
-            <>
-              <article className="movie-card">
-                <NavLink to={`/pelicula/${id}`} key={id}>
-                  <div className="movie-card_img">
-                    <img src={url} />
-                  </div>
+        {data.map(({ id, nombre, url, videoURL, descripcion }) => (
+          <NavLink to={`/series/${id}`} className="movies-card-home" key={id}>
+            <div className="movies-card-home_img">
+              <div className="preview-img">
+                <img src={url} alt={nombre} />
+              </div>
+
+              <div className="preview-video">
+                <img src={url} alt={nombre} />
+                <video autoPlay muted loop src={videoURL}></video>
+                <div className="preview-video_details">
                   <p>{nombre}</p>
-                </NavLink>
-              </article>
-            </>
-          );
-        })}
+                  <p>{descripcion}</p>
+                  <button>Mas info</button>
+                </div>
+              </div>
+            </div>
+            <div className="movies-card-home_title">
+              <p>{nombre}</p>
+            </div>
+          </NavLink>
+        ))}
       </>
     );
   }

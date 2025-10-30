@@ -1,6 +1,7 @@
 .content-important {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 450px;
   margin-bottom: 25px;
 }
@@ -38,11 +39,11 @@
 }
 
 .card-important-home {
-  margin: auto;
   margin-top: 10px;
   width: 75%;
+  height: auto;
   color: white;
-  animation: fadeOut 8s ease 1;
+  animation: fadeOut 8s ease-in-out forwards;
 
   .card-important_img {
     position: relative;
@@ -57,26 +58,18 @@
 
 @keyframes fadeOut {
   0% {
-    opacity: 0%;
+    opacity: 0;
     transform: translateX(150%);
   }
 
-  10% {
-    transform: translateX(0px);
-    opacity: 100%;
-  }
-
-  50% {
-    opacity: 100%;
-  }
-
+  10%,
   90% {
-    transform: translateX(0px);
-    opacity: 100%;
+    opacity: 1;
+    transform: translateX(0);
   }
 
   100% {
-    opacity: 0%;
+    opacity: 0;
     transform: translateX(-150%);
   }
 }
@@ -128,6 +121,22 @@
 
     button:nth-child(2) {
       background-color: #202020;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-important-home {
+    width: 100%;
+  }
+
+  .card-important_details {
+    align-items: center;
+    justify-content: center;
+    .card-important_details-buttons {
+      button {
+        width: 100%;
+      }
     }
   }
 }

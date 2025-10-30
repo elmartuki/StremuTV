@@ -42,8 +42,10 @@ export default function CreateForm({
               id="nombre"
               type="text"
               value={nombre}
-              onChange={(e) => setNombre(e.target.value)}
+              maxLength={30}
+              onChange={(e) => setNombre(e.target.value).trim()}
               placeholder="Nombre"
+              required
             />
 
             <label htmlFor="fecha">Año de estreno</label>
@@ -51,86 +53,87 @@ export default function CreateForm({
               id="fecha"
               type="number"
               value={fecha}
+              min={1800}
+              max={2025}
               onChange={(e) => setFecha(e.target.value)}
               placeholder=""
+              required
             />
 
             <label>Género</label>
-            <div
-              className="modal-edit_inputs_buttons"
-              role="radiogroup"
-              aria-label="Género"
-            >
-              <div>
-                <input
-                  type="radio"
-                  name="genero"
-                  id="accion"
-                  value="Acción"
-                  checked={genero === "Acción"}
-                  onChange={(e) => setGenero(e.target.value)}
-                />
-                <label htmlFor="accion">Acción</label>
-              </div>
+            <div className="genero-section">
+              <div className="modal-edit_inputs_buttons" role="radiogroup">
+                <div>
+                  <input
+                    type="radio"
+                    name="genero"
+                    id="accion"
+                    value="Acción"
+                    checked={genero === "Acción"}
+                    onChange={(e) => setGenero(e.target.value)}
+                  />
+                  <label htmlFor="accion">Acción</label>
+                </div>
 
-              <div>
-                <input
-                  type="radio"
-                  name="genero"
-                  id="comedia"
-                  value="Comedia"
-                  checked={genero === "Comedia"}
-                  onChange={(e) => setGenero(e.target.value)}
-                />
-                <label htmlFor="comedia">Comedia</label>
-              </div>
+                <div>
+                  <input
+                    type="radio"
+                    name="genero"
+                    id="comedia"
+                    value="Comedia"
+                    checked={genero === "Comedia"}
+                    onChange={(e) => setGenero(e.target.value)}
+                  />
+                  <label htmlFor="comedia">Comedia</label>
+                </div>
 
-              <div>
-                <input
-                  type="radio"
-                  name="genero"
-                  id="drama"
-                  value="Drama"
-                  checked={genero === "Drama"}
-                  onChange={(e) => setGenero(e.target.value)}
-                />
-                <label htmlFor="drama">Drama</label>
-              </div>
+                <div>
+                  <input
+                    type="radio"
+                    name="genero"
+                    id="drama"
+                    value="Drama"
+                    checked={genero === "Drama"}
+                    onChange={(e) => setGenero(e.target.value)}
+                  />
+                  <label htmlFor="drama">Drama</label>
+                </div>
 
-              <div>
-                <input
-                  type="radio"
-                  name="genero"
-                  id="ciencia-ficcion"
-                  value="Ciencia Ficción"
-                  checked={genero === "Ciencia Ficción"}
-                  onChange={(e) => setGenero(e.target.value)}
-                />
-                <label htmlFor="ciencia-ficcion">Ciencia Ficción</label>
-              </div>
+                <div>
+                  <input
+                    type="radio"
+                    name="genero"
+                    id="ciencia-ficcion"
+                    value="Ciencia Ficción"
+                    checked={genero === "Ciencia Ficción"}
+                    onChange={(e) => setGenero(e.target.value)}
+                  />
+                  <label htmlFor="ciencia-ficcion">Ciencia Ficción</label>
+                </div>
 
-              <div>
-                <input
-                  type="radio"
-                  name="genero"
-                  id="terror"
-                  value="Terror"
-                  checked={genero === "Terror"}
-                  onChange={(e) => setGenero(e.target.value)}
-                />
-                <label htmlFor="terror">Terror</label>
-              </div>
+                <div>
+                  <input
+                    type="radio"
+                    name="genero"
+                    id="terror"
+                    value="Terror"
+                    checked={genero === "Terror"}
+                    onChange={(e) => setGenero(e.target.value)}
+                  />
+                  <label htmlFor="terror">Terror</label>
+                </div>
 
-              <div>
-                <input
-                  type="radio"
-                  name="genero"
-                  id="fantasia"
-                  value="Fantasía"
-                  checked={genero === "Fantasía"}
-                  onChange={(e) => setGenero(e.target.value)}
-                />
-                <label htmlFor="fantasia">Fantasía</label>
+                <div>
+                  <input
+                    type="radio"
+                    name="genero"
+                    id="fantasia"
+                    value="Fantasía"
+                    checked={genero === "Fantasía"}
+                    onChange={(e) => setGenero(e.target.value)}
+                  />
+                  <label htmlFor="fantasia">Fantasía</label>
+                </div>
               </div>
             </div>
 
@@ -166,7 +169,9 @@ export default function CreateForm({
               id="descripcion"
               className="text-area"
               value={descripcion}
-              onChange={(e) => setDescripcion(e.target.value)}
+              maxLength={400}
+              required
+              onChange={(e) => setDescripcion(e.target.value).trim()}
             />
 
             <label htmlFor="url">Foto de portada</label>
@@ -174,7 +179,8 @@ export default function CreateForm({
               id="url"
               type="text"
               value={url}
-              onChange={(e) => setURL(e.target.value)}
+              required
+              onChange={(e) => setURL(e.target.value).trim()}
             />
 
             <div className="modal-edit_inputs_img-previw">

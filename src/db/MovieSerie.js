@@ -2,9 +2,9 @@ export const movieSerieFullList = [
   {
     id: 1,
     nombre: "The Walking Dead",
-    url: "https://image.tmdb.org/t/p/w500/reKs8y4mPwPkZG99ZpbKRhBPKsX.jpg",
-    video:
-      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=twd_oal68f&profile=cld-default",
+    url: "https://images5.alphacoders.com/126/1268035.jpg",
+    videoURL:
+      "https://res.cloudinary.com/dgzkqd8x6/video/upload/v1760919259/twd_oal68f.mp4",
     fecha: "2010",
     genero: "Terror",
     tipo: "Serie",
@@ -85,9 +85,9 @@ export const movieSerieFullList = [
   {
     id: 105,
     nombre: "The Haunting of Hill House",
-    url: "https://m.media-amazon.com/images/M/MV5BOThhN2M3ZjctMGRiNi00NDIwLWI5NjktMGRmZTMxMzc5MDE0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-    video:
-      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=La_maldici%C3%B3n_de_Hill_House_Tr%C3%A1iler_oficial_Netflix_-_Netflix_Latinoam%C3%A9rica_1080p_h264_xhvykf&profile=cld-default",
+    url: "https://m.media-amazon.com/images/S/pv-target-images/d9ee3ff94f3c9718a7946d1f797cb077e058adaef1e9632f3543e57e7f96af98.jpg",
+    videoURL:
+      "https://res.cloudinary.com/dgzkqd8x6/video/upload/v1760921093/La_maldici%C3%B3n_de_Hill_House_Tr%C3%A1iler_oficial_Netflix_-_Netflix_Latinoam%C3%A9rica_1080p_h264_xhvykf.mp4",
     fecha: "2018",
     genero: "Terror",
     tipo: "Serie",
@@ -128,8 +128,8 @@ export const movieSerieFullList = [
     id: 110,
     nombre: "American Horror Story",
     url: "https://m.media-amazon.com/images/M/MV5BZTY4NTQ0ZDMtMGM4ZS00YmYwLWFkYmUtYWFlZmUwMTA5MWMyXkEyXkFqcGc@._V1_.jpg",
-    video:
-      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=American_Horror_Story_Cult_Season_7_Official_Trailer_HD_FX_-_FX_Networks_1080p_h264_rpyqqo&profile=cld-default",
+    videoURL:
+      "https://res.cloudinary.com/dgzkqd8x6/video/upload/v1760921363/American_Horror_Story_Cult_Season_7_Official_Trailer_HD_FX_-_FX_Networks_1080p_h264_rpyqqo.mp4",
     fecha: "2011",
     genero: "Terror",
     tipo: "Serie",
@@ -261,9 +261,9 @@ export const movieSerieFullList = [
   {
     id: 16,
     nombre: "Breaking Bad",
-    url: "https://m.media-amazon.com/images/M/MV5BMzU5ZGYzNmQtMTdhYy00OGRiLTg0NmQtYjVjNzliZTg1ZGE4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-    video:
-      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=Breaking_Bad_-_Trailer_Estena_-_AMC_Latinoam%C3%A9rica_720p_h264_p0vv05&profile=cld-default",
+    url: "https://images7.alphacoders.com/111/1111278.jpg",
+    videoURL:
+      "https://res.cloudinary.com/dgzkqd8x6/video/upload/v1760921361/Breaking_Bad_-_Trailer_Estena_-_AMC_Latinoam%C3%A9rica_720p_h264_p0vv05.mp4",
     fecha: "2008",
     genero: "Crimen",
     tipo: "Serie",
@@ -273,9 +273,9 @@ export const movieSerieFullList = [
   {
     id: 18,
     nombre: "Stranger Things",
-    url: "https://image.tmdb.org/t/p/w500/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg",
-    video:
-      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=Stranger_Things_5_Avance_oficial_Netflix_-_Netflix_Latinoam%C3%A9rica_1080p_h264_fwerlu&profile=cld-default",
+    url: "https://occ-0-8407-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABer7SeWc6FvkBqWtk61GwL7rshAEVCOARQZVTEJGnLXykYBlO4nbbr6gs7M650BjULuaN6hucXKr5xY2iqPAajrxXd70HawdJeuD.jpg?r=608",
+    videoURL:
+      "https://res.cloudinary.com/dgzkqd8x6/video/upload/v1760920719/Stranger_Things_5_Avance_oficial_Netflix_-_Netflix_Latinoam%C3%A9rica_1080p_h264_fwerlu.mp4",
     fecha: "2016",
     genero: "Ciencia Ficcion",
     tipo: "Serie",
@@ -286,9 +286,9 @@ export const movieSerieFullList = [
   {
     id: 26,
     nombre: "The Last of Us",
-    url: "https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
-    video:
-      "https://player.cloudinary.com/embed/?cloud_name=dgzkqd8x6&public_id=The_Last_of_Us_Trailer_Oficial_Doblaje_Latino_HBO_Max_-_CharLink_1080p_h264_zepeka&profile=cld-default",
+    url: "https://4kwallpapers.com/images/wallpapers/the-last-of-us-3840x2160-22167.jpg",
+    videoURL:
+      "https://res.cloudinary.com/dgzkqd8x6/video/upload/v1760921355/The_Last_of_Us_Trailer_Oficial_Doblaje_Latino_HBO_Max_-_CharLink_1080p_h264_zepeka.mp4",
     fecha: "2023",
     genero: "Drama",
     tipo: "Serie",
@@ -857,7 +857,7 @@ export const movieSerieFullList = [
   {
     id: 502,
     nombre: "Reacher",
-    url: "https://m.media-amazon.com/images/M/MV5BMzdjYWZlMDQtYzdhNi00NmRlLTg2NzUtMTI3MWFhZDliNjBiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    url: "https://es.web.img3.acsta.net/pictures/21/12/03/10/38/4833003.jpg",
     fecha: "2022",
     genero: "Accion",
     tipo: "Serie",
@@ -887,7 +887,7 @@ export const movieSerieFullList = [
   {
     id: 505,
     nombre: "Titans",
-    url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLq_NH0lhIjg1eve9O5n18FjBYYE-zMUXH4A&s",
+    url: "https://m.media-amazon.com/images/M/MV5BOTg3NzY2MDQtMjUxNS00N2Q3LTkxODktMmU1NzdjZTNkMzQ0XkEyXkFqcGc@._V1_.jpg",
     fecha: "2018",
     genero: "Accion",
     tipo: "Serie",
@@ -1793,7 +1793,7 @@ export const movieSerieFullList = [
   {
     id: 915,
     nombre: "Breaking Bad",
-    url: "https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+    url: "https://static.wikia.nocookie.net/eswikia/images/8/80/Breaking_Bad.png/revision/latest?cb=20160906023713",
     fecha: "2008",
     genero: "Drama",
     tipo: "Serie",
@@ -1813,7 +1813,7 @@ export const movieSerieFullList = [
   {
     id: 917,
     nombre: "The Crown",
-    url: "https://www.lavanguardia.com/Peliculas-Series/images/Serie/poster/2016/11/w1280/1ZMVKJoWK5KfxaQA8BwpfOEYKKy.jpg",
+    url: "https://m.media-amazon.com/images/M/MV5BMGU2MjdjODQtZDk5Ny00NzgwLWI2MTMtYzViNDU5MDNjMGU2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     fecha: "2016",
     genero: "Drama",
     tipo: "Serie",
