@@ -102,10 +102,6 @@ export default function CompatibleDevices() {
         ))}
       </div>
 
-
-      
-
-
       {/* Lista de dispositivos */}
       <Row
         xs={1}
