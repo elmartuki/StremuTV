@@ -5,8 +5,38 @@
     max-height: max-content;
     justify-content: center;
 
+    .movies-card-home {
+      width: clamp(140px, 25vw, 140px);
+    }
+
     .preview-video {
       display: none;
+    }
+  }
+}
+
+@media (min-width: 375px) {
+  .series-section {
+    .section_home {
+      .movies-card-home {
+        width: clamp(170px, 25vw, 170px);
+      }
+    }
+  }
+}
+
+@media (min-width: 425px) {
+  .series-section {
+    .section_home {
+      .movies-card-home {
+        width: clamp(190px, 25vw, 180px);
+
+        .movies-card-home_img {
+          img {
+            height: 300px;
+          }
+        }
+      }
     }
   }
 }
