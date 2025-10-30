@@ -73,8 +73,9 @@ export default function CompatibleDevices() {
       </div>
       <h1 className="text-center mb-4 fw-bold">📱 Dispositivos Compatibles</h1>
       <p className="text-center text-light mb-5 opacity-75">
-        Consulta la lista de equipos compatibles con nuestra aplicación.
-        Si tu dispositivo no aparece, puedes probar igualmente, ya que seguimos ampliando compatibilidad.
+        Consulta la lista de equipos compatibles con nuestra aplicación. Si tu
+        dispositivo no aparece, puedes probar igualmente, ya que seguimos
+        ampliando compatibilidad.
       </p>
 
       {/* Filtros */}
@@ -89,10 +90,10 @@ export default function CompatibleDevices() {
             {type === "all"
               ? "Todos"
               : type === "iOS"
-                ? "iOS"
-                : type === "macOS"
-                  ? "macOS"
-                  : type}
+              ? "iOS"
+              : type === "macOS"
+              ? "macOS"
+              : type}
           </Button>
         ))}
       </div>
@@ -129,10 +130,14 @@ export default function CompatibleDevices() {
                     device.status === "Compatible"
                       ? "success"
                       : device.status === "Parcialmente compatible"
-                        ? "warning"
-                        : "secondary"
+                      ? "warning"
+                      : "secondary"
                   }
-                  text={device.status === "Parcialmente compatible" ? "dark" : "light"}
+                  text={
+                    device.status === "Parcialmente compatible"
+                      ? "dark"
+                      : "light"
+                  }
                   className="p-2"
                 >
                   {device.status}

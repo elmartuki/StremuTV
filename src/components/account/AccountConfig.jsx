@@ -67,22 +67,22 @@ export default function AccountConfig({ closeConfig }) {
           </div>
 
           <div className="account-config_list">
+            <p>Mis listas</p>
             <NavLink onClick={closeConfig} to="/favoritos">
-              <button className="account-config_list_access">
+              <button>
                 <div>
-                  <img src={favIcon} alt="seccion favoritos" />
+                  <img src={favIcon} alt="" />
                   <p>Favoritos</p>
                   <p>{FavCount}</p>
-                  <img src={right} alt="" />
                 </div>
 
-                <img src={right} alt="abrir seccion favoritos" />
+                <img src={right} alt="" />
               </button>
             </NavLink>
 
-            <button className="account-config_list_add">
+            <button>
               <NavLink to="*">
-                <img src={addIcon} alt="crear una nueva lista" />
+                <img src={addIcon} alt="" />
                 Crear una nueva lista.
               </NavLink>
             </button>

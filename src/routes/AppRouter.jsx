@@ -21,7 +21,7 @@ import TermUse from "../pages/TermUsePage.jsx";
 import UsserRoutes from "./UsserRoutes.jsx";
 import AdminRoutes from "./AdminRoutes.jsx";
 import UssersPanel from "../components/ussers/UssersPanel.jsx";
-import CompatibleDevices from "../pages/compatibleDevices.jsx";
+import CompatibleDevices from "../pages/CompatibleDevices.jsx";
 
 export default function AppRouter() {
   return (
@@ -114,6 +114,16 @@ export default function AppRouter() {
           element={
             <>
               <AccountModal />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
+          path="/dispositivos"
+          element={
+            <>
+              <CompatibleDevices />
               <Footer />
             </>
           }

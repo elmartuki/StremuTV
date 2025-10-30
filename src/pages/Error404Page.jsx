@@ -1,45 +1,56 @@
 import { Link } from "react-router-dom";
 import { Container, Button } from "react-bootstrap";
 import { obtenerDelLocalStorage } from "../utils/localStorage";
+import movieIcon from "../assets/movieIcon.svg";
+import "../css/error-404.css";
 
 export default function Error404Page() {
   const usserKey = obtenerDelLocalStorage("UsserKey");
 
   return (
-    <Container
-      fluid
-      className="d-flex flex-column justify-content-center align-items-center vh-100 bg-dark text-light text-center"
-    >
-      <h1 className="display-1 fw-bold text-danger">404</h1>
-      <h2 className="fw-semibold mb-3">Página no encontrada</h2>
-      <p className="text-secondary mb-4" style={{ maxWidth: "500px" }}>
-        La página que estás buscando no existe o fue movida. No te preocupes,
-        podés volver al inicio fácilmente.
-      </p>
+    <section className="error-404-section">
+      <article className="error-404">
+        <div className="error-404_img">
+          <img src={movieIcon} alt="" />
+        </div>
+        <div className="error-404_tittle">
+          <p>404</p>
+          <p>¡Ups! Parece que esta página se perdió en el guion.</p>
+        </div>
+        <div className="error-404_desc">
+          <p>
+            No te preocupes, no es tu culpa. La página que buscas no se ha
+            podido encontrar, pero la función debe continuar. Puedes volver al
+            inicio.
+          </p>
+        </div>
 
-      {usserKey ? (
-        <>
-          <Link to="/home">
-            <Button
-              variant="outline-light"
-              className="d-flex align-items-center gap-2"
-            >
-              <i className="bi bi-arrow-left"></i> Volver al inicio
-            </Button>
-          </Link>
-        </>
-      ) : (
-        <>
-          <Link to="/">
-            <Button
-              variant="outline-light"
-              className="d-flex align-items-center gap-2"
-            >
-              <i className="bi bi-arrow-left"></i> Volver al inicio
-            </Button>
-          </Link>
-        </>
-      )}
-    </Container>
+        <div className="error-404_buttons">
+          {usserKey ? (
+            <>
+              <Link to="/home">
+                <button
+                  variant="outline-light"
+                  className="d-flex align-items-center gap-2"
+                >
+                  <i className="bi bi-arrow-left"></i> Volver al inicio
+                </button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/">
+                <button
+                  variant="outline-light"
+                  className="d-flex align-items-center gap-2"
+                >
+                  <i className="bi bi-arrow-left"></i> Volver al inicio
+                </button>
+              </Link>
+            </>
+          )}
+        </div>
+      </article>
+    </section>
   );
 }
