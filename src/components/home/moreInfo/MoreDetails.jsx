@@ -16,7 +16,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import ConfirmFav from "../../fav/ConfirmFav";
 import ErrorModal from "./ErrorModal";
-import "../../../css/MoreDetails.css";
+import "../../../css/moreDetails.css";
 
 export default function MoreDetails() {
   const repatoFullRandom = [...repartoCompleto].sort(() => Math.random() - 0.5);
