@@ -16,6 +16,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import ConfirmFav from "../../fav/ConfirmFav";
 import ErrorModal from "./ErrorModal";
+import "../../../css/moreDetails.css";
 
 export default function MoreDetails() {
   const repatoFullRandom = [...repartoCompleto].sort(() => Math.random() - 0.5);
@@ -169,7 +170,7 @@ export default function MoreDetails() {
               <div className="preview_img">
                 <img src={url} alt={nombre} />
               </div>
-              <div className="preview-video">
+              <div className="preview-video-2">
                 <video
                   ref={videoRef}
                   autoPlay

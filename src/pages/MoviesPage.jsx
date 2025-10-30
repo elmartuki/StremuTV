@@ -39,9 +39,11 @@ export default function MoviesPage() {
         <Filter generoObtenido={handleFilter} />
       </section>
 
-      <section className="section-movies">
-        <MoviesSection seriesMovies={moviesFiltered} />
-      </section>
+      <div className="series-section">
+        <section className="section_home">
+          <MoviesSection seriesMovies={moviesFiltered} />
+        </section>
+      </div>
     </>
   );
 }

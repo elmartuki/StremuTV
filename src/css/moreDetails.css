@@ -320,7 +320,7 @@ video {
   width: 100%;
 }
 
-.preview-video {
+.preview-video-2 {
   video {
     display: none;
   }
@@ -477,7 +477,7 @@ video {
     display: none !important;
   }
 
-  .preview-video {
+  .preview-video-2 {
     video {
       display: flex;
       width: 100%;
