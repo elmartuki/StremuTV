@@ -22,11 +22,20 @@ import UsserRoutes from "./UsserRoutes.jsx";
 import AdminRoutes from "./AdminRoutes.jsx";
 import UssersPanel from "../components/ussers/UssersPanel.jsx";
 import CompatibleDevices from "../pages/CompatibleDevices.jsx";
+import FooterWeb from "../components/footer-web/FooterWeb.jsx";
 
 export default function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<InitPage />} />
+      <Route
+        path="/"
+        element={
+          <>
+            <InitPage />
+            <FooterWeb />
+          </>
+        }
+      />
       <Route path="/registro" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/termsuse" element={<TermUse />} />
