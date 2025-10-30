@@ -1,0 +1,74 @@
+body {
+  background-color: #141414;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.verMasTarde-contenedor {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.verMasTarde-contenedor h2 {
+  color: #3c185d;
+  margin-bottom: 20px;
+}
+
+.formulario-verMasTarde input {
+  padding: 10px;
+  margin: 5px;
+  border: 2px solid #3c185d;
+  border-radius: 5px;
+  background-color: #141414;
+  color: white;
+}
+
+.formulario-verMasTarde button {
+  background-color: #3c185d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formulario-verMasTarde button:hover {
+  background-color: #56227f;
+}
+
+.lista-verMasTarde {
+  margin-top: 20px;
+}
+
+.item-verMasTarde {
+  background-color: #1e1e1e;
+  border: 1px solid #3c185d;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.item-verMasTarde.vista {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.botones button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3c185d;
+  color: white;
+  cursor: pointer;
+}
+
+.botones .eliminar {
+  background-color: rgb(220, 20, 60);
+}
+
+.vacio {
+  margin-top: 20px;
+  color: #bbb;
+}
