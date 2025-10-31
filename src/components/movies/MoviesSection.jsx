@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function MoviesSection({ seriesMovies }) {
   const listado = seriesMovies;
+  const [showVideo, setShowVideo] = useState(null);
 
   if (listado.length === 0) {
     return (
@@ -12,28 +14,42 @@ export default function MoviesSection({ seriesMovies }) {
   } else {
     return (
       <>
-        {listado.map(({ id, nombre, url, videoURL, descripcion }) => (
-          <NavLink to={`/series/${id}`} className="movies-card-home" key={id}>
-            <div className="movies-card-home_img">
-              <div className="preview-img">
-                <img src={url} alt={nombre} />
-              </div>
+        <section className="movies-section">
+          {listado.map(({ id, nombre, url, videoURL, descripcion }) => (
+            <NavLink to={`/series/${id}`} className="movies-card-home" key={id}>
+              <div
+                onMouseEnter={() => setShowVideo(id)}
+                onMouseLeave={() => setShowVideo(null)}
+                className="movies-card-home_img"
+              >
+                {showVideo === id ? (
+                  <>
+                    {videoURL === undefined ? (
+                      <img src={url} alt={nombre} />
+                    ) : (
+                      <video src={videoURL} autoPlay muted loop></video>
+                    )}
 
-              <div className="preview-video">
-                <img src={url} alt={nombre} />
-                <video autoPlay muted loop src={videoURL}></video>
-                <div className="preview-video_details">
-                  <p>{nombre}</p>
-                  <p>{descripcion}</p>
-                  <button>Mas info</button>
-                </div>
+                    <div className="video-descripcion">
+                      <p>{nombre}</p>
+                      <p>{descripcion}</p>
+                      <button>Ver mas</button>
+                    </div>
+                  </>
+                ) : (
+                  <img src={url} alt={nombre} />
+                )}
               </div>
-            </div>
-            <div className="movies-card-home_title">
-              <p>{nombre}</p>
-            </div>
-          </NavLink>
-        ))}
+              {showVideo === id ? (
+                <></>
+              ) : (
+                <div className="movies-card-home_title">
+                  <p>{nombre}</p>
+                </div>
+              )}
+            </NavLink>
+          ))}
+        </section>
       </>
     );
   }

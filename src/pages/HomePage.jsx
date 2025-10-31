@@ -77,7 +77,7 @@ export default function HomePage() {
         </section>
 
         <p className="section_home-title">Series Destacadas</p>
-        <section className="section_home">
+        <section className="section_homepage">
           <Series showMore={showFive2} />
         </section>
         <div className="home-page_button">
@@ -88,7 +88,7 @@ export default function HomePage() {
         </div>
 
         <p className="section_home-title">Peliculas Destacadas</p>
-        <section className="section_home">
+        <section className="section_homepage">
           <Movies showMore={showFive1} />
         </section>
         <div className="home-page_button">
@@ -99,7 +99,7 @@ export default function HomePage() {
         </div>
 
         <p className="section_home-title">Terror</p>
-        <section className="section_home">
+        <section className="section_homepage">
           <Terror showMore={showFive3} />
         </section>
         <div className="home-page_button">
@@ -110,7 +110,7 @@ export default function HomePage() {
         </div>
 
         <p className="section_home-title">Comedia</p>
-        <section className="section_home">
+        <section className="section_homepage">
           <Comedia showMore={showFive4} />
         </section>
         <div className="home-page_button">
@@ -121,7 +121,7 @@ export default function HomePage() {
         </div>
 
         <p className="section_home-title">Fantasia</p>
-        <section className="section_home">
+        <section className="section_homepage">
           <Fantasia showMore={showFive5} />
         </section>
         <div className="home-page_button">
@@ -132,7 +132,7 @@ export default function HomePage() {
         </div>
 
         <p className="section_home-title">Drama</p>
-        <section className="section_home">
+        <section className="section_homepage">
           <Drama showMore={showFive6} />
         </section>
         <div className="home-page_button">
@@ -143,7 +143,7 @@ export default function HomePage() {
         </div>
 
         <p className="section_home-title">Ciencia Ficción</p>
-        <section className="section_home">
+        <section className="section_homepage">
           <CienciaFiccion showMore={showFive7} />
         </section>
         <div className="home-page_button">
@@ -154,7 +154,7 @@ export default function HomePage() {
         </div>
 
         <p className="section_home-title">Acción</p>
-        <section className="section_home">
+        <section className="section_homepage">
           <Accion showMore={showFive8} />
         </section>
 

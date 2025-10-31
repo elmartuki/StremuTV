@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 export default function Movies({ showMore }) {
   const movieList = obtenerPeliculasOSerieLS("Pelicula") || [];
   const [resize, setResize] = useState(window.innerWidth >= 1024);
+  const [showVideo, setShowVideo] = useState(null);
 
   useEffect(() => {
     const handleResize = () => setResize(window.innerWidth >= 1024);
@@ -19,24 +20,36 @@ export default function Movies({ showMore }) {
     <>
       {listToShow.map(({ id, nombre, url, videoURL, descripcion }) => (
         <NavLink to={`/series/${id}`} className="movies-card-home" key={id}>
-          <div className="movies-card-home_img">
-            <div className="preview-img">
-              <img src={url} alt={nombre} />
-            </div>
+          <div
+            onMouseEnter={() => setShowVideo(id)}
+            onMouseLeave={() => setShowVideo(null)}
+            className="movies-card-home_img"
+          >
+            {showVideo === id ? (
+              <>
+                {videoURL === undefined ? (
+                  <img src={url} alt={nombre} />
+                ) : (
+                  <video src={videoURL} autoPlay muted loop></video>
+                )}
 
-            <div className="preview-video">
+                <div className="video-descripcion">
+                  <p>{nombre}</p>
+                  <p>{descripcion}</p>
+                  <button>Ver mas</button>
+                </div>
+              </>
+            ) : (
               <img src={url} alt={nombre} />
-              <video autoPlay muted loop src={videoURL}></video>
-              <div className="preview-video_details">
-                <p>{nombre}</p>
-                <p>{descripcion}</p>
-                <button>Mas info</button>
-              </div>
+            )}
+          </div>
+          {showVideo === id ? (
+            <></>
+          ) : (
+            <div className="movies-card-home_title">
+              <p>{nombre}</p>
             </div>
-          </div>
-          <div className="movies-card-home_title">
-            <p>{nombre}</p>
-          </div>
+          )}
         </NavLink>
       ))}
     </>
