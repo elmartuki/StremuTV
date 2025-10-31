@@ -101,6 +101,8 @@ export const movieSerieFullList = [
     fecha: "2018",
     genero: "Terror",
     tipo: "Pelicula",
+    videoURL:
+      "https://res.cloudinary.com/dgzkqd8x6/video/upload/v1761921621/LA_MONJA_II_TR%C3%81ILER_OFICIAL_DOBLADO_-_Warner_Bros._Pictures_Latinoam%C3%A9rica_720p_h264_i9ehar.mp4",
     descripcion:
       "Una monja y un sacerdote investigan la misteriosa muerte de una hermana en un convento rumano, donde un mal antiguo acecha.",
   },
@@ -730,6 +732,8 @@ export const movieSerieFullList = [
     fecha: "2018",
     genero: "Terror",
     tipo: "Pelicula",
+    videoURL:
+      "https://res.cloudinary.com/dgzkqd8x6/video/upload/v1761921621/LA_MONJA_II_TR%C3%81ILER_OFICIAL_DOBLADO_-_Warner_Bros._Pictures_Latinoam%C3%A9rica_720p_h264_i9ehar.mp4",
     descripcion:
       "Una monja y un sacerdote investigan una abadía rumana donde una presencia demoníaca acecha.",
   },
