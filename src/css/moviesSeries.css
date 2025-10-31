@@ -63,7 +63,11 @@
   .series-section {
     .section_home {
       .movies-card-home {
-        width: clamp(165px, 25vw, 165px) !important;
+        width: clamp(175px, 25vw, 175px) !important;
+
+        .movies-card-home_img {
+          height: 300px;
+        }
       }
     }
   }
