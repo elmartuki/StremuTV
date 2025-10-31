@@ -1,3 +1,7 @@
+.video-descripcion {
+  display: none;
+}
+
 .series-section {
   .section_home {
     .movies-card-home {
@@ -18,7 +22,6 @@
         }
 
         .video-descripcion {
-          display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
@@ -91,7 +94,6 @@
           }
 
           .video-descripcion {
-            display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
